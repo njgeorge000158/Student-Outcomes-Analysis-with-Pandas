@@ -1,4 +1,4 @@
-![1680105043870](https://github.com/njgeorge000158/Student-Outcomes-Analysis-in-Jupyter-Notebook/assets/137228821/bf8bce8b-3e80-40e6-a16a-7e0514455542)
+![city_schools](https://github.com/njgeorge000158/Student-Outcomes-Analysis-with-Pandas/assets/137228821/2b8ccf0f-f02d-4b5f-a08b-bcf55dc9f06d)
 
 ----
 
