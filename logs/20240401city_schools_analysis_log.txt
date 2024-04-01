@@ -1,0 +1,3542 @@
+
+Timepoint: 2024/04/01 11:53:30
+Program execution begins...
+
+
+
+
+       Student ID       student_name gender grade         school_name  \
+0               0       Paul Bradley      M   9th   Huang High School   
+1               1       Victor Smith      M  12th   Huang High School   
+2               2    Kevin Rodriguez      M  12th   Huang High School   
+3               3  Dr. Richard Scott      M  12th   Huang High School   
+4               4         Bonnie Ray      F   9th   Huang High School   
+...           ...                ...    ...   ...                 ...   
+39165       39165       Donna Howard      F  12th  Thomas High School   
+39166       39166          Dawn Bell      F  10th  Thomas High School   
+39167       39167     Rebecca Tanner      F   9th  Thomas High School   
+39168       39168       Desiree Kidd      F  10th  Thomas High School   
+39169       39169    Carolyn Jackson      F  11th  Thomas High School   
+
+       reading_score  math_score  
+0                 66          79  
+1                 94          61  
+2                 90          60  
+3                 67          58  
+4                 97          84  
+...              ...         ...  
+39165             99          90  
+39166             95          70  
+39167             73          84  
+39168             99          90  
+39169             95          75  
+
+[39170 rows x 7 columns]
+
+
+
+    School ID            school_name      type  size   budget
+0           0      Huang High School  District  2917  1910635
+1           1   Figueroa High School  District  2949  1884411
+2           2    Shelton High School   Charter  1761  1056600
+3           3  Hernandez High School  District  4635  3022020
+4           4    Griffin High School   Charter  1468   917500
+5           5     Wilson High School   Charter  2283  1319574
+6           6    Cabrera High School   Charter  1858  1081356
+7           7     Bailey High School  District  4976  3124928
+8           8     Holden High School   Charter   427   248087
+9           9       Pena High School   Charter   962   585858
+10         10     Wright High School   Charter  1800  1049400
+11         11  Rodriguez High School  District  3999  2547363
+12         12    Johnson High School  District  4761  3094650
+13         13       Ford High School  District  2739  1763916
+14         14     Thomas High School   Charter  1635  1043130
+
+
+
+       Student ID       student_name gender grade         school_name  \
+0               0       Paul Bradley      M   9th   Huang High School   
+1               1       Victor Smith      M  12th   Huang High School   
+2               2    Kevin Rodriguez      M  12th   Huang High School   
+3               3  Dr. Richard Scott      M  12th   Huang High School   
+4               4         Bonnie Ray      F   9th   Huang High School   
+...           ...                ...    ...   ...                 ...   
+39165       39165       Donna Howard      F  12th  Thomas High School   
+39166       39166          Dawn Bell      F  10th  Thomas High School   
+39167       39167     Rebecca Tanner      F   9th  Thomas High School   
+39168       39168       Desiree Kidd      F  10th  Thomas High School   
+39169       39169    Carolyn Jackson      F  11th  Thomas High School   
+
+       reading_score  math_score  School ID      type  size   budget  
+0                 66          79          0  District  2917  1910635  
+1                 94          61          0  District  2917  1910635  
+2                 90          60          0  District  2917  1910635  
+3                 67          58          0  District  2917  1910635  
+4                 97          84          0  District  2917  1910635  
+...              ...         ...        ...       ...   ...      ...  
+39165             99          90         14   Charter  1635  1043130  
+39166             95          70         14   Charter  1635  1043130  
+39167             73          84         14   Charter  1635  1043130  
+39168             99          90         14   Charter  1635  1043130  
+39169             95          75         14   Charter  1635  1043130  
+
+[39170 rows x 11 columns]
+
+
+
+15
+
+
+
+39170
+
+
+
+24649428
+
+
+
+78.99
+
+
+
+81.88
+
+
+
+74.98
+
+
+
+85.81
+
+
+
+65.17
+
+
+
+   total_schools  total_students  total_budget  average_math_score  \
+0             15           39170      24649428               78.99   
+
+   average_reading_score  %_passing_math  %_passing_reading  %_overall_passing  
+0                  81.88           74.98              85.81              65.17  
+
+
+
+school_name
+Bailey High School       District
+Cabrera High School       Charter
+Figueroa High School     District
+Ford High School         District
+Griffin High School       Charter
+Hernandez High School    District
+Holden High School        Charter
+Huang High School        District
+Johnson High School      District
+Pena High School          Charter
+Rodriguez High School    District
+Shelton High School       Charter
+Thomas High School        Charter
+Wilson High School        Charter
+Wright High School        Charter
+Name: type, dtype: object
+
+
+
+school_name
+Bailey High School       4976
+Cabrera High School      1858
+Figueroa High School     2949
+Ford High School         2739
+Griffin High School      1468
+Hernandez High School    4635
+Holden High School        427
+Huang High School        2917
+Johnson High School      4761
+Pena High School          962
+Rodriguez High School    3999
+Shelton High School      1761
+Thomas High School       1635
+Wilson High School       2283
+Wright High School       1800
+Name: school_name, dtype: int64
+
+
+
+school_name
+Bailey High School       3124928
+Cabrera High School      1081356
+Figueroa High School     1884411
+Ford High School         1763916
+Griffin High School       917500
+Hernandez High School    3022020
+Holden High School        248087
+Huang High School        1910635
+Johnson High School      3094650
+Pena High School          585858
+Rodriguez High School    2547363
+Shelton High School      1056600
+Thomas High School       1043130
+Wilson High School       1319574
+Wright High School       1049400
+Name: budget, dtype: object
+
+
+
+school_name
+Bailey High School       628.0
+Cabrera High School      582.0
+Figueroa High School     639.0
+Ford High School         644.0
+Griffin High School      625.0
+Hernandez High School    652.0
+Holden High School       581.0
+Huang High School        655.0
+Johnson High School      650.0
+Pena High School         609.0
+Rodriguez High School    637.0
+Shelton High School      600.0
+Thomas High School       638.0
+Wilson High School       578.0
+Wright High School       583.0
+dtype: float64
+
+
+
+school_name
+Bailey High School       77.048432
+Cabrera High School      83.061895
+Figueroa High School     76.711767
+Ford High School         77.102592
+Griffin High School      83.351499
+Hernandez High School    77.289752
+Holden High School       83.803279
+Huang High School        76.629414
+Johnson High School      77.072464
+Pena High School         83.839917
+Rodriguez High School    76.842711
+Shelton High School      83.359455
+Thomas High School       83.418349
+Wilson High School       83.274201
+Wright High School       83.682222
+dtype: float64
+
+
+
+school_name
+Bailey High School       81.033963
+Cabrera High School      83.975780
+Figueroa High School     81.158020
+Ford High School         80.746258
+Griffin High School      83.816757
+Hernandez High School    80.934412
+Holden High School       83.814988
+Huang High School        81.182722
+Johnson High School      80.966394
+Pena High School         84.044699
+Rodriguez High School    80.744686
+Shelton High School      83.725724
+Thomas High School       83.848930
+Wilson High School       83.989488
+Wright High School       83.955000
+dtype: float64
+
+
+
+school_name
+Bailey High School       3318
+Cabrera High School      1749
+Figueroa High School     1946
+Ford High School         1871
+Griffin High School      1371
+Hernandez High School    3094
+Holden High School        395
+Huang High School        1916
+Johnson High School      3145
+Pena High School          910
+Rodriguez High School    2654
+Shelton High School      1653
+Thomas High School       1525
+Wilson High School       2143
+Wright High School       1680
+dtype: int64
+
+
+
+school_name
+Bailey High School       4077
+Cabrera High School      1803
+Figueroa High School     2381
+Ford High School         2172
+Griffin High School      1426
+Hernandez High School    3748
+Holden High School        411
+Huang High School        2372
+Johnson High School      3867
+Pena High School          923
+Rodriguez High School    3208
+Shelton High School      1688
+Thomas High School       1591
+Wilson High School       2204
+Wright High School       1739
+dtype: int64
+
+
+
+school_name
+Bailey High School       2719
+Cabrera High School      1697
+Figueroa High School     1569
+Ford High School         1487
+Griffin High School      1330
+Hernandez High School    2481
+Holden High School        381
+Huang High School        1561
+Johnson High School      2549
+Pena High School          871
+Rodriguez High School    2119
+Shelton High School      1583
+Thomas High School       1487
+Wilson High School       2068
+Wright High School       1626
+dtype: int64
+
+
+
+school_name
+Bailey High School       66.680064
+Cabrera High School      94.133477
+Figueroa High School     65.988471
+Ford High School         68.309602
+Griffin High School      93.392371
+Hernandez High School    66.752967
+Holden High School       92.505855
+Huang High School        65.683922
+Johnson High School      66.057551
+Pena High School         94.594595
+Rodriguez High School    66.366592
+Shelton High School      93.867121
+Thomas High School       93.272171
+Wilson High School       93.867718
+Wright High School       93.333333
+dtype: float64
+
+
+
+school_name
+Bailey High School       81.933280
+Cabrera High School      97.039828
+Figueroa High School     80.739234
+Ford High School         79.299014
+Griffin High School      97.138965
+Hernandez High School    80.862999
+Holden High School       96.252927
+Huang High School        81.316421
+Johnson High School      81.222432
+Pena High School         95.945946
+Rodriguez High School    80.220055
+Shelton High School      95.854628
+Thomas High School       97.308869
+Wilson High School       96.539641
+Wright High School       96.611111
+dtype: float64
+
+
+
+school_name
+Bailey High School       54.642283
+Cabrera High School      91.334769
+Figueroa High School     53.204476
+Ford High School         54.289887
+Griffin High School      90.599455
+Hernandez High School    53.527508
+Holden High School       89.227166
+Huang High School        53.513884
+Johnson High School      53.539172
+Pena High School         90.540541
+Rodriguez High School    52.988247
+Shelton High School      89.892107
+Thomas High School       90.948012
+Wilson High School       90.582567
+Wright High School       90.333333
+dtype: float64
+
+
+
+                      school_type  total_students total_school_budget  \
+school_name                                                             
+Bailey High School       District            4976             3124928   
+Cabrera High School       Charter            1858             1081356   
+Figueroa High School     District            2949             1884411   
+Ford High School         District            2739             1763916   
+Griffin High School       Charter            1468              917500   
+Hernandez High School    District            4635             3022020   
+Holden High School        Charter             427              248087   
+Huang High School        District            2917             1910635   
+Johnson High School      District            4761             3094650   
+Pena High School          Charter             962              585858   
+Rodriguez High School    District            3999             2547363   
+Shelton High School       Charter            1761             1056600   
+Thomas High School        Charter            1635             1043130   
+Wilson High School        Charter            2283             1319574   
+Wright High School        Charter            1800             1049400   
+
+                       per_student_budget  average_math_score  \
+school_name                                                     
+Bailey High School                  628.0           77.048432   
+Cabrera High School                 582.0           83.061895   
+Figueroa High School                639.0           76.711767   
+Ford High School                    644.0           77.102592   
+Griffin High School                 625.0           83.351499   
+Hernandez High School               652.0           77.289752   
+Holden High School                  581.0           83.803279   
+Huang High School                   655.0           76.629414   
+Johnson High School                 650.0           77.072464   
+Pena High School                    609.0           83.839917   
+Rodriguez High School               637.0           76.842711   
+Shelton High School                 600.0           83.359455   
+Thomas High School                  638.0           83.418349   
+Wilson High School                  578.0           83.274201   
+Wright High School                  583.0           83.682222   
+
+                       average_reading_score  %_passing_math  \
+school_name                                                    
+Bailey High School                 81.033963       66.680064   
+Cabrera High School                83.975780       94.133477   
+Figueroa High School               81.158020       65.988471   
+Ford High School                   80.746258       68.309602   
+Griffin High School                83.816757       93.392371   
+Hernandez High School              80.934412       66.752967   
+Holden High School                 83.814988       92.505855   
+Huang High School                  81.182722       65.683922   
+Johnson High School                80.966394       66.057551   
+Pena High School                   84.044699       94.594595   
+Rodriguez High School              80.744686       66.366592   
+Shelton High School                83.725724       93.867121   
+Thomas High School                 83.848930       93.272171   
+Wilson High School                 83.989488       93.867718   
+Wright High School                 83.955000       93.333333   
+
+                       %_passing_reading  %_overall_passing  
+school_name                                                  
+Bailey High School             81.933280          54.642283  
+Cabrera High School            97.039828          91.334769  
+Figueroa High School           80.739234          53.204476  
+Ford High School               79.299014          54.289887  
+Griffin High School            97.138965          90.599455  
+Hernandez High School          80.862999          53.527508  
+Holden High School             96.252927          89.227166  
+Huang High School              81.316421          53.513884  
+Johnson High School            81.222432          53.539172  
+Pena High School               95.945946          90.540541  
+Rodriguez High School          80.220055          52.988247  
+Shelton High School            95.854628          89.892107  
+Thomas High School             97.308869          90.948012  
+Wilson High School             96.539641          90.582567  
+Wright High School             96.611111          90.333333  
+
+
+
+                      school_type  total_students total_school_budget  \
+school_name                                                             
+Cabrera High School       Charter            1858             1081356   
+Thomas High School        Charter            1635             1043130   
+Griffin High School       Charter            1468              917500   
+Wilson High School        Charter            2283             1319574   
+Pena High School          Charter             962              585858   
+Wright High School        Charter            1800             1049400   
+Shelton High School       Charter            1761             1056600   
+Holden High School        Charter             427              248087   
+Bailey High School       District            4976             3124928   
+Ford High School         District            2739             1763916   
+Johnson High School      District            4761             3094650   
+Hernandez High School    District            4635             3022020   
+Huang High School        District            2917             1910635   
+Figueroa High School     District            2949             1884411   
+Rodriguez High School    District            3999             2547363   
+
+                       per_student_budget  average_math_score  \
+school_name                                                     
+Cabrera High School                 582.0           83.061895   
+Thomas High School                  638.0           83.418349   
+Griffin High School                 625.0           83.351499   
+Wilson High School                  578.0           83.274201   
+Pena High School                    609.0           83.839917   
+Wright High School                  583.0           83.682222   
+Shelton High School                 600.0           83.359455   
+Holden High School                  581.0           83.803279   
+Bailey High School                  628.0           77.048432   
+Ford High School                    644.0           77.102592   
+Johnson High School                 650.0           77.072464   
+Hernandez High School               652.0           77.289752   
+Huang High School                   655.0           76.629414   
+Figueroa High School                639.0           76.711767   
+Rodriguez High School               637.0           76.842711   
+
+                       average_reading_score  %_passing_math  \
+school_name                                                    
+Cabrera High School                83.975780       94.133477   
+Thomas High School                 83.848930       93.272171   
+Griffin High School                83.816757       93.392371   
+Wilson High School                 83.989488       93.867718   
+Pena High School                   84.044699       94.594595   
+Wright High School                 83.955000       93.333333   
+Shelton High School                83.725724       93.867121   
+Holden High School                 83.814988       92.505855   
+Bailey High School                 81.033963       66.680064   
+Ford High School                   80.746258       68.309602   
+Johnson High School                80.966394       66.057551   
+Hernandez High School              80.934412       66.752967   
+Huang High School                  81.182722       65.683922   
+Figueroa High School               81.158020       65.988471   
+Rodriguez High School              80.744686       66.366592   
+
+                       %_passing_reading  %_overall_passing  
+school_name                                                  
+Cabrera High School            97.039828          91.334769  
+Thomas High School             97.308869          90.948012  
+Griffin High School            97.138965          90.599455  
+Wilson High School             96.539641          90.582567  
+Pena High School               95.945946          90.540541  
+Wright High School             96.611111          90.333333  
+Shelton High School            95.854628          89.892107  
+Holden High School             96.252927          89.227166  
+Bailey High School             81.933280          54.642283  
+Ford High School               79.299014          54.289887  
+Johnson High School            81.222432          53.539172  
+Hernandez High School          80.862999          53.527508  
+Huang High School              81.316421          53.513884  
+Figueroa High School           80.739234          53.204476  
+Rodriguez High School          80.220055          52.988247  
+
+
+
+                      school_type  total_students total_school_budget  \
+school_name                                                             
+Rodriguez High School    District            3999             2547363   
+Figueroa High School     District            2949             1884411   
+Huang High School        District            2917             1910635   
+Hernandez High School    District            4635             3022020   
+Johnson High School      District            4761             3094650   
+Ford High School         District            2739             1763916   
+Bailey High School       District            4976             3124928   
+Holden High School        Charter             427              248087   
+Shelton High School       Charter            1761             1056600   
+Wright High School        Charter            1800             1049400   
+Pena High School          Charter             962              585858   
+Wilson High School        Charter            2283             1319574   
+Griffin High School       Charter            1468              917500   
+Thomas High School        Charter            1635             1043130   
+Cabrera High School       Charter            1858             1081356   
+
+                       per_student_budget  average_math_score  \
+school_name                                                     
+Rodriguez High School               637.0           76.842711   
+Figueroa High School                639.0           76.711767   
+Huang High School                   655.0           76.629414   
+Hernandez High School               652.0           77.289752   
+Johnson High School                 650.0           77.072464   
+Ford High School                    644.0           77.102592   
+Bailey High School                  628.0           77.048432   
+Holden High School                  581.0           83.803279   
+Shelton High School                 600.0           83.359455   
+Wright High School                  583.0           83.682222   
+Pena High School                    609.0           83.839917   
+Wilson High School                  578.0           83.274201   
+Griffin High School                 625.0           83.351499   
+Thomas High School                  638.0           83.418349   
+Cabrera High School                 582.0           83.061895   
+
+                       average_reading_score  %_passing_math  \
+school_name                                                    
+Rodriguez High School              80.744686       66.366592   
+Figueroa High School               81.158020       65.988471   
+Huang High School                  81.182722       65.683922   
+Hernandez High School              80.934412       66.752967   
+Johnson High School                80.966394       66.057551   
+Ford High School                   80.746258       68.309602   
+Bailey High School                 81.033963       66.680064   
+Holden High School                 83.814988       92.505855   
+Shelton High School                83.725724       93.867121   
+Wright High School                 83.955000       93.333333   
+Pena High School                   84.044699       94.594595   
+Wilson High School                 83.989488       93.867718   
+Griffin High School                83.816757       93.392371   
+Thomas High School                 83.848930       93.272171   
+Cabrera High School                83.975780       94.133477   
+
+                       %_passing_reading  %_overall_passing  
+school_name                                                  
+Rodriguez High School          80.220055          52.988247  
+Figueroa High School           80.739234          53.204476  
+Huang High School              81.316421          53.513884  
+Hernandez High School          80.862999          53.527508  
+Johnson High School            81.222432          53.539172  
+Ford High School               79.299014          54.289887  
+Bailey High School             81.933280          54.642283  
+Holden High School             96.252927          89.227166  
+Shelton High School            95.854628          89.892107  
+Wright High School             96.611111          90.333333  
+Pena High School               95.945946          90.540541  
+Wilson High School             96.539641          90.582567  
+Griffin High School            97.138965          90.599455  
+Thomas High School             97.308869          90.948012  
+Cabrera High School            97.039828          91.334769  
+
+
+
+       Student ID      student_name gender grade         school_name  \
+0               0      Paul Bradley      M   9th   Huang High School   
+4               4        Bonnie Ray      F   9th   Huang High School   
+5               5     Bryan Miranda      M   9th   Huang High School   
+12             12   Brittney Walker      F   9th   Huang High School   
+13             13      William Long      M   9th   Huang High School   
+...           ...               ...    ...   ...                 ...   
+39152       39152        Lori Moore      F   9th  Thomas High School   
+39153       39153   William Hubbard      M   9th  Thomas High School   
+39157       39157  Kristen Gonzalez      F   9th  Thomas High School   
+39164       39164    Joseph Anthony      M   9th  Thomas High School   
+39167       39167    Rebecca Tanner      F   9th  Thomas High School   
+
+       reading_score  math_score  School ID      type  size   budget  
+0                 66          79          0  District  2917  1910635  
+4                 97          84          0  District  2917  1910635  
+5                 94          94          0  District  2917  1910635  
+12                64          79          0  District  2917  1910635  
+13                71          79          0  District  2917  1910635  
+...              ...         ...        ...       ...   ...      ...  
+39152             98          84         14   Charter  1635  1043130  
+39153             80          75         14   Charter  1635  1043130  
+39157             79          94         14   Charter  1635  1043130  
+39164             97          76         14   Charter  1635  1043130  
+39167             73          84         14   Charter  1635  1043130  
+
+[11408 rows x 11 columns]
+
+
+
+       Student ID      student_name gender grade         school_name  \
+8               8      Michael Roth      M  10th   Huang High School   
+9               9    Matthew Greene      M  10th   Huang High School   
+10             10  Andrew Alexander      M  10th   Huang High School   
+11             11     Daniel Cooper      M  10th   Huang High School   
+14             14      Tammy Hebert      F  10th   Huang High School   
+...           ...               ...    ...   ...                 ...   
+39155       39155       John Brooks      M  10th  Thomas High School   
+39158       39158     Kari Holloway      F  10th  Thomas High School   
+39161       39161       April Reyes      F  10th  Thomas High School   
+39166       39166         Dawn Bell      F  10th  Thomas High School   
+39168       39168      Desiree Kidd      F  10th  Thomas High School   
+
+       reading_score  math_score  School ID      type  size   budget  
+8                 95          87          0  District  2917  1910635  
+9                 96          84          0  District  2917  1910635  
+10                90          70          0  District  2917  1910635  
+11                78          77          0  District  2917  1910635  
+14                85          67          0  District  2917  1910635  
+...              ...         ...        ...       ...   ...      ...  
+39155             92          98         14   Charter  1635  1043130  
+39158             87          90         14   Charter  1635  1043130  
+39161             70          84         14   Charter  1635  1043130  
+39166             95          70         14   Charter  1635  1043130  
+39168             99          90         14   Charter  1635  1043130  
+
+[10168 rows x 11 columns]
+
+
+
+       Student ID         student_name gender grade         school_name  \
+6               6        Sheena Carter      F  11th   Huang High School   
+15             15    Dr. Jordan Carson      M  11th   Huang High School   
+22             22     Kimberly Stewart      F  11th   Huang High School   
+24             24     Chelsea Griffith      F  11th   Huang High School   
+28             28          Kelly James      F  11th   Huang High School   
+...           ...                  ...    ...   ...                 ...   
+39156       39156  Stephanie Contreras      F  11th  Thomas High School   
+39159       39159     Kimberly Cabrera      F  11th  Thomas High School   
+39160       39160         Katie Weaver      F  11th  Thomas High School   
+39163       39163           John Reese      M  11th  Thomas High School   
+39169       39169      Carolyn Jackson      F  11th  Thomas High School   
+
+       reading_score  math_score  School ID      type  size   budget  
+6                 82          80          0  District  2917  1910635  
+15                94          88          0  District  2917  1910635  
+22                99          84          0  District  2917  1910635  
+24                85          73          0  District  2917  1910635  
+28                73          55          0  District  2917  1910635  
+...              ...         ...        ...       ...   ...      ...  
+39156             79          95         14   Charter  1635  1043130  
+39159             85          72         14   Charter  1635  1043130  
+39160             89          86         14   Charter  1635  1043130  
+39163             90          75         14   Charter  1635  1043130  
+39169             95          75         14   Charter  1635  1043130  
+
+[9695 rows x 11 columns]
+
+
+
+       Student ID       student_name gender grade         school_name  \
+1               1       Victor Smith      M  12th   Huang High School   
+2               2    Kevin Rodriguez      M  12th   Huang High School   
+3               3  Dr. Richard Scott      M  12th   Huang High School   
+7               7       Nicole Baker      F  12th   Huang High School   
+29             29       Nicole Brown      F  12th   Huang High School   
+...           ...                ...    ...   ...                 ...   
+39137       39137    Victoria Bailey      F  12th  Thomas High School   
+39144       39144   Cristian Webster      M  12th  Thomas High School   
+39154       39154    Bradley Johnson      M  12th  Thomas High School   
+39162       39162        Derek Weeks      M  12th  Thomas High School   
+39165       39165       Donna Howard      F  12th  Thomas High School   
+
+       reading_score  math_score  School ID      type  size   budget  
+1                 94          61          0  District  2917  1910635  
+2                 90          60          0  District  2917  1910635  
+3                 67          58          0  District  2917  1910635  
+7                 96          69          0  District  2917  1910635  
+29                90          88          0  District  2917  1910635  
+...              ...         ...        ...       ...   ...      ...  
+39137             75          70         14   Charter  1635  1043130  
+39144             77          87         14   Charter  1635  1043130  
+39154             91          71         14   Charter  1635  1043130  
+39162             94          77         14   Charter  1635  1043130  
+39165             99          90         14   Charter  1635  1043130  
+
+[7899 rows x 11 columns]
+
+
+
+school_name
+Bailey High School       77.083676
+Cabrera High School      83.094697
+Figueroa High School     76.403037
+Ford High School         77.361345
+Griffin High School      82.044010
+Hernandez High School    77.438495
+Holden High School       83.787402
+Huang High School        77.027251
+Johnson High School      77.187857
+Pena High School         83.625455
+Rodriguez High School    76.859966
+Shelton High School      83.420755
+Thomas High School       83.590022
+Wilson High School       83.085578
+Wright High School       83.264706
+Name: math_score, dtype: float64
+
+
+
+school_name
+Bailey High School       76.996772
+Cabrera High School      83.154506
+Figueroa High School     76.539974
+Ford High School         77.672316
+Griffin High School      84.229064
+Hernandez High School    77.337408
+Holden High School       83.429825
+Huang High School        75.908735
+Johnson High School      76.691117
+Pena High School         83.372000
+Rodriguez High School    76.612500
+Shelton High School      82.917411
+Thomas High School       83.087886
+Wilson High School       83.724422
+Wright High School       84.010288
+Name: math_score, dtype: float64
+
+
+
+school_name
+Bailey High School       77.515588
+Cabrera High School      82.765560
+Figueroa High School     76.884344
+Ford High School         76.918058
+Griffin High School      83.842105
+Hernandez High School    77.136029
+Holden High School       85.000000
+Huang High School        76.446602
+Johnson High School      77.491653
+Pena High School         84.328125
+Rodriguez High School    76.395626
+Shelton High School      83.383495
+Thomas High School       83.498795
+Wilson High School       83.195326
+Wright High School       83.836782
+Name: math_score, dtype: float64
+
+
+
+school_name
+Bailey High School       76.492218
+Cabrera High School      83.277487
+Figueroa High School     77.151369
+Ford High School         76.179963
+Griffin High School      83.356164
+Hernandez High School    77.186567
+Holden High School       82.855422
+Huang High School        77.225641
+Johnson High School      76.863248
+Pena High School         84.121547
+Rodriguez High School    77.690748
+Shelton High School      83.778976
+Thomas High School       83.497041
+Wilson High School       83.035794
+Wright High School       83.644986
+Name: math_score, dtype: float64
+
+
+
+                             9th       10th       11th       12th
+school_name                                                      
+Bailey High School     77.083676  76.996772  77.515588  76.492218
+Cabrera High School    83.094697  83.154506  82.765560  83.277487
+Figueroa High School   76.403037  76.539974  76.884344  77.151369
+Ford High School       77.361345  77.672316  76.918058  76.179963
+Griffin High School    82.044010  84.229064  83.842105  83.356164
+Hernandez High School  77.438495  77.337408  77.136029  77.186567
+Holden High School     83.787402  83.429825  85.000000  82.855422
+Huang High School      77.027251  75.908735  76.446602  77.225641
+Johnson High School    77.187857  76.691117  77.491653  76.863248
+Pena High School       83.625455  83.372000  84.328125  84.121547
+Rodriguez High School  76.859966  76.612500  76.395626  77.690748
+Shelton High School    83.420755  82.917411  83.383495  83.778976
+Thomas High School     83.590022  83.087886  83.498795  83.497041
+Wilson High School     83.085578  83.724422  83.195326  83.035794
+Wright High School     83.264706  84.010288  83.836782  83.644986
+
+
+
+school_name
+Bailey High School       77.0
+Cabrera High School      83.0
+Figueroa High School     76.0
+Ford High School         78.0
+Griffin High School      82.0
+Hernandez High School    78.0
+Holden High School       83.0
+Huang High School        77.0
+Johnson High School      77.0
+Pena High School         85.0
+Rodriguez High School    77.0
+Shelton High School      83.0
+Thomas High School       83.0
+Wilson High School       83.0
+Wright High School       83.0
+Name: math_score, dtype: float64
+
+
+
+school_name
+Bailey High School       77.0
+Cabrera High School      83.0
+Figueroa High School     76.0
+Ford High School         78.0
+Griffin High School      84.0
+Hernandez High School    78.0
+Holden High School       83.0
+Huang High School        75.0
+Johnson High School      76.0
+Pena High School         84.0
+Rodriguez High School    76.0
+Shelton High School      83.0
+Thomas High School       83.0
+Wilson High School       84.0
+Wright High School       84.0
+Name: math_score, dtype: float64
+
+
+
+school_name
+Bailey High School       78.0
+Cabrera High School      82.0
+Figueroa High School     76.0
+Ford High School         77.0
+Griffin High School      84.0
+Hernandez High School    77.0
+Holden High School       85.0
+Huang High School        76.0
+Johnson High School      78.0
+Pena High School         84.5
+Rodriguez High School    76.0
+Shelton High School      83.0
+Thomas High School       84.0
+Wilson High School       83.0
+Wright High School       84.0
+Name: math_score, dtype: float64
+
+
+
+school_name
+Bailey High School       76.0
+Cabrera High School      83.0
+Figueroa High School     77.0
+Ford High School         76.0
+Griffin High School      83.0
+Hernandez High School    77.0
+Holden High School       83.0
+Huang High School        77.0
+Johnson High School      76.0
+Pena High School         85.0
+Rodriguez High School    78.0
+Shelton High School      83.0
+Thomas High School       83.0
+Wilson High School       83.0
+Wright High School       83.0
+Name: math_score, dtype: float64
+
+
+
+                        9th  10th  11th  12th
+school_name                                  
+Bailey High School     77.0  77.0  78.0  76.0
+Cabrera High School    83.0  83.0  82.0  83.0
+Figueroa High School   76.0  76.0  76.0  77.0
+Ford High School       78.0  78.0  77.0  76.0
+Griffin High School    82.0  84.0  84.0  83.0
+Hernandez High School  78.0  78.0  77.0  77.0
+Holden High School     83.0  83.0  85.0  83.0
+Huang High School      77.0  75.0  76.0  77.0
+Johnson High School    77.0  76.0  78.0  76.0
+Pena High School       85.0  84.0  84.5  85.0
+Rodriguez High School  77.0  76.0  76.0  78.0
+Shelton High School    83.0  83.0  83.0  83.0
+Thomas High School     83.0  83.0  84.0  83.0
+Wilson High School     83.0  84.0  83.0  83.0
+Wright High School     83.0  84.0  84.0  83.0
+
+
+
+                             9th              10th              11th         \
+                            mean median       mean median       mean median   
+school_name                                                                   
+Bailey High School     77.083676   77.0  76.996772   77.0  77.515588   78.0   
+Cabrera High School    83.094697   83.0  83.154506   83.0  82.765560   82.0   
+Figueroa High School   76.403037   76.0  76.539974   76.0  76.884344   76.0   
+Ford High School       77.361345   78.0  77.672316   78.0  76.918058   77.0   
+Griffin High School    82.044010   82.0  84.229064   84.0  83.842105   84.0   
+Hernandez High School  77.438495   78.0  77.337408   78.0  77.136029   77.0   
+Holden High School     83.787402   83.0  83.429825   83.0  85.000000   85.0   
+Huang High School      77.027251   77.0  75.908735   75.0  76.446602   76.0   
+Johnson High School    77.187857   77.0  76.691117   76.0  77.491653   78.0   
+Pena High School       83.625455   85.0  83.372000   84.0  84.328125   84.5   
+Rodriguez High School  76.859966   77.0  76.612500   76.0  76.395626   76.0   
+Shelton High School    83.420755   83.0  82.917411   83.0  83.383495   83.0   
+Thomas High School     83.590022   83.0  83.087886   83.0  83.498795   84.0   
+Wilson High School     83.085578   83.0  83.724422   84.0  83.195326   83.0   
+Wright High School     83.264706   83.0  84.010288   84.0  83.836782   84.0   
+
+                            12th         
+                            mean median  
+school_name                              
+Bailey High School     76.492218   76.0  
+Cabrera High School    83.277487   83.0  
+Figueroa High School   77.151369   77.0  
+Ford High School       76.179963   76.0  
+Griffin High School    83.356164   83.0  
+Hernandez High School  77.186567   77.0  
+Holden High School     82.855422   83.0  
+Huang High School      77.225641   77.0  
+Johnson High School    76.863248   76.0  
+Pena High School       84.121547   85.0  
+Rodriguez High School  77.690748   78.0  
+Shelton High School    83.778976   83.0  
+Thomas High School     83.497041   83.0  
+Wilson High School     83.035794   83.0  
+Wright High School     83.644986   83.0  
+
+
+
+school_name
+Bailey High School       81.303155
+Cabrera High School      83.676136
+Figueroa High School     81.198598
+Ford High School         80.632653
+Griffin High School      83.369193
+Hernandez High School    80.866860
+Holden High School       83.677165
+Huang High School        81.290284
+Johnson High School      81.260714
+Pena High School         83.807273
+Rodriguez High School    80.993127
+Shelton High School      84.122642
+Thomas High School       83.728850
+Wilson High School       83.939778
+Wright High School       83.833333
+Name: reading_score, dtype: float64
+
+
+
+school_name
+Bailey High School       80.907183
+Cabrera High School      84.253219
+Figueroa High School     81.408912
+Ford High School         81.262712
+Griffin High School      83.706897
+Hernandez High School    80.660147
+Holden High School       83.324561
+Huang High School        81.512386
+Johnson High School      80.773431
+Pena High School         83.612000
+Rodriguez High School    80.629808
+Shelton High School      83.441964
+Thomas High School       84.254157
+Wilson High School       84.021452
+Wright High School       83.812757
+Name: reading_score, dtype: float64
+
+
+
+school_name
+Bailey High School       80.945643
+Cabrera High School      83.788382
+Figueroa High School     80.640339
+Ford High School         80.403642
+Griffin High School      84.288089
+Hernandez High School    81.396140
+Holden High School       83.815534
+Huang High School        81.417476
+Johnson High School      80.616027
+Pena High School         84.335938
+Rodriguez High School    80.864811
+Shelton High School      84.373786
+Thomas High School       83.585542
+Wilson High School       83.764608
+Wright High School       84.156322
+Name: reading_score, dtype: float64
+
+
+
+school_name
+Bailey High School       80.912451
+Cabrera High School      84.287958
+Figueroa High School     81.384863
+Ford High School         80.662338
+Griffin High School      84.013699
+Hernandez High School    80.857143
+Holden High School       84.698795
+Huang High School        80.305983
+Johnson High School      81.227564
+Pena High School         84.591160
+Rodriguez High School    80.376426
+Shelton High School      82.781671
+Thomas High School       83.831361
+Wilson High School       84.317673
+Wright High School       84.073171
+Name: reading_score, dtype: float64
+
+
+
+                             9th       10th       11th       12th
+school_name                                                      
+Bailey High School     81.303155  80.907183  80.945643  80.912451
+Cabrera High School    83.676136  84.253219  83.788382  84.287958
+Figueroa High School   81.198598  81.408912  80.640339  81.384863
+Ford High School       80.632653  81.262712  80.403642  80.662338
+Griffin High School    83.369193  83.706897  84.288089  84.013699
+Hernandez High School  80.866860  80.660147  81.396140  80.857143
+Holden High School     83.677165  83.324561  83.815534  84.698795
+Huang High School      81.290284  81.512386  81.417476  80.305983
+Johnson High School    81.260714  80.773431  80.616027  81.227564
+Pena High School       83.807273  83.612000  84.335938  84.591160
+Rodriguez High School  80.993127  80.629808  80.864811  80.376426
+Shelton High School    84.122642  83.441964  84.373786  82.781671
+Thomas High School     83.728850  84.254157  83.585542  83.831361
+Wilson High School     83.939778  84.021452  83.764608  84.317673
+Wright High School     83.833333  83.812757  84.156322  84.073171
+
+
+
+school_name
+Bailey High School       82.0
+Cabrera High School      84.0
+Figueroa High School     81.0
+Ford High School         81.0
+Griffin High School      83.0
+Hernandez High School    81.0
+Holden High School       83.0
+Huang High School        82.0
+Johnson High School      81.0
+Pena High School         84.0
+Rodriguez High School    81.0
+Shelton High School      84.0
+Thomas High School       83.0
+Wilson High School       84.0
+Wright High School       84.0
+Name: reading_score, dtype: float64
+
+
+
+school_name
+Bailey High School       81.0
+Cabrera High School      84.0
+Figueroa High School     82.0
+Ford High School         82.0
+Griffin High School      84.0
+Hernandez High School    80.0
+Holden High School       84.0
+Huang High School        82.0
+Johnson High School      81.0
+Pena High School         84.0
+Rodriguez High School    81.0
+Shelton High School      83.0
+Thomas High School       85.0
+Wilson High School       84.0
+Wright High School       84.0
+Name: reading_score, dtype: float64
+
+
+
+school_name
+Bailey High School       81.0
+Cabrera High School      83.5
+Figueroa High School     81.0
+Ford High School         81.0
+Griffin High School      84.0
+Hernandez High School    82.0
+Holden High School       84.0
+Huang High School        82.0
+Johnson High School      80.0
+Pena High School         84.0
+Rodriguez High School    81.0
+Shelton High School      85.5
+Thomas High School       83.0
+Wilson High School       84.0
+Wright High School       85.0
+Name: reading_score, dtype: float64
+
+
+
+school_name
+Bailey High School       81.0
+Cabrera High School      85.0
+Figueroa High School     82.0
+Ford High School         81.0
+Griffin High School      84.0
+Hernandez High School    81.0
+Holden High School       85.0
+Huang High School        80.0
+Johnson High School      81.0
+Pena High School         85.0
+Rodriguez High School    80.0
+Shelton High School      82.0
+Thomas High School       85.0
+Wilson High School       84.0
+Wright High School       84.0
+Name: reading_score, dtype: float64
+
+
+
+                        9th  10th  11th  12th
+school_name                                  
+Bailey High School     82.0  81.0  81.0  81.0
+Cabrera High School    84.0  84.0  83.5  85.0
+Figueroa High School   81.0  82.0  81.0  82.0
+Ford High School       81.0  82.0  81.0  81.0
+Griffin High School    83.0  84.0  84.0  84.0
+Hernandez High School  81.0  80.0  82.0  81.0
+Holden High School     83.0  84.0  84.0  85.0
+Huang High School      82.0  82.0  82.0  80.0
+Johnson High School    81.0  81.0  80.0  81.0
+Pena High School       84.0  84.0  84.0  85.0
+Rodriguez High School  81.0  81.0  81.0  80.0
+Shelton High School    84.0  83.0  85.5  82.0
+Thomas High School     83.0  85.0  83.0  85.0
+Wilson High School     84.0  84.0  84.0  84.0
+Wright High School     84.0  84.0  85.0  84.0
+
+
+
+                             9th              10th              11th         \
+                            Mean Median       Mean Median       Mean Median   
+school_name                                                                   
+Bailey High School     81.303155   82.0  80.907183   81.0  80.945643   81.0   
+Cabrera High School    83.676136   84.0  84.253219   84.0  83.788382   83.5   
+Figueroa High School   81.198598   81.0  81.408912   82.0  80.640339   81.0   
+Ford High School       80.632653   81.0  81.262712   82.0  80.403642   81.0   
+Griffin High School    83.369193   83.0  83.706897   84.0  84.288089   84.0   
+Hernandez High School  80.866860   81.0  80.660147   80.0  81.396140   82.0   
+Holden High School     83.677165   83.0  83.324561   84.0  83.815534   84.0   
+Huang High School      81.290284   82.0  81.512386   82.0  81.417476   82.0   
+Johnson High School    81.260714   81.0  80.773431   81.0  80.616027   80.0   
+Pena High School       83.807273   84.0  83.612000   84.0  84.335938   84.0   
+Rodriguez High School  80.993127   81.0  80.629808   81.0  80.864811   81.0   
+Shelton High School    84.122642   84.0  83.441964   83.0  84.373786   85.5   
+Thomas High School     83.728850   83.0  84.254157   85.0  83.585542   83.0   
+Wilson High School     83.939778   84.0  84.021452   84.0  83.764608   84.0   
+Wright High School     83.833333   84.0  83.812757   84.0  84.156322   85.0   
+
+                            12th         
+                            Mean Median  
+school_name                              
+Bailey High School     80.912451   81.0  
+Cabrera High School    84.287958   85.0  
+Figueroa High School   81.384863   82.0  
+Ford High School       80.662338   81.0  
+Griffin High School    84.013699   84.0  
+Hernandez High School  80.857143   81.0  
+Holden High School     84.698795   85.0  
+Huang High School      80.305983   80.0  
+Johnson High School    81.227564   81.0  
+Pena High School       84.591160   85.0  
+Rodriguez High School  80.376426   80.0  
+Shelton High School    82.781671   82.0  
+Thomas High School     83.831361   85.0  
+Wilson High School     84.317673   84.0  
+Wright High School     84.073171   84.0  
+
+
+
+school_name
+Bailey High School       $585-630
+Cabrera High School         <$585
+Figueroa High School     $630-645
+Ford High School         $630-645
+Griffin High School      $585-630
+Hernandez High School    $645-680
+Holden High School          <$585
+Huang High School        $645-680
+Johnson High School      $645-680
+Pena High School         $585-630
+Rodriguez High School    $630-645
+Shelton High School      $585-630
+Thomas High School       $630-645
+Wilson High School          <$585
+Wright High School          <$585
+Name: spending_ranges_per_student, dtype: category
+Categories (4, object): ['<$585' < '$585-630' < '$630-645' < '$645-680']
+
+
+
+spending_ranges_per_student
+<$585       83.455399
+$585-630    81.899826
+$630-645    78.518855
+$645-680    76.997210
+Name: average_math_score, dtype: float64
+
+
+
+spending_ranges_per_student
+<$585       83.933814
+$585-630    83.155286
+$630-645    81.624473
+$645-680    81.027843
+Name: average_reading_score, dtype: float64
+
+
+
+spending_ranges_per_student
+<$585       93.460096
+$585-630    87.133538
+$630-645    73.484209
+$645-680    66.164813
+Name: %_passing_math, dtype: float64
+
+
+
+spending_ranges_per_student
+<$585       96.610877
+$585-630    92.718205
+$630-645    84.391793
+$645-680    81.133951
+Name: %_passing_reading, dtype: float64
+
+
+
+spending_ranges_per_student
+<$585       90.369459
+$585-630    81.418596
+$630-645    62.857656
+$645-680    53.526855
+Name: %_overall_passing, dtype: float64
+
+
+
+                math_score  reading_score  %_passing_math  %_passing_reading  \
+spending_range                                                                 
+<$585            83.455399      83.933814       93.460096          96.610877   
+$585-630         81.899826      83.155286       87.133538          92.718205   
+$630-645         78.518855      81.624473       73.484209          84.391793   
+$645-680         76.997210      81.027843       66.164813          81.133951   
+
+                %_overall_passing  
+spending_range                     
+<$585                   90.369459  
+$585-630                81.418596  
+$630-645                62.857656  
+$645-680                53.526855  
+
+
+
+spending_ranges_per_student
+<$585       83.478211
+$585-630    83.355477
+$630-645    76.972651
+$645-680    77.072464
+Name: average_math_score, dtype: float64
+
+
+
+spending_ranges_per_student
+<$585       83.965390
+$585-630    83.771241
+$630-645    80.952139
+$645-680    80.966394
+Name: average_reading_score, dtype: float64
+
+
+
+spending_ranges_per_student
+<$585       93.600526
+$585-630    93.629746
+$630-645    67.338097
+$645-680    66.057551
+Name: %_passing_math, dtype: float64
+
+
+
+spending_ranges_per_student
+<$585       96.575376
+$585-630    95.900287
+$630-645    80.479644
+$645-680    81.222432
+Name: %_passing_reading, dtype: float64
+
+
+
+spending_ranges_per_student
+<$585       90.457950
+$585-630    90.216324
+$630-645    53.747181
+$645-680    53.527508
+Name: %_overall_passing, dtype: float64
+
+
+
+                math_score  reading_score  %_passing_math  %_passing_reading  \
+spending_range                                                                 
+<$585            83.478211      83.965390       93.600526          96.575376   
+$585-630         83.355477      83.771241       93.629746          95.900287   
+$630-645         76.972651      80.952139       67.338097          80.479644   
+$645-680         77.072464      80.966394       66.057551          81.222432   
+
+                %_overall_passing  
+spending_range                     
+<$585                   90.457950  
+$585-630                90.216324  
+$630-645                53.747181  
+$645-680                53.527508  
+
+
+
+               math_score            reading_score            %_passing_math  \
+                     mean     median          mean     median           mean   
+spending_range                                                                 
+<$585           83.455399  83.478211     83.933814  83.965390      93.460096   
+$585-630        81.899826  83.355477     83.155286  83.771241      87.133538   
+$630-645        78.518855  76.972651     81.624473  80.952139      73.484209   
+$645-680        76.997210  77.072464     81.027843  80.966394      66.164813   
+
+                          %_passing_reading            %_overall_passing  \
+                   median              mean     median              mean   
+spending_range                                                             
+<$585           93.600526         96.610877  96.575376         90.369459   
+$585-630        93.629746         92.718205  95.900287         81.418596   
+$630-645        67.338097         84.391793  80.479644         62.857656   
+$645-680        66.057551         81.133951  81.222432         53.526855   
+
+                           
+                   median  
+spending_range             
+<$585           90.457950  
+$585-630        90.216324  
+$630-645        53.747181  
+$645-680        53.527508  
+
+
+
+school_name
+Bailey High School        Large (2000-5000)
+Cabrera High School      Medium (1000-2000)
+Figueroa High School      Large (2000-5000)
+Ford High School          Large (2000-5000)
+Griffin High School      Medium (1000-2000)
+Hernandez High School     Large (2000-5000)
+Holden High School            Small (<1000)
+Huang High School         Large (2000-5000)
+Johnson High School       Large (2000-5000)
+Pena High School              Small (<1000)
+Rodriguez High School     Large (2000-5000)
+Shelton High School      Medium (1000-2000)
+Thomas High School       Medium (1000-2000)
+Wilson High School        Large (2000-5000)
+Wright High School       Medium (1000-2000)
+Name: school_size, dtype: category
+Categories (3, object): ['Small (<1000)' < 'Medium (1000-2000)' < 'Large (2000-5000)']
+
+
+
+school_size
+Small (<1000)          694.500
+Medium (1000-2000)    1704.400
+Large (2000-5000)     3657.375
+Name: total_students, dtype: float64
+
+
+
+school_size
+Small (<1000)            416972.5
+Medium (1000-2000)      1029597.2
+Large (2000-5000)     2333437.125
+Name: total_school_budget, dtype: object
+
+
+
+school_size
+Small (<1000)         595.000
+Medium (1000-2000)    605.600
+Large (2000-5000)     635.375
+Name: per_student_budget, dtype: float64
+
+
+
+                    total_students total_school_budget  per_student_budget
+school_size                                                               
+Small (<1000)              694.500            416972.5             595.000
+Medium (1000-2000)        1704.400           1029597.2             605.600
+Large (2000-5000)         3657.375         2333437.125             635.375
+
+
+
+school_size
+Small (<1000)          694.5
+Medium (1000-2000)    1761.0
+Large (2000-5000)     3474.0
+Name: total_students, dtype: float64
+
+
+
+school_size
+Small (<1000)          416972.5
+Medium (1000-2000)    1049400.0
+Large (2000-5000)     2228999.0
+Name: total_school_budget, dtype: object
+
+
+
+school_size
+Small (<1000)         595.0
+Medium (1000-2000)    600.0
+Large (2000-5000)     641.5
+Name: per_student_budget, dtype: float64
+
+
+
+                    total_students total_school_budget  per_student_budget
+school_size                                                               
+Small (<1000)                694.5            416972.5               595.0
+Medium (1000-2000)          1761.0           1049400.0               600.0
+Large (2000-5000)           3474.0           2228999.0               641.5
+
+
+
+                   total_students         total_school_budget             \
+                             Mean  Median                Mean     Median   
+school_size                                                                
+Small (<1000)             694.500   694.5            416972.5   416972.5   
+Medium (1000-2000)       1704.400  1761.0           1029597.2  1049400.0   
+Large (2000-5000)        3657.375  3474.0         2333437.125  2228999.0   
+
+                   per_student_budget         
+                                 Mean Median  
+school_size                                   
+Small (<1000)                 595.000  595.0  
+Medium (1000-2000)            605.600  600.0  
+Large (2000-5000)             635.375  641.5  
+
+
+
+school_size
+Small (<1000)         83.821598
+Medium (1000-2000)    83.374684
+Large (2000-5000)     77.746417
+Name: average_math_score, dtype: float64
+
+
+
+school_size
+Small (<1000)         83.929843
+Medium (1000-2000)    83.864438
+Large (2000-5000)     81.344493
+Name: average_reading_score, dtype: float64
+
+
+
+school_size
+Small (<1000)         93.550225
+Medium (1000-2000)    93.599695
+Large (2000-5000)     69.963361
+Name: %_passing_math, dtype: float64
+
+
+
+school_size
+Small (<1000)         96.099437
+Medium (1000-2000)    96.790680
+Large (2000-5000)     82.766634
+Name: %_passing_reading, dtype: float64
+
+
+
+school_size
+Small (<1000)         89.883853
+Medium (1000-2000)    90.621535
+Large (2000-5000)     58.286003
+Name: %_overall_passing, dtype: float64
+
+
+
+                    math_score  reading_score  %_passing_math  \
+school_size                                                     
+Small (<1000)        83.821598      83.929843       93.550225   
+Medium (1000-2000)   83.374684      83.864438       93.599695   
+Large (2000-5000)    77.746417      81.344493       69.963361   
+
+                    %_passing_reading  %_overall_passing  
+school_size                                               
+Small (<1000)               96.099437          89.883853  
+Medium (1000-2000)          96.790680          90.621535  
+Large (2000-5000)           82.766634          58.286003  
+
+
+
+school_size
+Small (<1000)         83.821598
+Medium (1000-2000)    83.359455
+Large (2000-5000)     77.060448
+Name: average_math_score, dtype: float64
+
+
+
+school_size
+Small (<1000)         83.929843
+Medium (1000-2000)    83.848930
+Large (2000-5000)     81.000178
+Name: average_reading_score, dtype: float64
+
+
+
+school_size
+Small (<1000)         93.550225
+Medium (1000-2000)    93.392371
+Large (2000-5000)     66.523328
+Name: %_passing_math, dtype: float64
+
+
+
+school_size
+Small (<1000)         96.099437
+Medium (1000-2000)    97.039828
+Large (2000-5000)     81.042716
+Name: %_passing_reading, dtype: float64
+
+
+
+school_size
+Small (<1000)         89.883853
+Medium (1000-2000)    90.599455
+Large (2000-5000)     53.533340
+Name: %_overall_passing, dtype: float64
+
+
+
+                    math_score  reading_score  %_passing_math  \
+school_size                                                     
+Small (<1000)        83.821598      83.929843       93.550225   
+Medium (1000-2000)   83.359455      83.848930       93.392371   
+Large (2000-5000)    77.060448      81.000178       66.523328   
+
+                    %_passing_reading  %_overall_passing  
+school_size                                               
+Small (<1000)               96.099437          89.883853  
+Medium (1000-2000)          97.039828          90.599455  
+Large (2000-5000)           81.042716          53.533340  
+
+
+
+                   math_score            reading_score             \
+                         Mean     Median          Mean     Median   
+school_size                                                         
+Small (<1000)       83.821598  83.821598     83.929843  83.929843   
+Medium (1000-2000)  83.374684  83.359455     83.864438  83.848930   
+Large (2000-5000)   77.746417  77.060448     81.344493  81.000178   
+
+                   %_passing_math            %_passing_reading             \
+                             Mean     Median              Mean     Median   
+school_size                                                                 
+Small (<1000)           93.550225  93.550225         96.099437  96.099437   
+Medium (1000-2000)      93.599695  93.392371         96.790680  97.039828   
+Large (2000-5000)       69.963361  66.523328         82.766634  81.042716   
+
+                   %_overall_passing             
+                                Mean     Median  
+school_size                                      
+Small (<1000)              89.883853  89.883853  
+Medium (1000-2000)         90.621535  90.599455  
+Large (2000-5000)          58.286003  53.533340  
+
+
+
+school_type
+Charter     1524.250000
+District    3853.714286
+Name: total_students, dtype: float64
+
+
+
+school_type
+Charter         912688.125
+District    2478274.714286
+Name: total_school_budget, dtype: object
+
+
+
+school_type
+Charter     599.500000
+District    643.571429
+Name: per_student_budget, dtype: float64
+
+
+
+             total_students total_school_budget  per_student_budget
+school_type                                                        
+Charter         1524.250000          912688.125          599.500000
+District        3853.714286      2478274.714286          643.571429
+
+
+
+school_type
+Charter     1698.0
+District    3999.0
+Name: total_students, dtype: float64
+
+
+
+school_type
+Charter     1046265.0
+District    2547363.0
+Name: total_school_budget, dtype: object
+
+
+
+school_type
+Charter     591.5
+District    644.0
+Name: per_student_budget, dtype: float64
+
+
+
+             total_students total_school_budget  per_student_budget
+school_type                                                        
+Charter              1698.0           1046265.0               591.5
+District             3999.0           2547363.0               644.0
+
+
+
+            total_students         total_school_budget             \
+                      Mean  Median                Mean     Median   
+school_type                                                         
+Charter        1524.250000  1698.0          912688.125  1046265.0   
+District       3853.714286  3999.0      2478274.714286  2547363.0   
+
+            per_student_budget         
+                          Mean Median  
+school_type                            
+Charter             599.500000  591.5  
+District            643.571429  644.0  
+
+
+
+school_type
+Charter     83.473852
+District    76.956733
+Name: average_math_score, dtype: float64
+
+
+
+school_type
+Charter     83.896421
+District    80.966636
+Name: average_reading_score, dtype: float64
+
+
+
+school_type
+Charter     93.620830
+District    66.548453
+Name: %_passing_math, dtype: float64
+
+
+
+school_type
+Charter     96.586489
+District    80.799062
+Name: %_passing_reading, dtype: float64
+
+
+
+school_type
+Charter     90.432244
+District    53.672208
+Name: %_overall_passing, dtype: float64
+
+
+
+             math_score  reading_score  %_passing_math  %_passing_reading  \
+school_type                                                                 
+Charter       83.473852      83.896421       93.620830          96.586489   
+District      76.956733      80.966636       66.548453          80.799062   
+
+             %_overall_passing  
+school_type                     
+Charter              90.432244  
+District             53.672208  
+
+
+
+school_type
+Charter     83.388902
+District    77.048432
+Name: average_math_score, dtype: float64
+
+
+
+school_type
+Charter     83.901965
+District    80.966394
+Name: average_reading_score, dtype: float64
+
+
+
+school_type
+Charter     93.629746
+District    66.366592
+Name: %_passing_math, dtype: float64
+
+
+
+school_type
+Charter     96.575376
+District    80.862999
+Name: %_passing_reading, dtype: float64
+
+
+
+school_type
+Charter     90.561554
+District    53.527508
+Name: %_overall_passing, dtype: float64
+
+
+
+             math_score  reading_score  %_passing_math  %_passing_reading  \
+school_type                                                                 
+Charter       83.388902      83.901965       93.629746          96.575376   
+District      77.048432      80.966394       66.366592          80.862999   
+
+             %_overall_passing  
+school_type                     
+Charter              90.561554  
+District             53.527508  
+
+
+
+            math_score            reading_score            %_passing_math  \
+                  Mean     Median          Mean     Median           Mean   
+school_type                                                                 
+Charter      83.473852  83.388902     83.896421  83.901965      93.620830   
+District     76.956733  77.048432     80.966636  80.966394      66.548453   
+
+                       %_passing_reading            %_overall_passing  \
+                Median              Mean     Median              Mean   
+school_type                                                             
+Charter      93.629746         96.586489  96.575376         90.432244   
+District     66.366592         80.799062  80.862999         53.672208   
+
+                        
+                Median  
+school_type             
+Charter      90.561554  
+District     53.527508  
+
+
+Timepoint: 2024/04/01 11:54:39
+Program execution begins...
+
+
+
+
+       Student ID       student_name gender grade         school_name  \
+0               0       Paul Bradley      M   9th   Huang High School   
+1               1       Victor Smith      M  12th   Huang High School   
+2               2    Kevin Rodriguez      M  12th   Huang High School   
+3               3  Dr. Richard Scott      M  12th   Huang High School   
+4               4         Bonnie Ray      F   9th   Huang High School   
+...           ...                ...    ...   ...                 ...   
+39165       39165       Donna Howard      F  12th  Thomas High School   
+39166       39166          Dawn Bell      F  10th  Thomas High School   
+39167       39167     Rebecca Tanner      F   9th  Thomas High School   
+39168       39168       Desiree Kidd      F  10th  Thomas High School   
+39169       39169    Carolyn Jackson      F  11th  Thomas High School   
+
+       reading_score  math_score  
+0                 66          79  
+1                 94          61  
+2                 90          60  
+3                 67          58  
+4                 97          84  
+...              ...         ...  
+39165             99          90  
+39166             95          70  
+39167             73          84  
+39168             99          90  
+39169             95          75  
+
+[39170 rows x 7 columns]
+
+
+
+    School ID            school_name      type  size   budget
+0           0      Huang High School  District  2917  1910635
+1           1   Figueroa High School  District  2949  1884411
+2           2    Shelton High School   Charter  1761  1056600
+3           3  Hernandez High School  District  4635  3022020
+4           4    Griffin High School   Charter  1468   917500
+5           5     Wilson High School   Charter  2283  1319574
+6           6    Cabrera High School   Charter  1858  1081356
+7           7     Bailey High School  District  4976  3124928
+8           8     Holden High School   Charter   427   248087
+9           9       Pena High School   Charter   962   585858
+10         10     Wright High School   Charter  1800  1049400
+11         11  Rodriguez High School  District  3999  2547363
+12         12    Johnson High School  District  4761  3094650
+13         13       Ford High School  District  2739  1763916
+14         14     Thomas High School   Charter  1635  1043130
+
+
+
+       Student ID       student_name gender grade         school_name  \
+0               0       Paul Bradley      M   9th   Huang High School   
+1               1       Victor Smith      M  12th   Huang High School   
+2               2    Kevin Rodriguez      M  12th   Huang High School   
+3               3  Dr. Richard Scott      M  12th   Huang High School   
+4               4         Bonnie Ray      F   9th   Huang High School   
+...           ...                ...    ...   ...                 ...   
+39165       39165       Donna Howard      F  12th  Thomas High School   
+39166       39166          Dawn Bell      F  10th  Thomas High School   
+39167       39167     Rebecca Tanner      F   9th  Thomas High School   
+39168       39168       Desiree Kidd      F  10th  Thomas High School   
+39169       39169    Carolyn Jackson      F  11th  Thomas High School   
+
+       reading_score  math_score  School ID      type  size   budget  
+0                 66          79          0  District  2917  1910635  
+1                 94          61          0  District  2917  1910635  
+2                 90          60          0  District  2917  1910635  
+3                 67          58          0  District  2917  1910635  
+4                 97          84          0  District  2917  1910635  
+...              ...         ...        ...       ...   ...      ...  
+39165             99          90         14   Charter  1635  1043130  
+39166             95          70         14   Charter  1635  1043130  
+39167             73          84         14   Charter  1635  1043130  
+39168             99          90         14   Charter  1635  1043130  
+39169             95          75         14   Charter  1635  1043130  
+
+[39170 rows x 11 columns]
+
+
+
+15
+
+
+
+39170
+
+
+
+24649428
+
+
+
+78.99
+
+
+
+81.88
+
+
+
+74.98
+
+
+
+85.81
+
+
+
+65.17
+
+
+
+   total_schools  total_students  total_budget  average_math_score  \
+0             15           39170      24649428               78.99   
+
+   average_reading_score  %_passing_math  %_passing_reading  %_overall_passing  
+0                  81.88           74.98              85.81              65.17  
+
+
+
+school_name
+Bailey High School       District
+Cabrera High School       Charter
+Figueroa High School     District
+Ford High School         District
+Griffin High School       Charter
+Hernandez High School    District
+Holden High School        Charter
+Huang High School        District
+Johnson High School      District
+Pena High School          Charter
+Rodriguez High School    District
+Shelton High School       Charter
+Thomas High School        Charter
+Wilson High School        Charter
+Wright High School        Charter
+Name: type, dtype: object
+
+
+
+school_name
+Bailey High School       4976
+Cabrera High School      1858
+Figueroa High School     2949
+Ford High School         2739
+Griffin High School      1468
+Hernandez High School    4635
+Holden High School        427
+Huang High School        2917
+Johnson High School      4761
+Pena High School          962
+Rodriguez High School    3999
+Shelton High School      1761
+Thomas High School       1635
+Wilson High School       2283
+Wright High School       1800
+Name: school_name, dtype: int64
+
+
+
+school_name
+Bailey High School       3124928
+Cabrera High School      1081356
+Figueroa High School     1884411
+Ford High School         1763916
+Griffin High School       917500
+Hernandez High School    3022020
+Holden High School        248087
+Huang High School        1910635
+Johnson High School      3094650
+Pena High School          585858
+Rodriguez High School    2547363
+Shelton High School      1056600
+Thomas High School       1043130
+Wilson High School       1319574
+Wright High School       1049400
+Name: budget, dtype: object
+
+
+
+school_name
+Bailey High School       628.0
+Cabrera High School      582.0
+Figueroa High School     639.0
+Ford High School         644.0
+Griffin High School      625.0
+Hernandez High School    652.0
+Holden High School       581.0
+Huang High School        655.0
+Johnson High School      650.0
+Pena High School         609.0
+Rodriguez High School    637.0
+Shelton High School      600.0
+Thomas High School       638.0
+Wilson High School       578.0
+Wright High School       583.0
+dtype: float64
+
+
+
+school_name
+Bailey High School       77.048432
+Cabrera High School      83.061895
+Figueroa High School     76.711767
+Ford High School         77.102592
+Griffin High School      83.351499
+Hernandez High School    77.289752
+Holden High School       83.803279
+Huang High School        76.629414
+Johnson High School      77.072464
+Pena High School         83.839917
+Rodriguez High School    76.842711
+Shelton High School      83.359455
+Thomas High School       83.418349
+Wilson High School       83.274201
+Wright High School       83.682222
+dtype: float64
+
+
+
+school_name
+Bailey High School       81.033963
+Cabrera High School      83.975780
+Figueroa High School     81.158020
+Ford High School         80.746258
+Griffin High School      83.816757
+Hernandez High School    80.934412
+Holden High School       83.814988
+Huang High School        81.182722
+Johnson High School      80.966394
+Pena High School         84.044699
+Rodriguez High School    80.744686
+Shelton High School      83.725724
+Thomas High School       83.848930
+Wilson High School       83.989488
+Wright High School       83.955000
+dtype: float64
+
+
+
+school_name
+Bailey High School       3318
+Cabrera High School      1749
+Figueroa High School     1946
+Ford High School         1871
+Griffin High School      1371
+Hernandez High School    3094
+Holden High School        395
+Huang High School        1916
+Johnson High School      3145
+Pena High School          910
+Rodriguez High School    2654
+Shelton High School      1653
+Thomas High School       1525
+Wilson High School       2143
+Wright High School       1680
+dtype: int64
+
+
+
+school_name
+Bailey High School       4077
+Cabrera High School      1803
+Figueroa High School     2381
+Ford High School         2172
+Griffin High School      1426
+Hernandez High School    3748
+Holden High School        411
+Huang High School        2372
+Johnson High School      3867
+Pena High School          923
+Rodriguez High School    3208
+Shelton High School      1688
+Thomas High School       1591
+Wilson High School       2204
+Wright High School       1739
+dtype: int64
+
+
+
+school_name
+Bailey High School       2719
+Cabrera High School      1697
+Figueroa High School     1569
+Ford High School         1487
+Griffin High School      1330
+Hernandez High School    2481
+Holden High School        381
+Huang High School        1561
+Johnson High School      2549
+Pena High School          871
+Rodriguez High School    2119
+Shelton High School      1583
+Thomas High School       1487
+Wilson High School       2068
+Wright High School       1626
+dtype: int64
+
+
+
+school_name
+Bailey High School       66.680064
+Cabrera High School      94.133477
+Figueroa High School     65.988471
+Ford High School         68.309602
+Griffin High School      93.392371
+Hernandez High School    66.752967
+Holden High School       92.505855
+Huang High School        65.683922
+Johnson High School      66.057551
+Pena High School         94.594595
+Rodriguez High School    66.366592
+Shelton High School      93.867121
+Thomas High School       93.272171
+Wilson High School       93.867718
+Wright High School       93.333333
+dtype: float64
+
+
+
+school_name
+Bailey High School       81.933280
+Cabrera High School      97.039828
+Figueroa High School     80.739234
+Ford High School         79.299014
+Griffin High School      97.138965
+Hernandez High School    80.862999
+Holden High School       96.252927
+Huang High School        81.316421
+Johnson High School      81.222432
+Pena High School         95.945946
+Rodriguez High School    80.220055
+Shelton High School      95.854628
+Thomas High School       97.308869
+Wilson High School       96.539641
+Wright High School       96.611111
+dtype: float64
+
+
+
+school_name
+Bailey High School       54.642283
+Cabrera High School      91.334769
+Figueroa High School     53.204476
+Ford High School         54.289887
+Griffin High School      90.599455
+Hernandez High School    53.527508
+Holden High School       89.227166
+Huang High School        53.513884
+Johnson High School      53.539172
+Pena High School         90.540541
+Rodriguez High School    52.988247
+Shelton High School      89.892107
+Thomas High School       90.948012
+Wilson High School       90.582567
+Wright High School       90.333333
+dtype: float64
+
+
+
+                      school_type  total_students total_school_budget  \
+school_name                                                             
+Bailey High School       District            4976             3124928   
+Cabrera High School       Charter            1858             1081356   
+Figueroa High School     District            2949             1884411   
+Ford High School         District            2739             1763916   
+Griffin High School       Charter            1468              917500   
+Hernandez High School    District            4635             3022020   
+Holden High School        Charter             427              248087   
+Huang High School        District            2917             1910635   
+Johnson High School      District            4761             3094650   
+Pena High School          Charter             962              585858   
+Rodriguez High School    District            3999             2547363   
+Shelton High School       Charter            1761             1056600   
+Thomas High School        Charter            1635             1043130   
+Wilson High School        Charter            2283             1319574   
+Wright High School        Charter            1800             1049400   
+
+                       per_student_budget  average_math_score  \
+school_name                                                     
+Bailey High School                  628.0           77.048432   
+Cabrera High School                 582.0           83.061895   
+Figueroa High School                639.0           76.711767   
+Ford High School                    644.0           77.102592   
+Griffin High School                 625.0           83.351499   
+Hernandez High School               652.0           77.289752   
+Holden High School                  581.0           83.803279   
+Huang High School                   655.0           76.629414   
+Johnson High School                 650.0           77.072464   
+Pena High School                    609.0           83.839917   
+Rodriguez High School               637.0           76.842711   
+Shelton High School                 600.0           83.359455   
+Thomas High School                  638.0           83.418349   
+Wilson High School                  578.0           83.274201   
+Wright High School                  583.0           83.682222   
+
+                       average_reading_score  %_passing_math  \
+school_name                                                    
+Bailey High School                 81.033963       66.680064   
+Cabrera High School                83.975780       94.133477   
+Figueroa High School               81.158020       65.988471   
+Ford High School                   80.746258       68.309602   
+Griffin High School                83.816757       93.392371   
+Hernandez High School              80.934412       66.752967   
+Holden High School                 83.814988       92.505855   
+Huang High School                  81.182722       65.683922   
+Johnson High School                80.966394       66.057551   
+Pena High School                   84.044699       94.594595   
+Rodriguez High School              80.744686       66.366592   
+Shelton High School                83.725724       93.867121   
+Thomas High School                 83.848930       93.272171   
+Wilson High School                 83.989488       93.867718   
+Wright High School                 83.955000       93.333333   
+
+                       %_passing_reading  %_overall_passing  
+school_name                                                  
+Bailey High School             81.933280          54.642283  
+Cabrera High School            97.039828          91.334769  
+Figueroa High School           80.739234          53.204476  
+Ford High School               79.299014          54.289887  
+Griffin High School            97.138965          90.599455  
+Hernandez High School          80.862999          53.527508  
+Holden High School             96.252927          89.227166  
+Huang High School              81.316421          53.513884  
+Johnson High School            81.222432          53.539172  
+Pena High School               95.945946          90.540541  
+Rodriguez High School          80.220055          52.988247  
+Shelton High School            95.854628          89.892107  
+Thomas High School             97.308869          90.948012  
+Wilson High School             96.539641          90.582567  
+Wright High School             96.611111          90.333333  
+
+
+
+                      school_type  total_students total_school_budget  \
+school_name                                                             
+Cabrera High School       Charter            1858             1081356   
+Thomas High School        Charter            1635             1043130   
+Griffin High School       Charter            1468              917500   
+Wilson High School        Charter            2283             1319574   
+Pena High School          Charter             962              585858   
+Wright High School        Charter            1800             1049400   
+Shelton High School       Charter            1761             1056600   
+Holden High School        Charter             427              248087   
+Bailey High School       District            4976             3124928   
+Ford High School         District            2739             1763916   
+Johnson High School      District            4761             3094650   
+Hernandez High School    District            4635             3022020   
+Huang High School        District            2917             1910635   
+Figueroa High School     District            2949             1884411   
+Rodriguez High School    District            3999             2547363   
+
+                       per_student_budget  average_math_score  \
+school_name                                                     
+Cabrera High School                 582.0           83.061895   
+Thomas High School                  638.0           83.418349   
+Griffin High School                 625.0           83.351499   
+Wilson High School                  578.0           83.274201   
+Pena High School                    609.0           83.839917   
+Wright High School                  583.0           83.682222   
+Shelton High School                 600.0           83.359455   
+Holden High School                  581.0           83.803279   
+Bailey High School                  628.0           77.048432   
+Ford High School                    644.0           77.102592   
+Johnson High School                 650.0           77.072464   
+Hernandez High School               652.0           77.289752   
+Huang High School                   655.0           76.629414   
+Figueroa High School                639.0           76.711767   
+Rodriguez High School               637.0           76.842711   
+
+                       average_reading_score  %_passing_math  \
+school_name                                                    
+Cabrera High School                83.975780       94.133477   
+Thomas High School                 83.848930       93.272171   
+Griffin High School                83.816757       93.392371   
+Wilson High School                 83.989488       93.867718   
+Pena High School                   84.044699       94.594595   
+Wright High School                 83.955000       93.333333   
+Shelton High School                83.725724       93.867121   
+Holden High School                 83.814988       92.505855   
+Bailey High School                 81.033963       66.680064   
+Ford High School                   80.746258       68.309602   
+Johnson High School                80.966394       66.057551   
+Hernandez High School              80.934412       66.752967   
+Huang High School                  81.182722       65.683922   
+Figueroa High School               81.158020       65.988471   
+Rodriguez High School              80.744686       66.366592   
+
+                       %_passing_reading  %_overall_passing  
+school_name                                                  
+Cabrera High School            97.039828          91.334769  
+Thomas High School             97.308869          90.948012  
+Griffin High School            97.138965          90.599455  
+Wilson High School             96.539641          90.582567  
+Pena High School               95.945946          90.540541  
+Wright High School             96.611111          90.333333  
+Shelton High School            95.854628          89.892107  
+Holden High School             96.252927          89.227166  
+Bailey High School             81.933280          54.642283  
+Ford High School               79.299014          54.289887  
+Johnson High School            81.222432          53.539172  
+Hernandez High School          80.862999          53.527508  
+Huang High School              81.316421          53.513884  
+Figueroa High School           80.739234          53.204476  
+Rodriguez High School          80.220055          52.988247  
+
+
+
+                      school_type  total_students total_school_budget  \
+school_name                                                             
+Rodriguez High School    District            3999             2547363   
+Figueroa High School     District            2949             1884411   
+Huang High School        District            2917             1910635   
+Hernandez High School    District            4635             3022020   
+Johnson High School      District            4761             3094650   
+Ford High School         District            2739             1763916   
+Bailey High School       District            4976             3124928   
+Holden High School        Charter             427              248087   
+Shelton High School       Charter            1761             1056600   
+Wright High School        Charter            1800             1049400   
+Pena High School          Charter             962              585858   
+Wilson High School        Charter            2283             1319574   
+Griffin High School       Charter            1468              917500   
+Thomas High School        Charter            1635             1043130   
+Cabrera High School       Charter            1858             1081356   
+
+                       per_student_budget  average_math_score  \
+school_name                                                     
+Rodriguez High School               637.0           76.842711   
+Figueroa High School                639.0           76.711767   
+Huang High School                   655.0           76.629414   
+Hernandez High School               652.0           77.289752   
+Johnson High School                 650.0           77.072464   
+Ford High School                    644.0           77.102592   
+Bailey High School                  628.0           77.048432   
+Holden High School                  581.0           83.803279   
+Shelton High School                 600.0           83.359455   
+Wright High School                  583.0           83.682222   
+Pena High School                    609.0           83.839917   
+Wilson High School                  578.0           83.274201   
+Griffin High School                 625.0           83.351499   
+Thomas High School                  638.0           83.418349   
+Cabrera High School                 582.0           83.061895   
+
+                       average_reading_score  %_passing_math  \
+school_name                                                    
+Rodriguez High School              80.744686       66.366592   
+Figueroa High School               81.158020       65.988471   
+Huang High School                  81.182722       65.683922   
+Hernandez High School              80.934412       66.752967   
+Johnson High School                80.966394       66.057551   
+Ford High School                   80.746258       68.309602   
+Bailey High School                 81.033963       66.680064   
+Holden High School                 83.814988       92.505855   
+Shelton High School                83.725724       93.867121   
+Wright High School                 83.955000       93.333333   
+Pena High School                   84.044699       94.594595   
+Wilson High School                 83.989488       93.867718   
+Griffin High School                83.816757       93.392371   
+Thomas High School                 83.848930       93.272171   
+Cabrera High School                83.975780       94.133477   
+
+                       %_passing_reading  %_overall_passing  
+school_name                                                  
+Rodriguez High School          80.220055          52.988247  
+Figueroa High School           80.739234          53.204476  
+Huang High School              81.316421          53.513884  
+Hernandez High School          80.862999          53.527508  
+Johnson High School            81.222432          53.539172  
+Ford High School               79.299014          54.289887  
+Bailey High School             81.933280          54.642283  
+Holden High School             96.252927          89.227166  
+Shelton High School            95.854628          89.892107  
+Wright High School             96.611111          90.333333  
+Pena High School               95.945946          90.540541  
+Wilson High School             96.539641          90.582567  
+Griffin High School            97.138965          90.599455  
+Thomas High School             97.308869          90.948012  
+Cabrera High School            97.039828          91.334769  
+
+
+
+       Student ID      student_name gender grade         school_name  \
+0               0      Paul Bradley      M   9th   Huang High School   
+4               4        Bonnie Ray      F   9th   Huang High School   
+5               5     Bryan Miranda      M   9th   Huang High School   
+12             12   Brittney Walker      F   9th   Huang High School   
+13             13      William Long      M   9th   Huang High School   
+...           ...               ...    ...   ...                 ...   
+39152       39152        Lori Moore      F   9th  Thomas High School   
+39153       39153   William Hubbard      M   9th  Thomas High School   
+39157       39157  Kristen Gonzalez      F   9th  Thomas High School   
+39164       39164    Joseph Anthony      M   9th  Thomas High School   
+39167       39167    Rebecca Tanner      F   9th  Thomas High School   
+
+       reading_score  math_score  School ID      type  size   budget  
+0                 66          79          0  District  2917  1910635  
+4                 97          84          0  District  2917  1910635  
+5                 94          94          0  District  2917  1910635  
+12                64          79          0  District  2917  1910635  
+13                71          79          0  District  2917  1910635  
+...              ...         ...        ...       ...   ...      ...  
+39152             98          84         14   Charter  1635  1043130  
+39153             80          75         14   Charter  1635  1043130  
+39157             79          94         14   Charter  1635  1043130  
+39164             97          76         14   Charter  1635  1043130  
+39167             73          84         14   Charter  1635  1043130  
+
+[11408 rows x 11 columns]
+
+
+
+       Student ID      student_name gender grade         school_name  \
+8               8      Michael Roth      M  10th   Huang High School   
+9               9    Matthew Greene      M  10th   Huang High School   
+10             10  Andrew Alexander      M  10th   Huang High School   
+11             11     Daniel Cooper      M  10th   Huang High School   
+14             14      Tammy Hebert      F  10th   Huang High School   
+...           ...               ...    ...   ...                 ...   
+39155       39155       John Brooks      M  10th  Thomas High School   
+39158       39158     Kari Holloway      F  10th  Thomas High School   
+39161       39161       April Reyes      F  10th  Thomas High School   
+39166       39166         Dawn Bell      F  10th  Thomas High School   
+39168       39168      Desiree Kidd      F  10th  Thomas High School   
+
+       reading_score  math_score  School ID      type  size   budget  
+8                 95          87          0  District  2917  1910635  
+9                 96          84          0  District  2917  1910635  
+10                90          70          0  District  2917  1910635  
+11                78          77          0  District  2917  1910635  
+14                85          67          0  District  2917  1910635  
+...              ...         ...        ...       ...   ...      ...  
+39155             92          98         14   Charter  1635  1043130  
+39158             87          90         14   Charter  1635  1043130  
+39161             70          84         14   Charter  1635  1043130  
+39166             95          70         14   Charter  1635  1043130  
+39168             99          90         14   Charter  1635  1043130  
+
+[10168 rows x 11 columns]
+
+
+
+       Student ID         student_name gender grade         school_name  \
+6               6        Sheena Carter      F  11th   Huang High School   
+15             15    Dr. Jordan Carson      M  11th   Huang High School   
+22             22     Kimberly Stewart      F  11th   Huang High School   
+24             24     Chelsea Griffith      F  11th   Huang High School   
+28             28          Kelly James      F  11th   Huang High School   
+...           ...                  ...    ...   ...                 ...   
+39156       39156  Stephanie Contreras      F  11th  Thomas High School   
+39159       39159     Kimberly Cabrera      F  11th  Thomas High School   
+39160       39160         Katie Weaver      F  11th  Thomas High School   
+39163       39163           John Reese      M  11th  Thomas High School   
+39169       39169      Carolyn Jackson      F  11th  Thomas High School   
+
+       reading_score  math_score  School ID      type  size   budget  
+6                 82          80          0  District  2917  1910635  
+15                94          88          0  District  2917  1910635  
+22                99          84          0  District  2917  1910635  
+24                85          73          0  District  2917  1910635  
+28                73          55          0  District  2917  1910635  
+...              ...         ...        ...       ...   ...      ...  
+39156             79          95         14   Charter  1635  1043130  
+39159             85          72         14   Charter  1635  1043130  
+39160             89          86         14   Charter  1635  1043130  
+39163             90          75         14   Charter  1635  1043130  
+39169             95          75         14   Charter  1635  1043130  
+
+[9695 rows x 11 columns]
+
+
+
+       Student ID       student_name gender grade         school_name  \
+1               1       Victor Smith      M  12th   Huang High School   
+2               2    Kevin Rodriguez      M  12th   Huang High School   
+3               3  Dr. Richard Scott      M  12th   Huang High School   
+7               7       Nicole Baker      F  12th   Huang High School   
+29             29       Nicole Brown      F  12th   Huang High School   
+...           ...                ...    ...   ...                 ...   
+39137       39137    Victoria Bailey      F  12th  Thomas High School   
+39144       39144   Cristian Webster      M  12th  Thomas High School   
+39154       39154    Bradley Johnson      M  12th  Thomas High School   
+39162       39162        Derek Weeks      M  12th  Thomas High School   
+39165       39165       Donna Howard      F  12th  Thomas High School   
+
+       reading_score  math_score  School ID      type  size   budget  
+1                 94          61          0  District  2917  1910635  
+2                 90          60          0  District  2917  1910635  
+3                 67          58          0  District  2917  1910635  
+7                 96          69          0  District  2917  1910635  
+29                90          88          0  District  2917  1910635  
+...              ...         ...        ...       ...   ...      ...  
+39137             75          70         14   Charter  1635  1043130  
+39144             77          87         14   Charter  1635  1043130  
+39154             91          71         14   Charter  1635  1043130  
+39162             94          77         14   Charter  1635  1043130  
+39165             99          90         14   Charter  1635  1043130  
+
+[7899 rows x 11 columns]
+
+
+
+school_name
+Bailey High School       77.083676
+Cabrera High School      83.094697
+Figueroa High School     76.403037
+Ford High School         77.361345
+Griffin High School      82.044010
+Hernandez High School    77.438495
+Holden High School       83.787402
+Huang High School        77.027251
+Johnson High School      77.187857
+Pena High School         83.625455
+Rodriguez High School    76.859966
+Shelton High School      83.420755
+Thomas High School       83.590022
+Wilson High School       83.085578
+Wright High School       83.264706
+Name: math_score, dtype: float64
+
+
+
+school_name
+Bailey High School       76.996772
+Cabrera High School      83.154506
+Figueroa High School     76.539974
+Ford High School         77.672316
+Griffin High School      84.229064
+Hernandez High School    77.337408
+Holden High School       83.429825
+Huang High School        75.908735
+Johnson High School      76.691117
+Pena High School         83.372000
+Rodriguez High School    76.612500
+Shelton High School      82.917411
+Thomas High School       83.087886
+Wilson High School       83.724422
+Wright High School       84.010288
+Name: math_score, dtype: float64
+
+
+
+school_name
+Bailey High School       77.515588
+Cabrera High School      82.765560
+Figueroa High School     76.884344
+Ford High School         76.918058
+Griffin High School      83.842105
+Hernandez High School    77.136029
+Holden High School       85.000000
+Huang High School        76.446602
+Johnson High School      77.491653
+Pena High School         84.328125
+Rodriguez High School    76.395626
+Shelton High School      83.383495
+Thomas High School       83.498795
+Wilson High School       83.195326
+Wright High School       83.836782
+Name: math_score, dtype: float64
+
+
+
+school_name
+Bailey High School       76.492218
+Cabrera High School      83.277487
+Figueroa High School     77.151369
+Ford High School         76.179963
+Griffin High School      83.356164
+Hernandez High School    77.186567
+Holden High School       82.855422
+Huang High School        77.225641
+Johnson High School      76.863248
+Pena High School         84.121547
+Rodriguez High School    77.690748
+Shelton High School      83.778976
+Thomas High School       83.497041
+Wilson High School       83.035794
+Wright High School       83.644986
+Name: math_score, dtype: float64
+
+
+
+                             9th       10th       11th       12th
+school_name                                                      
+Bailey High School     77.083676  76.996772  77.515588  76.492218
+Cabrera High School    83.094697  83.154506  82.765560  83.277487
+Figueroa High School   76.403037  76.539974  76.884344  77.151369
+Ford High School       77.361345  77.672316  76.918058  76.179963
+Griffin High School    82.044010  84.229064  83.842105  83.356164
+Hernandez High School  77.438495  77.337408  77.136029  77.186567
+Holden High School     83.787402  83.429825  85.000000  82.855422
+Huang High School      77.027251  75.908735  76.446602  77.225641
+Johnson High School    77.187857  76.691117  77.491653  76.863248
+Pena High School       83.625455  83.372000  84.328125  84.121547
+Rodriguez High School  76.859966  76.612500  76.395626  77.690748
+Shelton High School    83.420755  82.917411  83.383495  83.778976
+Thomas High School     83.590022  83.087886  83.498795  83.497041
+Wilson High School     83.085578  83.724422  83.195326  83.035794
+Wright High School     83.264706  84.010288  83.836782  83.644986
+
+
+
+school_name
+Bailey High School       77.0
+Cabrera High School      83.0
+Figueroa High School     76.0
+Ford High School         78.0
+Griffin High School      82.0
+Hernandez High School    78.0
+Holden High School       83.0
+Huang High School        77.0
+Johnson High School      77.0
+Pena High School         85.0
+Rodriguez High School    77.0
+Shelton High School      83.0
+Thomas High School       83.0
+Wilson High School       83.0
+Wright High School       83.0
+Name: math_score, dtype: float64
+
+
+
+school_name
+Bailey High School       77.0
+Cabrera High School      83.0
+Figueroa High School     76.0
+Ford High School         78.0
+Griffin High School      84.0
+Hernandez High School    78.0
+Holden High School       83.0
+Huang High School        75.0
+Johnson High School      76.0
+Pena High School         84.0
+Rodriguez High School    76.0
+Shelton High School      83.0
+Thomas High School       83.0
+Wilson High School       84.0
+Wright High School       84.0
+Name: math_score, dtype: float64
+
+
+
+school_name
+Bailey High School       78.0
+Cabrera High School      82.0
+Figueroa High School     76.0
+Ford High School         77.0
+Griffin High School      84.0
+Hernandez High School    77.0
+Holden High School       85.0
+Huang High School        76.0
+Johnson High School      78.0
+Pena High School         84.5
+Rodriguez High School    76.0
+Shelton High School      83.0
+Thomas High School       84.0
+Wilson High School       83.0
+Wright High School       84.0
+Name: math_score, dtype: float64
+
+
+
+school_name
+Bailey High School       76.0
+Cabrera High School      83.0
+Figueroa High School     77.0
+Ford High School         76.0
+Griffin High School      83.0
+Hernandez High School    77.0
+Holden High School       83.0
+Huang High School        77.0
+Johnson High School      76.0
+Pena High School         85.0
+Rodriguez High School    78.0
+Shelton High School      83.0
+Thomas High School       83.0
+Wilson High School       83.0
+Wright High School       83.0
+Name: math_score, dtype: float64
+
+
+
+                        9th  10th  11th  12th
+school_name                                  
+Bailey High School     77.0  77.0  78.0  76.0
+Cabrera High School    83.0  83.0  82.0  83.0
+Figueroa High School   76.0  76.0  76.0  77.0
+Ford High School       78.0  78.0  77.0  76.0
+Griffin High School    82.0  84.0  84.0  83.0
+Hernandez High School  78.0  78.0  77.0  77.0
+Holden High School     83.0  83.0  85.0  83.0
+Huang High School      77.0  75.0  76.0  77.0
+Johnson High School    77.0  76.0  78.0  76.0
+Pena High School       85.0  84.0  84.5  85.0
+Rodriguez High School  77.0  76.0  76.0  78.0
+Shelton High School    83.0  83.0  83.0  83.0
+Thomas High School     83.0  83.0  84.0  83.0
+Wilson High School     83.0  84.0  83.0  83.0
+Wright High School     83.0  84.0  84.0  83.0
+
+
+
+                             9th              10th              11th         \
+                            mean median       mean median       mean median   
+school_name                                                                   
+Bailey High School     77.083676   77.0  76.996772   77.0  77.515588   78.0   
+Cabrera High School    83.094697   83.0  83.154506   83.0  82.765560   82.0   
+Figueroa High School   76.403037   76.0  76.539974   76.0  76.884344   76.0   
+Ford High School       77.361345   78.0  77.672316   78.0  76.918058   77.0   
+Griffin High School    82.044010   82.0  84.229064   84.0  83.842105   84.0   
+Hernandez High School  77.438495   78.0  77.337408   78.0  77.136029   77.0   
+Holden High School     83.787402   83.0  83.429825   83.0  85.000000   85.0   
+Huang High School      77.027251   77.0  75.908735   75.0  76.446602   76.0   
+Johnson High School    77.187857   77.0  76.691117   76.0  77.491653   78.0   
+Pena High School       83.625455   85.0  83.372000   84.0  84.328125   84.5   
+Rodriguez High School  76.859966   77.0  76.612500   76.0  76.395626   76.0   
+Shelton High School    83.420755   83.0  82.917411   83.0  83.383495   83.0   
+Thomas High School     83.590022   83.0  83.087886   83.0  83.498795   84.0   
+Wilson High School     83.085578   83.0  83.724422   84.0  83.195326   83.0   
+Wright High School     83.264706   83.0  84.010288   84.0  83.836782   84.0   
+
+                            12th         
+                            mean median  
+school_name                              
+Bailey High School     76.492218   76.0  
+Cabrera High School    83.277487   83.0  
+Figueroa High School   77.151369   77.0  
+Ford High School       76.179963   76.0  
+Griffin High School    83.356164   83.0  
+Hernandez High School  77.186567   77.0  
+Holden High School     82.855422   83.0  
+Huang High School      77.225641   77.0  
+Johnson High School    76.863248   76.0  
+Pena High School       84.121547   85.0  
+Rodriguez High School  77.690748   78.0  
+Shelton High School    83.778976   83.0  
+Thomas High School     83.497041   83.0  
+Wilson High School     83.035794   83.0  
+Wright High School     83.644986   83.0  
+
+
+
+school_name
+Bailey High School       81.303155
+Cabrera High School      83.676136
+Figueroa High School     81.198598
+Ford High School         80.632653
+Griffin High School      83.369193
+Hernandez High School    80.866860
+Holden High School       83.677165
+Huang High School        81.290284
+Johnson High School      81.260714
+Pena High School         83.807273
+Rodriguez High School    80.993127
+Shelton High School      84.122642
+Thomas High School       83.728850
+Wilson High School       83.939778
+Wright High School       83.833333
+Name: reading_score, dtype: float64
+
+
+
+school_name
+Bailey High School       80.907183
+Cabrera High School      84.253219
+Figueroa High School     81.408912
+Ford High School         81.262712
+Griffin High School      83.706897
+Hernandez High School    80.660147
+Holden High School       83.324561
+Huang High School        81.512386
+Johnson High School      80.773431
+Pena High School         83.612000
+Rodriguez High School    80.629808
+Shelton High School      83.441964
+Thomas High School       84.254157
+Wilson High School       84.021452
+Wright High School       83.812757
+Name: reading_score, dtype: float64
+
+
+
+school_name
+Bailey High School       80.945643
+Cabrera High School      83.788382
+Figueroa High School     80.640339
+Ford High School         80.403642
+Griffin High School      84.288089
+Hernandez High School    81.396140
+Holden High School       83.815534
+Huang High School        81.417476
+Johnson High School      80.616027
+Pena High School         84.335938
+Rodriguez High School    80.864811
+Shelton High School      84.373786
+Thomas High School       83.585542
+Wilson High School       83.764608
+Wright High School       84.156322
+Name: reading_score, dtype: float64
+
+
+
+school_name
+Bailey High School       80.912451
+Cabrera High School      84.287958
+Figueroa High School     81.384863
+Ford High School         80.662338
+Griffin High School      84.013699
+Hernandez High School    80.857143
+Holden High School       84.698795
+Huang High School        80.305983
+Johnson High School      81.227564
+Pena High School         84.591160
+Rodriguez High School    80.376426
+Shelton High School      82.781671
+Thomas High School       83.831361
+Wilson High School       84.317673
+Wright High School       84.073171
+Name: reading_score, dtype: float64
+
+
+
+                             9th       10th       11th       12th
+school_name                                                      
+Bailey High School     81.303155  80.907183  80.945643  80.912451
+Cabrera High School    83.676136  84.253219  83.788382  84.287958
+Figueroa High School   81.198598  81.408912  80.640339  81.384863
+Ford High School       80.632653  81.262712  80.403642  80.662338
+Griffin High School    83.369193  83.706897  84.288089  84.013699
+Hernandez High School  80.866860  80.660147  81.396140  80.857143
+Holden High School     83.677165  83.324561  83.815534  84.698795
+Huang High School      81.290284  81.512386  81.417476  80.305983
+Johnson High School    81.260714  80.773431  80.616027  81.227564
+Pena High School       83.807273  83.612000  84.335938  84.591160
+Rodriguez High School  80.993127  80.629808  80.864811  80.376426
+Shelton High School    84.122642  83.441964  84.373786  82.781671
+Thomas High School     83.728850  84.254157  83.585542  83.831361
+Wilson High School     83.939778  84.021452  83.764608  84.317673
+Wright High School     83.833333  83.812757  84.156322  84.073171
+
+
+
+school_name
+Bailey High School       82.0
+Cabrera High School      84.0
+Figueroa High School     81.0
+Ford High School         81.0
+Griffin High School      83.0
+Hernandez High School    81.0
+Holden High School       83.0
+Huang High School        82.0
+Johnson High School      81.0
+Pena High School         84.0
+Rodriguez High School    81.0
+Shelton High School      84.0
+Thomas High School       83.0
+Wilson High School       84.0
+Wright High School       84.0
+Name: reading_score, dtype: float64
+
+
+
+school_name
+Bailey High School       81.0
+Cabrera High School      84.0
+Figueroa High School     82.0
+Ford High School         82.0
+Griffin High School      84.0
+Hernandez High School    80.0
+Holden High School       84.0
+Huang High School        82.0
+Johnson High School      81.0
+Pena High School         84.0
+Rodriguez High School    81.0
+Shelton High School      83.0
+Thomas High School       85.0
+Wilson High School       84.0
+Wright High School       84.0
+Name: reading_score, dtype: float64
+
+
+
+school_name
+Bailey High School       81.0
+Cabrera High School      83.5
+Figueroa High School     81.0
+Ford High School         81.0
+Griffin High School      84.0
+Hernandez High School    82.0
+Holden High School       84.0
+Huang High School        82.0
+Johnson High School      80.0
+Pena High School         84.0
+Rodriguez High School    81.0
+Shelton High School      85.5
+Thomas High School       83.0
+Wilson High School       84.0
+Wright High School       85.0
+Name: reading_score, dtype: float64
+
+
+
+school_name
+Bailey High School       81.0
+Cabrera High School      85.0
+Figueroa High School     82.0
+Ford High School         81.0
+Griffin High School      84.0
+Hernandez High School    81.0
+Holden High School       85.0
+Huang High School        80.0
+Johnson High School      81.0
+Pena High School         85.0
+Rodriguez High School    80.0
+Shelton High School      82.0
+Thomas High School       85.0
+Wilson High School       84.0
+Wright High School       84.0
+Name: reading_score, dtype: float64
+
+
+
+                        9th  10th  11th  12th
+school_name                                  
+Bailey High School     82.0  81.0  81.0  81.0
+Cabrera High School    84.0  84.0  83.5  85.0
+Figueroa High School   81.0  82.0  81.0  82.0
+Ford High School       81.0  82.0  81.0  81.0
+Griffin High School    83.0  84.0  84.0  84.0
+Hernandez High School  81.0  80.0  82.0  81.0
+Holden High School     83.0  84.0  84.0  85.0
+Huang High School      82.0  82.0  82.0  80.0
+Johnson High School    81.0  81.0  80.0  81.0
+Pena High School       84.0  84.0  84.0  85.0
+Rodriguez High School  81.0  81.0  81.0  80.0
+Shelton High School    84.0  83.0  85.5  82.0
+Thomas High School     83.0  85.0  83.0  85.0
+Wilson High School     84.0  84.0  84.0  84.0
+Wright High School     84.0  84.0  85.0  84.0
+
+
+
+                             9th              10th              11th         \
+                            Mean Median       Mean Median       Mean Median   
+school_name                                                                   
+Bailey High School     81.303155   82.0  80.907183   81.0  80.945643   81.0   
+Cabrera High School    83.676136   84.0  84.253219   84.0  83.788382   83.5   
+Figueroa High School   81.198598   81.0  81.408912   82.0  80.640339   81.0   
+Ford High School       80.632653   81.0  81.262712   82.0  80.403642   81.0   
+Griffin High School    83.369193   83.0  83.706897   84.0  84.288089   84.0   
+Hernandez High School  80.866860   81.0  80.660147   80.0  81.396140   82.0   
+Holden High School     83.677165   83.0  83.324561   84.0  83.815534   84.0   
+Huang High School      81.290284   82.0  81.512386   82.0  81.417476   82.0   
+Johnson High School    81.260714   81.0  80.773431   81.0  80.616027   80.0   
+Pena High School       83.807273   84.0  83.612000   84.0  84.335938   84.0   
+Rodriguez High School  80.993127   81.0  80.629808   81.0  80.864811   81.0   
+Shelton High School    84.122642   84.0  83.441964   83.0  84.373786   85.5   
+Thomas High School     83.728850   83.0  84.254157   85.0  83.585542   83.0   
+Wilson High School     83.939778   84.0  84.021452   84.0  83.764608   84.0   
+Wright High School     83.833333   84.0  83.812757   84.0  84.156322   85.0   
+
+                            12th         
+                            Mean Median  
+school_name                              
+Bailey High School     80.912451   81.0  
+Cabrera High School    84.287958   85.0  
+Figueroa High School   81.384863   82.0  
+Ford High School       80.662338   81.0  
+Griffin High School    84.013699   84.0  
+Hernandez High School  80.857143   81.0  
+Holden High School     84.698795   85.0  
+Huang High School      80.305983   80.0  
+Johnson High School    81.227564   81.0  
+Pena High School       84.591160   85.0  
+Rodriguez High School  80.376426   80.0  
+Shelton High School    82.781671   82.0  
+Thomas High School     83.831361   85.0  
+Wilson High School     84.317673   84.0  
+Wright High School     84.073171   84.0  
+
+
+
+school_name
+Bailey High School       $585-630
+Cabrera High School         <$585
+Figueroa High School     $630-645
+Ford High School         $630-645
+Griffin High School      $585-630
+Hernandez High School    $645-680
+Holden High School          <$585
+Huang High School        $645-680
+Johnson High School      $645-680
+Pena High School         $585-630
+Rodriguez High School    $630-645
+Shelton High School      $585-630
+Thomas High School       $630-645
+Wilson High School          <$585
+Wright High School          <$585
+Name: spending_ranges_per_student, dtype: category
+Categories (4, object): ['<$585' < '$585-630' < '$630-645' < '$645-680']
+
+
+
+spending_ranges_per_student
+<$585       83.455399
+$585-630    81.899826
+$630-645    78.518855
+$645-680    76.997210
+Name: average_math_score, dtype: float64
+
+
+
+spending_ranges_per_student
+<$585       83.933814
+$585-630    83.155286
+$630-645    81.624473
+$645-680    81.027843
+Name: average_reading_score, dtype: float64
+
+
+
+spending_ranges_per_student
+<$585       93.460096
+$585-630    87.133538
+$630-645    73.484209
+$645-680    66.164813
+Name: %_passing_math, dtype: float64
+
+
+
+spending_ranges_per_student
+<$585       96.610877
+$585-630    92.718205
+$630-645    84.391793
+$645-680    81.133951
+Name: %_passing_reading, dtype: float64
+
+
+
+spending_ranges_per_student
+<$585       90.369459
+$585-630    81.418596
+$630-645    62.857656
+$645-680    53.526855
+Name: %_overall_passing, dtype: float64
+
+
+
+                math_score  reading_score  %_passing_math  %_passing_reading  \
+spending_range                                                                 
+<$585            83.455399      83.933814       93.460096          96.610877   
+$585-630         81.899826      83.155286       87.133538          92.718205   
+$630-645         78.518855      81.624473       73.484209          84.391793   
+$645-680         76.997210      81.027843       66.164813          81.133951   
+
+                %_overall_passing  
+spending_range                     
+<$585                   90.369459  
+$585-630                81.418596  
+$630-645                62.857656  
+$645-680                53.526855  
+
+
+
+spending_ranges_per_student
+<$585       83.478211
+$585-630    83.355477
+$630-645    76.972651
+$645-680    77.072464
+Name: average_math_score, dtype: float64
+
+
+
+spending_ranges_per_student
+<$585       83.965390
+$585-630    83.771241
+$630-645    80.952139
+$645-680    80.966394
+Name: average_reading_score, dtype: float64
+
+
+
+spending_ranges_per_student
+<$585       93.600526
+$585-630    93.629746
+$630-645    67.338097
+$645-680    66.057551
+Name: %_passing_math, dtype: float64
+
+
+
+spending_ranges_per_student
+<$585       96.575376
+$585-630    95.900287
+$630-645    80.479644
+$645-680    81.222432
+Name: %_passing_reading, dtype: float64
+
+
+
+spending_ranges_per_student
+<$585       90.457950
+$585-630    90.216324
+$630-645    53.747181
+$645-680    53.527508
+Name: %_overall_passing, dtype: float64
+
+
+
+                math_score  reading_score  %_passing_math  %_passing_reading  \
+spending_range                                                                 
+<$585            83.478211      83.965390       93.600526          96.575376   
+$585-630         83.355477      83.771241       93.629746          95.900287   
+$630-645         76.972651      80.952139       67.338097          80.479644   
+$645-680         77.072464      80.966394       66.057551          81.222432   
+
+                %_overall_passing  
+spending_range                     
+<$585                   90.457950  
+$585-630                90.216324  
+$630-645                53.747181  
+$645-680                53.527508  
+
+
+
+               math_score            reading_score            %_passing_math  \
+                     mean     median          mean     median           mean   
+spending_range                                                                 
+<$585           83.455399  83.478211     83.933814  83.965390      93.460096   
+$585-630        81.899826  83.355477     83.155286  83.771241      87.133538   
+$630-645        78.518855  76.972651     81.624473  80.952139      73.484209   
+$645-680        76.997210  77.072464     81.027843  80.966394      66.164813   
+
+                          %_passing_reading            %_overall_passing  \
+                   median              mean     median              mean   
+spending_range                                                             
+<$585           93.600526         96.610877  96.575376         90.369459   
+$585-630        93.629746         92.718205  95.900287         81.418596   
+$630-645        67.338097         84.391793  80.479644         62.857656   
+$645-680        66.057551         81.133951  81.222432         53.526855   
+
+                           
+                   median  
+spending_range             
+<$585           90.457950  
+$585-630        90.216324  
+$630-645        53.747181  
+$645-680        53.527508  
+
+
+
+school_name
+Bailey High School        Large (2000-5000)
+Cabrera High School      Medium (1000-2000)
+Figueroa High School      Large (2000-5000)
+Ford High School          Large (2000-5000)
+Griffin High School      Medium (1000-2000)
+Hernandez High School     Large (2000-5000)
+Holden High School            Small (<1000)
+Huang High School         Large (2000-5000)
+Johnson High School       Large (2000-5000)
+Pena High School              Small (<1000)
+Rodriguez High School     Large (2000-5000)
+Shelton High School      Medium (1000-2000)
+Thomas High School       Medium (1000-2000)
+Wilson High School        Large (2000-5000)
+Wright High School       Medium (1000-2000)
+Name: school_size, dtype: category
+Categories (3, object): ['Small (<1000)' < 'Medium (1000-2000)' < 'Large (2000-5000)']
+
+
+
+school_size
+Small (<1000)          694.500
+Medium (1000-2000)    1704.400
+Large (2000-5000)     3657.375
+Name: total_students, dtype: float64
+
+
+
+school_size
+Small (<1000)            416972.5
+Medium (1000-2000)      1029597.2
+Large (2000-5000)     2333437.125
+Name: total_school_budget, dtype: object
+
+
+
+school_size
+Small (<1000)         595.000
+Medium (1000-2000)    605.600
+Large (2000-5000)     635.375
+Name: per_student_budget, dtype: float64
+
+
+
+                    total_students total_school_budget  per_student_budget
+school_size                                                               
+Small (<1000)              694.500            416972.5             595.000
+Medium (1000-2000)        1704.400           1029597.2             605.600
+Large (2000-5000)         3657.375         2333437.125             635.375
+
+
+
+school_size
+Small (<1000)          694.5
+Medium (1000-2000)    1761.0
+Large (2000-5000)     3474.0
+Name: total_students, dtype: float64
+
+
+
+school_size
+Small (<1000)          416972.5
+Medium (1000-2000)    1049400.0
+Large (2000-5000)     2228999.0
+Name: total_school_budget, dtype: object
+
+
+
+school_size
+Small (<1000)         595.0
+Medium (1000-2000)    600.0
+Large (2000-5000)     641.5
+Name: per_student_budget, dtype: float64
+
+
+
+                    total_students total_school_budget  per_student_budget
+school_size                                                               
+Small (<1000)                694.5            416972.5               595.0
+Medium (1000-2000)          1761.0           1049400.0               600.0
+Large (2000-5000)           3474.0           2228999.0               641.5
+
+
+
+                   total_students         total_school_budget             \
+                             Mean  Median                Mean     Median   
+school_size                                                                
+Small (<1000)             694.500   694.5            416972.5   416972.5   
+Medium (1000-2000)       1704.400  1761.0           1029597.2  1049400.0   
+Large (2000-5000)        3657.375  3474.0         2333437.125  2228999.0   
+
+                   per_student_budget         
+                                 Mean Median  
+school_size                                   
+Small (<1000)                 595.000  595.0  
+Medium (1000-2000)            605.600  600.0  
+Large (2000-5000)             635.375  641.5  
+
+
+
+school_size
+Small (<1000)         83.821598
+Medium (1000-2000)    83.374684
+Large (2000-5000)     77.746417
+Name: average_math_score, dtype: float64
+
+
+
+school_size
+Small (<1000)         83.929843
+Medium (1000-2000)    83.864438
+Large (2000-5000)     81.344493
+Name: average_reading_score, dtype: float64
+
+
+
+school_size
+Small (<1000)         93.550225
+Medium (1000-2000)    93.599695
+Large (2000-5000)     69.963361
+Name: %_passing_math, dtype: float64
+
+
+
+school_size
+Small (<1000)         96.099437
+Medium (1000-2000)    96.790680
+Large (2000-5000)     82.766634
+Name: %_passing_reading, dtype: float64
+
+
+
+school_size
+Small (<1000)         89.883853
+Medium (1000-2000)    90.621535
+Large (2000-5000)     58.286003
+Name: %_overall_passing, dtype: float64
+
+
+
+                    math_score  reading_score  %_passing_math  \
+school_size                                                     
+Small (<1000)        83.821598      83.929843       93.550225   
+Medium (1000-2000)   83.374684      83.864438       93.599695   
+Large (2000-5000)    77.746417      81.344493       69.963361   
+
+                    %_passing_reading  %_overall_passing  
+school_size                                               
+Small (<1000)               96.099437          89.883853  
+Medium (1000-2000)          96.790680          90.621535  
+Large (2000-5000)           82.766634          58.286003  
+
+
+
+school_size
+Small (<1000)         83.821598
+Medium (1000-2000)    83.359455
+Large (2000-5000)     77.060448
+Name: average_math_score, dtype: float64
+
+
+
+school_size
+Small (<1000)         83.929843
+Medium (1000-2000)    83.848930
+Large (2000-5000)     81.000178
+Name: average_reading_score, dtype: float64
+
+
+
+school_size
+Small (<1000)         93.550225
+Medium (1000-2000)    93.392371
+Large (2000-5000)     66.523328
+Name: %_passing_math, dtype: float64
+
+
+
+school_size
+Small (<1000)         96.099437
+Medium (1000-2000)    97.039828
+Large (2000-5000)     81.042716
+Name: %_passing_reading, dtype: float64
+
+
+
+school_size
+Small (<1000)         89.883853
+Medium (1000-2000)    90.599455
+Large (2000-5000)     53.533340
+Name: %_overall_passing, dtype: float64
+
+
+
+                    math_score  reading_score  %_passing_math  \
+school_size                                                     
+Small (<1000)        83.821598      83.929843       93.550225   
+Medium (1000-2000)   83.359455      83.848930       93.392371   
+Large (2000-5000)    77.060448      81.000178       66.523328   
+
+                    %_passing_reading  %_overall_passing  
+school_size                                               
+Small (<1000)               96.099437          89.883853  
+Medium (1000-2000)          97.039828          90.599455  
+Large (2000-5000)           81.042716          53.533340  
+
+
+
+                   math_score            reading_score             \
+                         Mean     Median          Mean     Median   
+school_size                                                         
+Small (<1000)       83.821598  83.821598     83.929843  83.929843   
+Medium (1000-2000)  83.374684  83.359455     83.864438  83.848930   
+Large (2000-5000)   77.746417  77.060448     81.344493  81.000178   
+
+                   %_passing_math            %_passing_reading             \
+                             Mean     Median              Mean     Median   
+school_size                                                                 
+Small (<1000)           93.550225  93.550225         96.099437  96.099437   
+Medium (1000-2000)      93.599695  93.392371         96.790680  97.039828   
+Large (2000-5000)       69.963361  66.523328         82.766634  81.042716   
+
+                   %_overall_passing             
+                                Mean     Median  
+school_size                                      
+Small (<1000)              89.883853  89.883853  
+Medium (1000-2000)         90.621535  90.599455  
+Large (2000-5000)          58.286003  53.533340  
+
+
+
+school_type
+Charter     1524.250000
+District    3853.714286
+Name: total_students, dtype: float64
+
+
+
+school_type
+Charter         912688.125
+District    2478274.714286
+Name: total_school_budget, dtype: object
+
+
+
+school_type
+Charter     599.500000
+District    643.571429
+Name: per_student_budget, dtype: float64
+
+
+
+             total_students total_school_budget  per_student_budget
+school_type                                                        
+Charter         1524.250000          912688.125          599.500000
+District        3853.714286      2478274.714286          643.571429
+
+
+
+school_type
+Charter     1698.0
+District    3999.0
+Name: total_students, dtype: float64
+
+
+
+school_type
+Charter     1046265.0
+District    2547363.0
+Name: total_school_budget, dtype: object
+
+
+
+school_type
+Charter     591.5
+District    644.0
+Name: per_student_budget, dtype: float64
+
+
+
+             total_students total_school_budget  per_student_budget
+school_type                                                        
+Charter              1698.0           1046265.0               591.5
+District             3999.0           2547363.0               644.0
+
+
+
+            total_students         total_school_budget             \
+                      Mean  Median                Mean     Median   
+school_type                                                         
+Charter        1524.250000  1698.0          912688.125  1046265.0   
+District       3853.714286  3999.0      2478274.714286  2547363.0   
+
+            per_student_budget         
+                          Mean Median  
+school_type                            
+Charter             599.500000  591.5  
+District            643.571429  644.0  
+
+
+
+school_type
+Charter     83.473852
+District    76.956733
+Name: average_math_score, dtype: float64
+
+
+
+school_type
+Charter     83.896421
+District    80.966636
+Name: average_reading_score, dtype: float64
+
+
+
+school_type
+Charter     93.620830
+District    66.548453
+Name: %_passing_math, dtype: float64
+
+
+
+school_type
+Charter     96.586489
+District    80.799062
+Name: %_passing_reading, dtype: float64
+
+
+
+school_type
+Charter     90.432244
+District    53.672208
+Name: %_overall_passing, dtype: float64
+
+
+
+             math_score  reading_score  %_passing_math  %_passing_reading  \
+school_type                                                                 
+Charter       83.473852      83.896421       93.620830          96.586489   
+District      76.956733      80.966636       66.548453          80.799062   
+
+             %_overall_passing  
+school_type                     
+Charter              90.432244  
+District             53.672208  
+
+
+
+school_type
+Charter     83.388902
+District    77.048432
+Name: average_math_score, dtype: float64
+
+
+
+school_type
+Charter     83.901965
+District    80.966394
+Name: average_reading_score, dtype: float64
+
+
+
+school_type
+Charter     93.629746
+District    66.366592
+Name: %_passing_math, dtype: float64
+
+
+
+school_type
+Charter     96.575376
+District    80.862999
+Name: %_passing_reading, dtype: float64
+
+
+
+school_type
+Charter     90.561554
+District    53.527508
+Name: %_overall_passing, dtype: float64
+
+
+
+             math_score  reading_score  %_passing_math  %_passing_reading  \
+school_type                                                                 
+Charter       83.388902      83.901965       93.629746          96.575376   
+District      77.048432      80.966394       66.366592          80.862999   
+
+             %_overall_passing  
+school_type                     
+Charter              90.561554  
+District             53.527508  
+
+
+
+            math_score            reading_score            %_passing_math  \
+                  Mean     Median          Mean     Median           Mean   
+school_type                                                                 
+Charter      83.473852  83.388902     83.896421  83.901965      93.620830   
+District     76.956733  77.048432     80.966636  80.966394      66.548453   
+
+                       %_passing_reading            %_overall_passing  \
+                Median              Mean     Median              Mean   
+school_type                                                             
+Charter      93.629746         96.586489  96.575376         90.432244   
+District     66.366592         80.799062  80.862999         53.672208   
+
+                        
+                Median  
+school_type             
+Charter      90.561554  
+District     53.527508  
+
