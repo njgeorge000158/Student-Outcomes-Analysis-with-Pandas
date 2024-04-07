@@ -34,7 +34,7 @@ The IPython notebook, city_schools_analysis.ipynb, uses the CSV files, schools_d
 
 city_schools_constants.py
 
-error_handle_functions.py
+log_constants.py
 
 log_functions.py
 
@@ -54,7 +54,7 @@ To place the IPython notebook in Log Mode or Image Mode set the parameter for th
 
 #### Source code
 
-city_schools_analysis.ipynb, city_schools_constants.py, error_handle_functions.py, log_constants.py, log_functions.py, log_subroutines.py, pandas_process_functions.py
+city_schools_analysis.ipynb, city_schools_constants.py, log_constants.py, log_functions.py, log_subroutines.py, pandas_process_functions.py
 
 #### Input files
 
@@ -85,8 +85,6 @@ Jupyter Notebook, Pandas, Python 3.11.4
 |&rarr; [./city_schools_analysis.ipynb](./city_schools_analysis.ipynb)
 
 |&rarr; [./city_schools_constants.py](./city_schools_constants.py)
-
-|&rarr; [./error_handle_functions.py](./error_handle_functions.py)
 
 |&rarr; [./log_constants.py](./log_constants.py)
 
