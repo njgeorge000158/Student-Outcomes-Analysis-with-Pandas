@@ -24,7 +24,6 @@
  #
  #******************************************************************************************/
 
-import error_handle_functions
 import log_constants
 import log_functions
 import log_subroutines
@@ -89,25 +88,6 @@ def return_standard_format_styler \
          hide_index_boolean = True):
     
     try:
-        
-        error_check_dictionary \
-            = {'input_dataframe': [input_dataframe, pd.DataFrame, pd.DataFrame],
-               'caption_string': [caption_string, str, str],
-               'precision_integer': [precision_integer, int, int],
-               'hide_index_boolean': [hide_index_boolean, bool, bool]}
-    
-        if error_handle_functions.check_parameters_for_errors(error_check_dictionary):
-        
-            log_subroutines \
-                .print_and_log_text \
-                    ('\033[1m'
-                     + 'The function, return_standard_format_styler, ' 
-                     + f'in source file, {CONSTANT_LOCAL_FILE_NAME}, ' 
-                     + f'received invalid or empty function parameters.\n\n'
-                     + '\033[0m')
-        
-            return None
-        
         
         temp_dataframe = input_dataframe.copy()
         
