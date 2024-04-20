@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[1]:
+# In[ ]:
 
 
 #*******************************************************************************************
@@ -24,6 +24,8 @@
  #      display_dataframe_column_unique_values
  #      display_series_unique_value_counts
  #
+ #      display_dataframe_hvplot
+ #
  #
  #  Date            Description                             Programmer
  #  ----------      ------------------------------------    ------------------
@@ -34,6 +36,7 @@
 import logx_constants
 import logx
 
+import hvplot.pandas
 import dataframe_image
 
 import pandas as pd
@@ -41,13 +44,13 @@ import pandas as pd
 pd.options.mode.chained_assignment = None
 
 
-# In[2]:
+# In[ ]:
 
 
 CONSTANT_LOCAL_FILE_NAME = 'pandasx.py'
 
 
-# In[3]:
+# In[ ]:
 
 
 #*******************************************************************************************
@@ -143,7 +146,7 @@ def return_standard_format_styler \
                      decimal = '.')
 
 
-# In[4]:
+# In[ ]:
 
 
 #*******************************************************************************************
@@ -185,7 +188,7 @@ def save_image_and_return_styler \
     return input_styler
 
 
-# In[5]:
+# In[ ]:
 
 
 #*******************************************************************************************
@@ -233,7 +236,7 @@ def return_formatted_table \
     return save_image_and_return_styler(current_styler, caption_string)
 
 
-# In[6]:
+# In[ ]:
 
 
 #*******************************************************************************************
@@ -301,7 +304,7 @@ def return_summary_statistics_as_dataframe(data_series):
     return pd.DataFrame(statistics_dictionary_list)
 
 
-# In[7]:
+# In[ ]:
 
 
 #*******************************************************************************************
@@ -347,7 +350,7 @@ def return_formatted_rows \
     return input_styler
 
 
-# In[8]:
+# In[ ]:
 
 
 #*******************************************************************************************
@@ -411,7 +414,7 @@ def return_dataframe_description \
     return description_styler
 
 
-# In[9]:
+# In[ ]:
 
 
 #*******************************************************************************************
@@ -449,7 +452,7 @@ def return_formatted_description \
     return save_image_and_return_styler(current_styler, caption_string)
 
 
-# In[10]:
+# In[ ]:
 
 
 #*******************************************************************************************
@@ -487,7 +490,7 @@ def display_dataframe_column_counts(input_dataframe):
             ('\033[1m' + f'{column}: ' + '{:,}\n'.format(count_integer) + '\033[0m')
 
 
-# In[11]:
+# In[ ]:
 
 
 #*******************************************************************************************
@@ -527,7 +530,7 @@ def display_dataframe_column_unique_values(input_dataframe):
              + '\033[0m')
 
 
-# In[12]:
+# In[ ]:
 
 
 #*******************************************************************************************
@@ -570,6 +573,98 @@ def display_series_unique_value_counts \
 
 
     return output_series
+
+
+# In[ ]:
+
+
+#******************************************************************************************
+ #
+ #  Function Name:  display_dataframe_hvplot
+ #
+ #  Function Description:
+ #      This function receives a dataframe and displays a formatted hvplot.
+ #
+ #
+ #  Return Type: hvplot overlay
+ #
+ #
+ #  Function Parameters:
+ #
+ #  Type    Name            Description
+ #  -----   -------------   ----------------------------------------------
+ #  dataframe
+ #          input_dataframe The parameter is the input dataframe.
+ #  string  caption_string  The parameter is the plot's title.
+ #  string  color_column_name_string
+ #                          The parameter is the color column name.
+ #  string  size_column_name_string
+ #                          The parameter is the size column name.
+ #  float   longitude_column_string_name
+ #                          The parameter is the longitude column name.
+ #  float   latitude_column_string_name
+ #                          The parameter is the latitude column name.
+ #  string  x_label_string  The parameter is the x-axis label.
+ #  string  y_label_string  The parameter is the y-axis label.
+ #  float tuple
+ #          x_limit_float_tuple
+ #                          The parameter the HVPlot limits for the x-axis.
+ #  float tuple
+ #          y_limit_float_tuple
+ #                          The parameter the HVPlot limits for the y-axis.
+ #  float   alpha_float     The parameter the alpha value for the markers.
+ #  string  tiles_string
+ #                          The parameter indicates the type of map (OSM, ESRI, etc.).
+ #  string list
+ #          hover_columns_string_list
+ #                          The parameter is the list of column names 
+ #                          for the hover message.
+ #
+ #
+ #  Date                Description                                 Programmer
+ #  ---------------     ------------------------------------        ------------------
+ #  04/11/2024          Initial Development                         Nicholas J. George
+ #
+ #******************************************************************************************/
+
+def display_dataframe_hvplot \
+        (input_dataframe,
+         caption_string,
+         color_column_name_string,
+         size_column_name_string,
+         longitude_column_string_name,
+         latitude_column_string_name,
+         x_label_string = '',
+         y_label_string = '',
+         x_limit_float_tuple = (-180, 180), 
+         y_limit_float_tuple = (-55, 75),
+         alpha_float = 0.7,
+         tiles_string = 'OSM',
+         hover_columns_string_list = []):
+    
+    hvplot_overlay \
+        = input_dataframe \
+            .hvplot \
+            .points \
+                (longitude_column_string_name, 
+                 latitude_column_string_name,
+                 xlabel = x_label_string, 
+                 ylabel = y_label_string,
+                 geo = True, 
+                 color = color_column_name_string, 
+                 size = size_column_name_string,
+                 xlim = x_limit_float_tuple, 
+                 ylim = y_limit_float_tuple,
+                 alpha = alpha_float, 
+                 tiles = tiles_string,
+                 title = caption_string,
+                 hover_cols = hover_columns_string_list)
+
+        
+    logx.save_hvplot_image_to_html(hvplot_overlay, caption_string)
+
+    
+    return hvplot_overlay
 
 
 # In[ ]:
