@@ -52,7 +52,7 @@ To place the IPython notebook in Log Mode or Image Mode set the parameter for th
 
 #### Source code
 
-city_schools.ipynb, city_schools_constants.py, logx_constants.py, logx.py, pandas_processx.py
+city_schools.ipynb, city_schools_constants.py, logx_constants.py, logx.py, pandasx.py
 
 #### Input files
 
@@ -80,15 +80,15 @@ Jupyter Notebook, Pandas, Python 3.11.4
 
 #### main branch
 
-|&rarr; [./city_schools.ipynb](./city_schools.ipynb)
-
 |&rarr; [./city_schools_constants.py](./city_schools_constants.py)
 
-|&rarr; [./log_constants.py](./logx_constants.py)
+|&rarr; [./city_schools.ipynb](./city_schools.ipynb)
 
-|&rarr; [./log_functions.py](./logx.py)
+|&rarr; [./logx_constants.py](./logx_constants.py)
 
-|&rarr; [./pandas_process_functions.py](./pandas_processx.py)
+|&rarr; [./logx.py](./logx.py)
+
+|&rarr; [./pandasx.py](./pandasx.py)
 
 |&rarr; [./README.TECHNICAL.md](./README.TECHNICAL.md)
 
