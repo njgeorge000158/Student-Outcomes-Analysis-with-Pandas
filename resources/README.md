@@ -1,4 +1,4 @@
-This folder includes the input CSV files for the IPython Notebook, city_schools_analysis.ipynb.
+This folder includes the input CSV files for the IPython Notebook, city_schools.ipynb.
 
 ----
 
