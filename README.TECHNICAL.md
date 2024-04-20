@@ -80,7 +80,7 @@ Jupyter Notebook, Pandas, Python 3.11.4
 
 #### main branch
 
-|&rarr; [./city_schools_analysis.ipynb](./city_schools.ipynb)
+|&rarr; [./city_schools.ipynb](./city_schools.ipynb)
 
 |&rarr; [./city_schools_constants.py](./city_schools_constants.py)
 
@@ -98,69 +98,69 @@ Jupyter Notebook, Pandas, Python 3.11.4
 
 |&rarr; [./images/](./images/)
 
-  &emsp; |&rarr; [./images/city_schools_analysisTable12CompleteSchoolDataSet.png](./images/city_schools_analysisTable12CompleteSchoolDataSet.png)
+  &emsp; |&rarr; [./images/city_schoolsTable12CompleteSchoolDataSet.png](./images/city_schoolsTable12CompleteSchoolDataSet.png)
   
-  &emsp; |&rarr; [./images/city_schools_analysisTable23SchoolDistrictMetrics.png](./images/city_schools_analysisTable23SchoolDistrictMetrics.png)
+  &emsp; |&rarr; [./images/city_schoolsTable23SchoolDistrictMetrics.png](./images/city_schoolsTable23SchoolDistrictMetrics.png)
   
-  &emsp; |&rarr; [./images/city_schools_analysisTable33SchoolMetrics.png](./images/city_schools_analysisTable33SchoolMetrics.png)
+  &emsp; |&rarr; [./images/city_schoolsTable33SchoolMetrics.png](./images/city_schoolsTable33SchoolMetrics.png)
   
-  &emsp; |&rarr; [./images/city_schools_analysisTable41HighestPerformingSchools.png](./images/city_schools_analysisTable41HighestPerformingSchools.png)
+  &emsp; |&rarr; [./images/city_schoolsTable41HighestPerformingSchools.png](./images/city_schoolsTable41HighestPerformingSchools.png)
   
-  &emsp; |&rarr; [./images/city_schools_analysisTable42LowestPerformingSchools.png](./images/city_schools_analysisTable42LowestPerformingSchools.png)
+  &emsp; |&rarr; [./images/city_schoolsTable42LowestPerformingSchools.png](./images/city_schoolsTable42LowestPerformingSchools.png)
   
-  &emsp; |&rarr; [./images/city_schools_analysisTable62SchoolMetricswithSpendingRanges.png](./images/city_schools_analysisTable62SchoolMetricswithSpendingRanges.png)
+  &emsp; |&rarr; [./images/city_schoolsTable62SchoolMetricswithSpendingRanges.png](./images/city_schoolsTable62SchoolMetricswithSpendingRanges.png)
   
-  &emsp; |&rarr; [./images/city_schools_analysisTable74TestScoresPassingRatesMeanbySpendingRanges.png](./images/city_schools_analysisTable74TestScoresPassingRatesMeanbySpendingRanges.png)
+  &emsp; |&rarr; [./images/city_schoolsTable74TestScoresPassingRatesMeanbySpendingRanges.png](./images/city_schoolsTable74TestScoresPassingRatesMeanbySpendingRanges.png)
   
-  &emsp; |&rarr; [./images/city_schools_analysisTable75TestScoresPassingRatesMedianbySpendingRanges.png](./images/city_schools_analysisTable75TestScoresPassingRatesMedianbySpendingRanges.png)
+  &emsp; |&rarr; [./images/city_schoolsTable75TestScoresPassingRatesMedianbySpendingRanges.png](./images/city_schoolsTable75TestScoresPassingRatesMedianbySpendingRanges.png)
 
-  &emsp; |&rarr; [./images/city_schools_analysisTable76TestScoresPassingRatesMeanMedianbySpendingRanges.png](./images/city_schools_analysisTable76TestScoresPassingRatesMeanMedianbySpendingRanges.png)
+  &emsp; |&rarr; [./images/city_schoolsTable76TestScoresPassingRatesMeanMedianbySpendingRanges.png](./images/city_schoolsTable76TestScoresPassingRatesMeanMedianbySpendingRanges.png)
   
-  &emsp; |&rarr; [./images/city_schools_analysisTable82SchoolMetricswithSchoolSizeCategories.png](./images/city_schools_analysisTable82SchoolMetricswithSchoolSizeCategories.png)
+  &emsp; |&rarr; [./images/city_schoolsTable82SchoolMetricswithSchoolSizeCategories.png](./images/city_schoolsTable82SchoolMetricswithSchoolSizeCategories.png)
   
-  &emsp; |&rarr; [./images/city_schools_analysisTable94FinancialMetricsbySchoolSizeMean.png](./images/city_schools_analysisTable94FinancialMetricsbySchoolSizeMean.png)
+  &emsp; |&rarr; [./images/city_schoolsTable94FinancialMetricsbySchoolSizeMean.png](./images/city_schoolsTable94FinancialMetricsbySchoolSizeMean.png)
   
-  &emsp; |&rarr; [./images/city_schools_analysisTable95FinancialMetricsbySchoolSizeMedian.png](./images/city_schools_analysisTable95FinancialMetricsbySchoolSizeMedian.png)
+  &emsp; |&rarr; [./images/city_schoolsTable95FinancialMetricsbySchoolSizeMedian.png](./images/city_schoolsTable95FinancialMetricsbySchoolSizeMedian.png)
 
-  &emsp; |&rarr; [./images/city_schools_analysisTable96FinancialMetricsbySchoolSizeMeanMedian.png](./images/city_schools_analysisTable96FinancialMetricsbySchoolSizeMeanMedian.png)
+  &emsp; |&rarr; [./images/city_schoolsTable96FinancialMetricsbySchoolSizeMeanMedian.png](./images/city_schoolsTable96FinancialMetricsbySchoolSizeMeanMedian.png)
   
-  &emsp; |&rarr; [./images/city_schools_analysisTable104TestScoresPassingRatesMeanbySchoolSize.png](./images/city_schools_analysisTable104TestScoresPassingRatesMeanbySchoolSize.png)
+  &emsp; |&rarr; [./images/city_schoolsTable104TestScoresPassingRatesMeanbySchoolSize.png](./images/city_schoolsTable104TestScoresPassingRatesMeanbySchoolSize.png)
 
-  &emsp; |&rarr; [./images/city_schools_analysisTable105TestScoresPassingRatesMedianbySchoolSize.png](./images/city_schools_analysisTable105TestScoresPassingRatesMedianbySchoolSize.png)
+  &emsp; |&rarr; [./images/city_schoolsTable105TestScoresPassingRatesMedianbySchoolSize.png](./images/city_schoolsTable105TestScoresPassingRatesMedianbySchoolSize.png)
   
-  &emsp; |&rarr; [./images/city_schools_analysisTable106TestScoresPassingRatesMeanMedianbySchoolSize.png](./images/city_schools_analysisTable106TestScoresPassingRatesMeanMedianbySchoolSize.png)
+  &emsp; |&rarr; [./images/city_schoolsTable106TestScoresPassingRatesMeanMedianbySchoolSize.png](./images/city_schoolsTable106TestScoresPassingRatesMeanMedianbySchoolSize.png)
   
-  &emsp; |&rarr; [./images/city_schools_analysisTable114FinancialMetricsbySchoolTypeMean.png](./images/city_schools_analysisTable114FinancialMetricsbySchoolTypeMean.png)
+  &emsp; |&rarr; [./images/city_schoolsTable114FinancialMetricsbySchoolTypeMean.png](./images/city_schoolsTable114FinancialMetricsbySchoolTypeMean.png)
   
-  &emsp; |&rarr; [./images/city_schools_analysisTable115FinancialMetricsbySchoolTypeMedian.png](./images/city_schools_analysisTable115FinancialMetricsbySchoolTypeMedian.png)
+  &emsp; |&rarr; [./images/city_schoolsTable115FinancialMetricsbySchoolTypeMedian.png](./images/city_schoolsTable115FinancialMetricsbySchoolTypeMedian.png)
   
-  &emsp; |&rarr; [./images/city_schools_analysisTable116FinancialMetricsbySchoolTypeMeanMedian.png](./images/city_schools_analysisTable116FinancialMetricsbySchoolTypeMeanMedian.png)
+  &emsp; |&rarr; [./images/city_schoolsTable116FinancialMetricsbySchoolTypeMeanMedian.png](./images/city_schoolsTable116FinancialMetricsbySchoolTypeMeanMedian.png)
   
-  &emsp; |&rarr; [./images/city_schools_analysisTable124DisplayTestScoresPassingRatesMeanbySchoolType.png](./images/city_schools_analysisTable124DisplayTestScoresPassingRatesMeanbySchoolType.png)
+  &emsp; |&rarr; [./images/city_schoolsTable124DisplayTestScoresPassingRatesMeanbySchoolType.png](./images/city_schoolsTable124DisplayTestScoresPassingRatesMeanbySchoolType.png)
 
-  &emsp; |&rarr; [./images/city_schools_analysisTable124DisplayTestScoresPassingRatesMeanbySchoolType.png](./images/city_schools_analysisTable124DisplayTestScoresPassingRatesMeanbySchoolType.png)
+  &emsp; |&rarr; [./images/city_schoolsTable124DisplayTestScoresPassingRatesMeanbySchoolType.png](./images/city_schoolsTable124DisplayTestScoresPassingRatesMeanbySchoolType.png)
   
-  &emsp; |&rarr; [./images/city_schools_analysisTable125DisplayTestScoresPassingRatesMedianbySchoolType.png](./images/city_schools_analysisTable125DisplayTestScoresPassingRatesMedianbySchoolType.png)
+  &emsp; |&rarr; [./images/city_schoolsTable125DisplayTestScoresPassingRatesMedianbySchoolType.png](./images/city_schoolsTable125DisplayTestScoresPassingRatesMedianbySchoolType.png)
   
-  &emsp; |&rarr; [./images/city_schools_analysisTable126DisplayTestScoresPassingRatesMeanMedianbySchoolType.png](./images/city_schools_analysisTable126DisplayTestScoresPassingRatesMeanMedianbySchoolType.png)
+  &emsp; |&rarr; [./images/city_schoolsTable126DisplayTestScoresPassingRatesMeanMedianbySchoolType.png](./images/city_schoolsTable126DisplayTestScoresPassingRatesMeanMedianbySchoolType.png)
 
-  &emsp; |&rarr; [./images/city_schools_analysisTable521MathScoresMeanbyGrade.png](./images/city_schools_analysisTable521MathScoresMeanbyGrade.png)
+  &emsp; |&rarr; [./images/city_schoolsTable521MathScoresMeanbyGrade.png](./images/city_schoolsTable521MathScoresMeanbyGrade.png)
 
-  &emsp; |&rarr; [./images/city_schools_analysisTable522MathScoresMedianbyGrade.png](./images/city_schools_analysisTable522MathScoresMedianbyGrade.png)
+  &emsp; |&rarr; [./images/city_schoolsTable522MathScoresMedianbyGrade.png](./images/city_schoolsTable522MathScoresMedianbyGrade.png)
 
-  &emsp; |&rarr; [./images/city_schools_analysisTable523MathScoresMeanMedianbyGrade.png](./images/city_schools_analysisTable523MathScoresMeanMedianbyGrade.png)
+  &emsp; |&rarr; [./images/city_schoolsTable523MathScoresMeanMedianbyGrade.png](./images/city_schoolsTable523MathScoresMeanMedianbyGrade.png)
 
-  &emsp; |&rarr; [./images/city_schools_analysisTable531ReadingScoresMeanbyGrade.png](./images/city_schools_analysisTable531ReadingScoresMeanbyGrade.png)
+  &emsp; |&rarr; [./images/city_schoolsTable531ReadingScoresMeanbyGrade.png](./images/city_schoolsTable531ReadingScoresMeanbyGrade.png)
 
-  &emsp; |&rarr; [./images/city_schools_analysisTable532ReadingScoresMedianbyGrade.png](./images/city_schools_analysisTable532ReadingScoresMedianbyGrade.png)
+  &emsp; |&rarr; [./images/city_schoolsTable532ReadingScoresMedianbyGrade.png](./images/city_schoolsTable532ReadingScoresMedianbyGrade.png)
 
-  &emsp; |&rarr; [./images/city_schools_analysisTable533ReadingScoresMeanMedianbyGrade.png](./images/city_schools_analysisTable533ReadingScoresMeanMedianbyGrade.png)
+  &emsp; |&rarr; [./images/city_schoolsTable533ReadingScoresMeanMedianbyGrade.png](./images/city_schoolsTable533ReadingScoresMeanMedianbyGrade.png)
  
   &emsp; |&rarr; [./images/README.md](./images/README.md)
 
 |&rarr; [./logs/](./logs/)
 
-  &emsp; |&rarr; [./logs/20240401city_schools_analysis_log.txt](./logs/20240401city_schools_analysis_log.txt)
+  &emsp; |&rarr; [./logs/20240419city_schools_log.txt](./logs/20240419city_schools_log.txt)
 
   &emsp; |&rarr; [./logs/README.md](./logs/README.md)
 
