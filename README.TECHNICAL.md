@@ -30,17 +30,15 @@ python3 -m pip install dataframe-image
 
 ----
 
-The IPython notebook, city_schools_analysis.ipynb, uses the CSV files, schools_data.csv and students_data.csv, as input and will not run without them.  The interactive Python notebook must have the following Python scripts in the same folder with it:
+The IPython notebook, city_schools.ipynb, uses the CSV files, schools_data.csv and students_data.csv, as input and will not run without them.  The interactive Python notebook must have the following Python scripts in the same folder with it:
 
 city_schools_constants.py
 
-log_constants.py
+logx_constants.py
 
-log_functions.py
+logx.py
 
-log_subroutines.py
-
-pandas_process_functions.py
+pandas_processx.py
 
 If the folders, resources and logs are not present, the IPython notebook will create them.  The folder, resources, holds input files for the IPython Notebook; the folder, logs, contains log files from testing the IPython Notebook; and the folder, images, has the PNG image files of the IPython Notebook's tables and plots.
 
@@ -54,7 +52,7 @@ To place the IPython notebook in Log Mode or Image Mode set the parameter for th
 
 #### Source code
 
-city_schools_analysis.ipynb, city_schools_constants.py, log_constants.py, log_functions.py, log_subroutines.py, pandas_process_functions.py
+city_schools.ipynb, city_schools_constants.py, logx_constants.py, logx.py, pandas_processx.py
 
 #### Input files
 
@@ -82,17 +80,15 @@ Jupyter Notebook, Pandas, Python 3.11.4
 
 #### main branch
 
-|&rarr; [./city_schools_analysis.ipynb](./city_schools_analysis.ipynb)
+|&rarr; [./city_schools_analysis.ipynb](./city_schools.ipynb)
 
 |&rarr; [./city_schools_constants.py](./city_schools_constants.py)
 
-|&rarr; [./log_constants.py](./log_constants.py)
+|&rarr; [./log_constants.py](./logx_constants.py)
 
-|&rarr; [./log_functions.py](./log_functions.py)
+|&rarr; [./log_functions.py](./logx.py)
 
-|&rarr; [./log_subroutines.py](./log_subroutines.py)
-
-|&rarr; [./pandas_process_functions.py](./pandas_process_functions.py)
+|&rarr; [./pandas_process_functions.py](./pandas_processx.py)
 
 |&rarr; [./README.TECHNICAL.md](./README.TECHNICAL.md)
 
