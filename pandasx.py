@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[ ]:
+# In[1]:
 
 
 #*******************************************************************************************
@@ -23,8 +23,13 @@
  #      display_dataframe_column_counts
  #      display_dataframe_column_unique_values
  #      display_series_unique_value_counts
- #
  #      display_dataframe_hvplot
+ #
+ #      convert_timestamp_indices_to_date
+ #      return_unique_indices_last_values
+ #      return_date_indices
+ #
+ #      convert_to_percent_change
  #
  #
  #  Date            Description                             Programmer
@@ -39,18 +44,19 @@ import logx
 import hvplot.pandas
 import dataframe_image
 
+import numpy as np
 import pandas as pd
 
 pd.options.mode.chained_assignment = None
 
 
-# In[ ]:
+# In[2]:
 
 
 CONSTANT_LOCAL_FILE_NAME = 'pandasx.py'
 
 
-# In[ ]:
+# In[3]:
 
 
 #*******************************************************************************************
@@ -70,7 +76,7 @@ CONSTANT_LOCAL_FILE_NAME = 'pandasx.py'
  #  -----   -------------   ----------------------------------------------
  #  dataframe
  #          input_dataframe The parameter is the input dataframe.
- #  string  caption_string  The parameter is the table caption.
+ #  string  title_string    The parameter is the table title.
  #  integer precision_integer
  #                          This optional parameter is the decimal place 
  #                          precision of the displayed numbers.
@@ -87,19 +93,18 @@ CONSTANT_LOCAL_FILE_NAME = 'pandasx.py'
 
 def return_standard_format_styler \
         (input_dataframe,
-         caption_string,
+         title_string,
          precision_integer = 2,
          hide_index_boolean = True):
     
     temp_dataframe = input_dataframe.copy()
-        
         
     if hide_index_boolean == True:
             
         return \
             temp_dataframe \
                 .style \
-                .set_caption(caption_string) \
+                .set_caption(title_string) \
                 .set_table_styles \
                     ([dict \
                         (selector = 'caption',
@@ -125,7 +130,7 @@ def return_standard_format_styler \
         return \
             temp_dataframe \
                 .style \
-                .set_caption(caption_string) \
+                .set_caption(title_string) \
                 .set_table_styles \
                     ([dict \
                         (selector = 'caption',
@@ -146,7 +151,7 @@ def return_standard_format_styler \
                      decimal = '.')
 
 
-# In[ ]:
+# In[4]:
 
 
 #*******************************************************************************************
@@ -165,7 +170,7 @@ def return_standard_format_styler \
  #  Type    Name            Description
  #  -----   -------------   ----------------------------------------------
  #  styler  input_styler    The parameter is the input styler object.
- #  string  caption_string  The parameter is the table caption.
+ #  string  title_string    The parameter is the table title.
  #
  #
  #  Date                Description                                 Programmer
@@ -176,11 +181,11 @@ def return_standard_format_styler \
 
 def save_image_and_return_styler \
         (input_styler,
-         caption_string):
+         title_string):
     
     if logx_constants.IMAGE_FLAG == True:
 
-        image_file_path_string = logx.get_image_file_path(caption_string, 'png')
+        image_file_path_string = logx.get_image_file_path(title_string, 'png')
             
         dataframe_image.export \
             (input_styler, image_file_path_string, max_rows = -1, max_cols = -1)
@@ -188,7 +193,7 @@ def save_image_and_return_styler \
     return input_styler
 
 
-# In[ ]:
+# In[5]:
 
 
 #*******************************************************************************************
@@ -208,7 +213,7 @@ def save_image_and_return_styler \
  #  -----   -------------   ----------------------------------------------
  #  dataframe
  #          input_dataframe The parameter is the input dataframe.
- #  string  caption_string  The parameter is the table caption.
+ #  string  title_string    The parameter is the table title.
  #  integer line_count_integer
  #                          The parameter is the number of displayed records.
  #  boolean hide_index_boolean
@@ -223,20 +228,20 @@ def save_image_and_return_styler \
 
 def return_formatted_table \
         (input_dataframe,
-         caption_string,
+         title_string,
          line_count_integer = 10,
          hide_index_boolean = True):
 
     current_styler \
         = return_standard_format_styler \
             (input_dataframe.head(line_count_integer),
-             caption_string, 
+             title_string, 
              hide_index_boolean = hide_index_boolean)
 
-    return save_image_and_return_styler(current_styler, caption_string)
+    return save_image_and_return_styler(current_styler, title_string)
 
 
-# In[ ]:
+# In[6]:
 
 
 #*******************************************************************************************
@@ -304,7 +309,7 @@ def return_summary_statistics_as_dataframe(data_series):
     return pd.DataFrame(statistics_dictionary_list)
 
 
-# In[ ]:
+# In[7]:
 
 
 #*******************************************************************************************
@@ -350,7 +355,7 @@ def return_formatted_rows \
     return input_styler
 
 
-# In[ ]:
+# In[8]:
 
 
 #*******************************************************************************************
@@ -370,7 +375,7 @@ def return_formatted_rows \
  #  -----   -------------   ----------------------------------------------
  #  dataframe
  #          input_dataframe The parameter is the input dataframe.
- #  string  caption_string  The parameter is the text for the caption.
+ #  string  title_string    The parameter is the description title.
  #
  #
  #  Date                Description                                 Programmer
@@ -381,7 +386,7 @@ def return_formatted_rows \
 
 def return_dataframe_description \
         (input_dataframe,
-         caption_string):
+         title_string):
     
     description_dataframe = input_dataframe.describe()
     
@@ -399,7 +404,7 @@ def return_dataframe_description \
         = return_formatted_rows(description_dataframe.style, format_dictionary)
         
     description_styler \
-        .set_caption(caption_string) \
+        .set_caption(title_string) \
         .set_table_styles \
             ([{'selector': 'caption', 
                'props': [('color', 'black'), 
@@ -414,7 +419,7 @@ def return_dataframe_description \
     return description_styler
 
 
-# In[ ]:
+# In[9]:
 
 
 #*******************************************************************************************
@@ -434,7 +439,7 @@ def return_dataframe_description \
  #  -----   -------------   ----------------------------------------------
  #  dataframe
  #          input_dataframe The parameter is the input dataframe.
- #  string  caption_string  The parameter is the text for the caption.
+ #  string  title_string    The parameter is the description title.
  #
  #
  #  Date                Description                                 Programmer
@@ -445,14 +450,14 @@ def return_dataframe_description \
 
 def return_formatted_description \
         (input_dataframe,
-         caption_string):
+         title_string):
 
-    current_styler = return_dataframe_description(input_dataframe, caption_string)
+    current_styler = return_dataframe_description(input_dataframe, title_string)
 
-    return save_image_and_return_styler(current_styler, caption_string)
+    return save_image_and_return_styler(current_styler, title_string)
 
 
-# In[ ]:
+# In[10]:
 
 
 #*******************************************************************************************
@@ -490,7 +495,7 @@ def display_dataframe_column_counts(input_dataframe):
             ('\033[1m' + f'{column}: ' + '{:,}\n'.format(count_integer) + '\033[0m')
 
 
-# In[ ]:
+# In[11]:
 
 
 #*******************************************************************************************
@@ -530,7 +535,7 @@ def display_dataframe_column_unique_values(input_dataframe):
              + '\033[0m')
 
 
-# In[ ]:
+# In[12]:
 
 
 #*******************************************************************************************
@@ -566,6 +571,7 @@ def display_series_unique_value_counts \
     output_series = input_series.value_counts().sort_values(ascending = False)
 
     output_series.name = series_name_string
+            
 
     for i, v in output_series.items():
 
@@ -575,7 +581,7 @@ def display_series_unique_value_counts \
     return output_series
 
 
-# In[ ]:
+# In[13]:
 
 
 #******************************************************************************************
@@ -595,14 +601,14 @@ def display_series_unique_value_counts \
  #  -----   -------------   ----------------------------------------------
  #  dataframe
  #          input_dataframe The parameter is the input dataframe.
- #  string  caption_string  The parameter is the plot's title.
- #  string  color_column_name_string
+ #  string  title_string    The parameter is the plot's title.
+ #  string  color_column_string
  #                          The parameter is the color column name.
- #  string  size_column_name_string
+ #  string  size_column_string
  #                          The parameter is the size column name.
- #  float   longitude_column_string_name
+ #  float   longitude_column_string
  #                          The parameter is the longitude column name.
- #  float   latitude_column_string_name
+ #  float   latitude_column_string
  #                          The parameter is the latitude column name.
  #  string  x_label_string  The parameter is the x-axis label.
  #  string  y_label_string  The parameter is the y-axis label.
@@ -629,11 +635,11 @@ def display_series_unique_value_counts \
 
 def display_dataframe_hvplot \
         (input_dataframe,
-         caption_string,
-         color_column_name_string,
-         size_column_name_string,
-         longitude_column_string_name,
-         latitude_column_string_name,
+         title_string,
+         color_column_string,
+         size_column_string,
+         longitude_column_string,
+         latitude_column_string,
          x_label_string = '',
          y_label_string = '',
          x_limit_float_tuple = (-180, 180), 
@@ -646,25 +652,238 @@ def display_dataframe_hvplot \
         = input_dataframe \
             .hvplot \
             .points \
-                (longitude_column_string_name, 
-                 latitude_column_string_name,
+                (longitude_column_string, 
+                 latitude_column_string,
                  xlabel = x_label_string, 
                  ylabel = y_label_string,
                  geo = True, 
-                 color = color_column_name_string, 
-                 size = size_column_name_string,
+                 color = color_column_string, 
+                 size = size_column_string,
                  xlim = x_limit_float_tuple, 
                  ylim = y_limit_float_tuple,
                  alpha = alpha_float, 
                  tiles = tiles_string,
-                 title = caption_string,
+                 title = title_string,
                  hover_cols = hover_columns_string_list)
 
         
-    logx.save_hvplot_image_to_html(hvplot_overlay, caption_string)
+    logx.save_hvplot_image_to_html(hvplot_overlay, title_string)
+
+    return hvplot_overlay
+
+
+# In[14]:
+
+
+#******************************************************************************************
+ #
+ #  Function Name:  convert_timestamp_indices_to_date
+ #
+ #  Function Description:
+ #      This function receives a series and converts its timestamp indexes values 
+ #      into dates.
+ #
+ #
+ #  Return Type: series
+ #
+ #
+ #  Function Parameters:
+ #
+ #  Type    Name            Description
+ #  -----   -------------   ----------------------------------------------
+ #  series  input_series    The parameter is the input series.
+ #
+ #
+ #  Date                Description                                 Programmer
+ #  ---------------     ------------------------------------        ------------------
+ #  04/11/2024          Initial Development                         Nicholas J. George
+ #
+ #******************************************************************************************/ 
+    
+def convert_timestamp_indices_to_date(input_series):
+    
+    dates_list = []
+
+    for timestamp in input_series.index:
+        
+        temp_timestamp = pd.Timestamp(timestamp)
+            
+        temp_timestamp.to_pydatetime()
+            
+        temp_timestamp = temp_timestamp.date()
+        
+        dates_list.append(temp_timestamp)
+
+
+    final_series = pd.Series(dates_list, index = input_series.index)
+    
+    return final_series
+
+
+# In[15]:
+
+
+#******************************************************************************************
+ #
+ #  Function Name:  return_unique_indices_last_values
+ #
+ #  Function Description:
+ #      This function receives a series and removes all redundant rows with the same index
+ #      but leaves one instance of that index with the last value.
+ #
+ #
+ #  Return Type: series
+ #
+ #
+ #  Function Parameters:
+ #
+ #  Type    Name            Description
+ #  -----   -------------   ----------------------------------------------
+ #  series  input_series    The parameter is the input series.
+ #
+ #
+ #  Date                Description                                 Programmer
+ #  ---------------     ------------------------------------        ------------------
+ #  04/11/2024          Initial Development                         Nicholas J. George
+ #
+ #******************************************************************************************/
+
+def return_unique_indices_last_values(input_series):
+    
+    temp_series = input_series.copy()
+    
+    temp_series.dropna(inplace = True)
+    
+    
+    last_index_integer = len(temp_series) - 1
+    
+    index_integer_list = []
+    
+    values_integer_list = []
 
     
-    return hvplot_overlay
+    for index, row in enumerate(temp_series):
+
+        if index < last_index_integer:
+            
+            if (temp_series.index[index]).date() != (temp_series.index[index + 1]).date():
+            
+                index_integer_list.append(temp_series.index[index])
+            
+                values_integer_list.append(temp_series.iloc[index])
+        
+        elif index == last_index_integer:
+            
+            if (temp_series.index[index]).date() != (temp_series.index[index - 1]).date():
+                
+                index_integer_list.append(temp_series.index[index])
+            
+                values_integer_list.append(temp_series.iloc[index])
+
+    
+    final_series = pd.Series(values_integer_list, index = index_integer_list)        
+    
+    return final_series
+
+
+# In[16]:
+
+
+#******************************************************************************************
+ #
+ #  Function Name:  return_date_indices
+ #
+ #  Function Description:
+ #      This function receives a series with timestamps for indices, converts those
+ #      timestamps to dates, and returns the new series.
+ #
+ #
+ #  Return Type: series
+ #
+ #
+ #  Function Parameters:
+ #
+ #  Type    Name            Description
+ #  -----   -------------   ----------------------------------------------
+ #  series  input_series    The parameter is the input series.
+ #
+ #
+ #  Date                Description                                 Programmer
+ #  ---------------     ------------------------------------        ------------------
+ #  04/11/2024          Initial Development                         Nicholas J. George
+ #
+ #******************************************************************************************/
+
+def return_date_indices(input_series):
+    
+    index_integer_list = convert_timestamp_indices_to_date(input_series).tolist()
+  
+    values_integer_list = input_series.tolist()
+
+    final_series = pd.Series(values_integer_list, index = index_integer_list)
+    
+    return final_series
+
+
+# In[17]:
+
+
+#*******************************************************************************************
+ #
+ #  Function Name:  convert_to_percent_change
+ #
+ #  Function Description:
+ #      This function receives a series of numbers, converts its values to percent 
+ #      change values, and returns the new series to the caller.
+ #
+ #
+ #  Return Type: series
+ #
+ #
+ #  Function Parameters:
+ #
+ #  Type    Name            Description
+ #  -----   -------------   ----------------------------------------------
+ #  series  input_series    This parameter is input series.
+ #
+ #
+ #  Date                Description                                 Programmer
+ #  ---------------     ------------------------------------        ------------------
+ #  04/11/2024          Initial Development                         Nicholas J. George
+ #
+ #******************************************************************************************/ 
+    
+def convert_to_percent_change(input_series):
+
+    input_float_nparray = input_series.to_numpy()
+
+    temp_float_nparray = input_float_nparray * 0.0
+
+    
+    for i, element in enumerate(input_float_nparray):
+
+        if i != 0:
+
+            if input_float_nparray[i - 1] != 0.0:
+            
+                temp_float_nparray[i] \
+                    = ((element - input_float_nparray[i - 1]) / input_float_nparray[i - 1]) * 100
+
+            else:
+
+                temp_float_nparray[i] = 0.0
+
+        else:
+
+            temp_float_nparray[i] = 0.0
+
+    
+    final_series = pd.Series(temp_float_nparray, index = input_series.index)
+
+    final_series.drop(final_series.index[0], inplace = True)
+    
+
+    return final_series
 
 
 # In[ ]:
