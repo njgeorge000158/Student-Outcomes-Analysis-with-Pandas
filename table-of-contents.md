@@ -1,8 +1,8 @@
-# Student Outcomes Analysis with Pandas
+# Student-Outcomes-Analysis-with-Pandas
 
 ----
 
-## Table of Contents (city_schools_analysis.ipynb)
+## Table of Contents (city_schools.ipynb)
 
 ----
 
