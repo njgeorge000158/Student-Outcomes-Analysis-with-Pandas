@@ -38,7 +38,11 @@ logx_constants.py
 
 logx.py
 
-pandas_processx.py
+pandasx_constants.py
+
+pandasx.py
+
+timex.py
 
 If the folders, resources and logs are not present, the IPython notebook will create them.  The folder, resources, holds input files for the IPython Notebook; the folder, logs, contains log files from testing the IPython Notebook; and the folder, images, has the PNG image files of the IPython Notebook's tables and plots.
 
@@ -52,7 +56,7 @@ To place the IPython notebook in Log Mode or Image Mode set the parameter for th
 
 #### Source code
 
-city_schools.ipynb, city_schools_constants.py, logx_constants.py, logx.py, pandasx.py
+city_schools.ipynb, city_schools_constants.py, logx_constants.py, logx.py, pandasx_constants.py, pandasx.py, timex.py
 
 #### Input files
 
