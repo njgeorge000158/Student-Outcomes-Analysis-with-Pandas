@@ -8,7 +8,9 @@ __pycache__/
 
 logx_constants.py
 logx.py
+pandasx_constants.py
 pandasx.py
+timex.py
 
 # Distribution / packaging
 .Python
