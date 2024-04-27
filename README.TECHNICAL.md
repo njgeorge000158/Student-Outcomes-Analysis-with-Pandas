@@ -84,12 +84,6 @@ Jupyter Notebook, Pandas, Python 3.11.4
 
 |&rarr; [./city_schools.ipynb](./city_schools.ipynb)
 
-|&rarr; [./logx_constants.py](./logx_constants.py)
-
-|&rarr; [./logx.py](./logx.py)
-
-|&rarr; [./pandasx.py](./pandasx.py)
-
 |&rarr; [./README.TECHNICAL.md](./README.TECHNICAL.md)
 
 |&rarr; [./README.md](./README.md)
