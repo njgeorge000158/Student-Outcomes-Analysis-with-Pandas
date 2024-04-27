@@ -15,7 +15,6 @@
  #      return_standard_format_styler
  #      save_image_and_return_styler
  #      return_formatted_table
- #      return_summary_statistics_as_dataframe
  #      return_formatted_rows
  #      return_dataframe_description
  #      return_formatted_description
@@ -31,6 +30,12 @@
  #
  #      convert_to_percent_change
  #
+ #      format_styler_from_dictionary
+ #      return_statistics_as_list  
+ #      return_summary_statistics_as_dataframe
+ #      return_statistics_styler_from_series
+ #      return_statistics_styler_from_series_list
+ #
  #
  #  Date            Description                             Programmer
  #  ----------      ------------------------------------    ------------------
@@ -40,11 +45,12 @@
 
 import logx_constants
 import logx
+import pandasx_constants
+import timex
 
 import hvplot.pandas
 import dataframe_image
 
-import numpy as np
 import pandas as pd
 
 pd.options.mode.chained_assignment = None
@@ -246,74 +252,6 @@ def return_formatted_table \
 
 #*******************************************************************************************
  #
- #  Function Name:  return_summary_statistics_as_dataframe
- #
- #  Function Description:
- #      This function converts a data series into summary statistics, assigns
- #      the statistics to a dataframe, and returns it.
- #
- #
- #  Return Type: dataframe
- #
- #
- #  Function Parameters:
- #
- #  Type    Name            Description
- #  -----   -------------   ----------------------------------------------
- #  series  data_series     The parameter is the input series.
- #
- #
- #  Date                Description                                 Programmer
- #  ---------------     ------------------------------------        ------------------
- #  04/11/2024          Initial Development                         Nicholas J. George
- #
- #******************************************************************************************/
-
-def return_summary_statistics_as_dataframe(data_series):
-
-    # This line of code allocates the distribution for the quartiles.
-    quartiles_series = data_series.quantile([0.25, 0.50, 0.75])
-    
-    # These lines of code establish the lower quartile and the upper quartile.
-    lower_quartile_float = quartiles_series[0.25]
-
-    upper_quartile_float = quartiles_series[0.75]
-    
-    # This line of code calculates the interquartile range (IQR).
-    interquartile_range_float = upper_quartile_float - lower_quartile_float
-
-    # These line of code calculate the lower bound and upper bound 
-    # of the distribution.
-    lower_bound_float = lower_quartile_float - (1.5*interquartile_range_float)
-    
-    upper_bound_float = upper_quartile_float + (1.5*interquartile_range_float)
-    
-    # This line of code establishes a list of outliers.
-    outliers_series \
-        = data_series.loc[(data_series < lower_bound_float) | (data_series > upper_bound_float)]
-        
-    # This line of code finds the number of outliers.
-    number_of_outliers_integer = len(outliers_series)
-  
-    # These lines of code create a list of all the summary statistics and store
-    # the data in a DataFrame.
-    statistics_dictionary_list \
-        = [{'Lower Quartile': lower_quartile_float,
-            'Upper Quartile': upper_quartile_float,
-            'Interquartile Range': interquartile_range_float,
-            'Median': quartiles_series[0.5],
-            'Lower Boundary': lower_bound_float,
-            'Upper Boundary': upper_bound_float,
-            'Number of Outliers': number_of_outliers_integer}]
-  
-    return pd.DataFrame(statistics_dictionary_list)
-
-
-# In[7]:
-
-
-#*******************************************************************************************
- #
  #  Function Name:  return_formatted_rows
  #
  #  Function Description:
@@ -355,7 +293,7 @@ def return_formatted_rows \
     return input_styler
 
 
-# In[8]:
+# In[7]:
 
 
 #*******************************************************************************************
@@ -419,7 +357,7 @@ def return_dataframe_description \
     return description_styler
 
 
-# In[9]:
+# In[8]:
 
 
 #*******************************************************************************************
@@ -457,7 +395,7 @@ def return_formatted_description \
     return save_image_and_return_styler(current_styler, title_string)
 
 
-# In[10]:
+# In[9]:
 
 
 #*******************************************************************************************
@@ -495,7 +433,7 @@ def display_dataframe_column_counts(input_dataframe):
             ('\033[1m' + f'{column}: ' + '{:,}\n'.format(count_integer) + '\033[0m')
 
 
-# In[11]:
+# In[10]:
 
 
 #*******************************************************************************************
@@ -535,7 +473,7 @@ def display_dataframe_column_unique_values(input_dataframe):
              + '\033[0m')
 
 
-# In[12]:
+# In[11]:
 
 
 #*******************************************************************************************
@@ -581,7 +519,7 @@ def display_series_unique_value_counts \
     return output_series
 
 
-# In[13]:
+# In[12]:
 
 
 #******************************************************************************************
@@ -672,7 +610,7 @@ def display_dataframe_hvplot \
     return hvplot_overlay
 
 
-# In[14]:
+# In[13]:
 
 
 #******************************************************************************************
@@ -720,7 +658,7 @@ def convert_timestamp_indices_to_date(input_series):
     return final_series
 
 
-# In[15]:
+# In[14]:
 
 
 #******************************************************************************************
@@ -786,7 +724,7 @@ def return_unique_indices_last_values(input_series):
     return final_series
 
 
-# In[16]:
+# In[15]:
 
 
 #******************************************************************************************
@@ -825,7 +763,7 @@ def return_date_indices(input_series):
     return final_series
 
 
-# In[17]:
+# In[16]:
 
 
 #*******************************************************************************************
@@ -884,6 +822,308 @@ def convert_to_percent_change(input_series):
     
 
     return final_series
+
+
+# In[17]:
+
+
+#*******************************************************************************************
+ #
+ #  Function Name:  format_dataframe_from_dictionary
+ #
+ #  Function Description:
+ #      This function formats a dataframe based on a format dictionary and returns a styler.
+ #
+ #
+ #  Return Type: styler
+ #
+ #
+ #  Function Parameters:
+ #
+ #  Type    Name            Description
+ #  -----   -------------   ----------------------------------------------
+ #  dataframe
+ #          input_dataframe The parameter is the input dataframe.
+ #  dictionary
+ #          format_dictionary
+ #                          The parameter is the format dictionary.
+ #
+ #
+ #  Date                Description                                 Programmer
+ #  ---------------     ------------------------------------        ------------------
+ #  04/11/2024          Initial Development                         Nicholas J. George
+ #
+ #******************************************************************************************/
+
+def format_dataframe_from_dictionary \
+        (input_dataframe, 
+         format_dictionary):
+
+    input_styler = input_dataframe.style
+            
+    for index, format in format_dictionary.items():
+        
+        row_index = input_styler.index.get_loc(index)
+
+        for column_index in range(len(input_styler.columns)):
+            
+            input_styler._display_funcs[(row_index, column_index)] = format
+            
+            
+    return input_styler
+
+
+# In[18]:
+
+
+#*******************************************************************************************
+ #
+ #  Function Name:  return_statistics_as_list
+ #
+ #  Function Description:
+ #      This function returns the statistics for a series as a list of float values.
+ #
+ #
+ #  Return Type: dataframe
+ #
+ #
+ #  Function Parameters:
+ #
+ #  Type    Name            Description
+ #  -----   -------------   ----------------------------------------------
+ #  series  data_series     The parameter is the input series.
+ #
+ #
+ #  Date                Description                                 Programmer
+ #  ---------------     ------------------------------------        ------------------
+ #  04/11/2024          Initial Development                         Nicholas J. George
+ #
+ #******************************************************************************************/
+
+def return_statistics_as_list(input_series):
+
+    final_float_list \
+        = [input_series.mean(),
+           input_series.median(),
+           input_series.mode()[0],
+           input_series.var(),
+           input_series.std(),
+           input_series.sem(),
+           input_series.min(),
+           input_series.describe().loc['25%'],
+           input_series.describe().loc['50%'],
+           input_series.describe().loc['75%'],
+           input_series.max(),
+           input_series.count()]
+
+    return final_float_list
+
+
+# In[19]:
+
+
+#*******************************************************************************************
+ #
+ #  Function Name:  return_summary_statistics_as_dataframe
+ #
+ #  Function Description:
+ #      This function converts a data series into summary statistics, assigns
+ #      the statistics to a dataframe, and returns it.
+ #
+ #
+ #  Return Type: dataframe
+ #
+ #
+ #  Function Parameters:
+ #
+ #  Type    Name            Description
+ #  -----   -------------   ----------------------------------------------
+ #  series  data_series     The parameter is the input series.
+ #
+ #
+ #  Date                Description                                 Programmer
+ #  ---------------     ------------------------------------        ------------------
+ #  04/11/2024          Initial Development                         Nicholas J. George
+ #
+ #******************************************************************************************/
+
+def return_summary_statistics_as_dataframe(data_series):
+
+    # This line of code allocates the distribution for the quartiles.
+    quartiles_series = data_series.quantile([0.25, 0.50, 0.75])
+    
+    # These lines of code establish the lower quartile and the upper quartile.
+    lower_quartile_float = quartiles_series[0.25]
+
+    upper_quartile_float = quartiles_series[0.75]
+    
+    # This line of code calculates the interquartile range (IQR).
+    interquartile_range_float = upper_quartile_float - lower_quartile_float
+
+    # These line of code calculate the lower bound and upper bound 
+    # of the distribution.
+    lower_bound_float = lower_quartile_float - (1.5*interquartile_range_float)
+    
+    upper_bound_float = upper_quartile_float + (1.5*interquartile_range_float)
+    
+    # This line of code establishes a list of outliers.
+    outliers_series \
+        = data_series.loc[(data_series < lower_bound_float) | (data_series > upper_bound_float)]
+        
+    # This line of code finds the number of outliers.
+    outlier_count_integer = len(outliers_series)
+  
+    # These lines of code create a list of all the summary statistics and store
+    # the data in a DataFrame.
+    statistics_dictionary_list \
+        = [{'lower_quartile': lower_quartile_float,
+            'upper_quartile': upper_quartile_float,
+            'interquartile_range': interquartile_range_float,
+            'median': quartiles_series[0.5],
+            'lower_boundary': lower_bound_float,
+            'upper_boundary': upper_bound_float,
+            'outlier_count': outlier_count_integer}]
+  
+    return pd.DataFrame(statistics_dictionary_list)
+
+
+# In[20]:
+
+
+#*******************************************************************************************
+ #
+ #  Function Name:  return_statistics_styler_from_series
+ #
+ #  Function Description:
+ #      This function receives a series, calculates its statistical values, places them
+ #      in a dataframe, formats the dataframe as a syler and returns it to the caller.
+ #
+ #
+ #  Return Type: dataframe
+ #
+ #
+ #  Function Parameters:
+ #
+ #  Type    Name            Description
+ #  -----   -------------   ----------------------------------------------
+ #  series  input_series    The parameter is the input series.
+ #  string  title_string    The parameter is the title of the styler.
+ #
+ #
+ #  Date                Description                                 Programmer
+ #  ---------------     ------------------------------------        ------------------
+ #  04/11/2024          Initial Development                         Nicholas J. George
+ #
+ #******************************************************************************************/
+
+def return_statistics_styler_from_series \
+        (input_series,
+         title_string):
+    
+    statistics_float_list = return_statistics_as_list(input_series)
+    
+    statistics_dataframe \
+        = pd.DataFrame \
+            (statistics_float_list, 
+             columns = [input_series.name], 
+             index = pandasx_constants.statistics_index_string_list)
+
+    statistics_styler \
+        = format_dataframe_from_dictionary \
+             (statistics_dataframe, pandasx_constants.statistics_format_dictionary)
+        
+    statistics_styler \
+        .set_caption(title_string) \
+        .set_table_styles \
+            ([{'selector': 'caption', 
+               'props': [('color', 'black'), 
+                         ('font-size', '16px'),
+                         ('font-style', 'bold'),
+                         ('text-align', 'center')]}]) \
+        .set_properties \
+            (**{'text-align': 'center',
+                'border': '1.3px solid red',
+                'color': 'blue'})
+
+            
+    return save_image_and_return_styler(statistics_styler, title_string)
+
+
+# In[21]:
+
+
+#*******************************************************************************************
+ #
+ #  Function Name:  return_statistics_styler_from_series_list
+ #
+ #  Function Description:
+ #      This function receives a series list, calculates the statistical values 
+ #      of each series, places them in a dataframe, and returns the styler
+ #      to the caller.
+ #
+ #
+ #  Return Type: styler
+ #
+ #
+ #  Function Parameters:
+ #
+ #  Type    Name            Description
+ #  -----   -------------   ----------------------------------------------
+ #  list    input_series_list
+ #                          The parameter is the input series list.
+ #  string  title_string    The parameter is the title for the styler.
+ #
+ #
+ #  Date                Description                                 Programmer
+ #  ---------------     ------------------------------------        ------------------
+ #  08/18/2023          Initial Development                         Nicholas J. George
+ #
+ #******************************************************************************************/
+
+def return_statistics_styler_from_series_list \
+        (input_series_list,
+         title_string):
+    
+    index_string_list = pandasx_constants.statistics_index_string_list
+
+    for index, series in enumerate(input_series_list): 
+
+        statistics_float_list = return_statistics_as_list(series)
+       
+        temp_dataframe \
+            = pd.DataFrame \
+                (statistics_float_list, 
+                 columns = [series.name], 
+                 index = pandasx_constants.statistics_index_string_list)
+
+        if index != 0:
+
+            statistics_dataframe \
+                = pd.concat([statistics_dataframe, temp_dataframe], axis = 1)
+        else:
+            
+            statistics_dataframe = temp_dataframe.copy()
+            
+            
+    statistics_styler \
+        = format_dataframe_from_dictionary \
+             (statistics_dataframe, pandasx_constants.statistics_format_dictionary)
+        
+    statistics_styler \
+        .set_caption(title_string) \
+        .set_table_styles \
+            ([{'selector': 'caption', 
+               'props': [('color', 'black'), 
+                         ('font-size', '16px'),
+                         ('font-style', 'bold'),
+                         ('text-align', 'center')]}]) \
+        .set_properties \
+            (**{'text-align': 'center',
+                'border': '1.3px solid red',
+                'color': 'blue'})
+
+            
+    return statistics_styler
 
 
 # In[ ]:

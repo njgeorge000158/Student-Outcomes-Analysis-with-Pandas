@@ -9,7 +9,7 @@
  #  File Name:  logx.py
  #
  #  File Description:
- #      This Python script, logx.py, contains generic Python functions for writing 
+ #      The Python script, logx.py, contains generic Python functions for writing 
  #      information to log files.  Here is the list:
  #
  #  current_date_as_string
@@ -34,6 +34,10 @@
  #  save_plot_image
  #  save_hvplot_image_to_html
  #  save_plotly_image
+ #
+ #  set_logs_directory_path
+ #  set_images_directory_path
+ #  set_base_log_file_name
  #
  #
  #  Date            Description                             Programmer
@@ -69,7 +73,7 @@ CONSTANT_LOCAL_FILE_NAME = 'logx.py'
  #  Function Name:  current_date_as_string
  #
  #  Function Description:
- #      This function returns the current date as a formatted string for the names
+ #      The function returns the current date as a formatted string for the names
  #      of log files.
  #
  #
@@ -80,7 +84,7 @@ CONSTANT_LOCAL_FILE_NAME = 'logx.py'
  #
  #  Type    Name            Description
  #  -----   -------------   ----------------------------------------------
- #  string  format_string   This parameter is optional and specifies the date format.
+ #  string  format_string   The parameter is optional and specifies the date format.
  #
  #
  #  Date                Description                                 Programmer
@@ -104,7 +108,7 @@ def current_date_as_string(format_string = '%Y%m%d'):
  #  Function Name:  current_timestamp_as_string
  #
  #  Function Description:
- #      This function returns the current date and time as a formatted string
+ #      The function returns the current date and time as a formatted string
  #      for timepoint entries in log files.
  #
  #
@@ -115,7 +119,7 @@ def current_date_as_string(format_string = '%Y%m%d'):
  #
  #  Type    Name            Description
  #  -----   -------------   ----------------------------------------------
- #  string  format_string   This parameter is optional and specifies the datetime format.
+ #  string  format_string   The parameter is optional and specifies the datetime format.
  #
  #
  #  Date                Description                                 Programmer
@@ -139,7 +143,7 @@ def current_timestamp_as_string(format_string = '%Y/%m/%d %H:%M:%S'):
  #  Function Name:  current_timepoint_with_message
  #
  #  Function Description:
- #      This function takes a message, formats it with a timestamp, and returns it 
+ #      The function takes a message, formats it with a timestamp, and returns it 
  #      to the caller.
  #
  #
@@ -150,7 +154,7 @@ def current_timestamp_as_string(format_string = '%Y/%m/%d %H:%M:%S'):
  #
  #  Type    Name            Description
  #  -----   -------------   ----------------------------------------------
- #  string  message_string  This parameter is the optional message with the timepoint.
+ #  string  message_string  The parameter is the optional message with the timepoint.
  #
  #
  #  Date                Description                                 Programmer
@@ -176,7 +180,7 @@ def current_timepoint_with_message(message_string = ''):
  #  Function Name:  get_image_file_path
  #
  #  Function Description:
- #      This function uses a plot's caption to determine the image file path.
+ #      The function uses a plot's caption to determine the image file path.
  #
  #
  #  Return Type: string
@@ -186,9 +190,9 @@ def current_timepoint_with_message(message_string = ''):
  #
  #  Type    Name            Description
  #  -----   -------------   ----------------------------------------------
- #  string  caption_string  This parameter is the plot title.
+ #  string  caption_string  The parameter is the plot title.
  #  string  image_format_string
- #                          This parameter is the image format file suffix.    
+ #                          The parameter is the image format file suffix.    
  #
  #
  #  Date                Description                                 Programmer
@@ -224,7 +228,7 @@ def get_image_file_path \
  #  Function Name:  save_png_return_styler
  #
  #  Function Description:
- #      This function saves the styler object as a png image file then returns it.
+ #      The function saves the styler object as a png image file then returns it.
  #
  #
  #  Return Type: n/a
@@ -234,8 +238,8 @@ def get_image_file_path \
  #
  #  Type    Name            Description
  #  -----   -------------   ----------------------------------------------
- #  styler  input_styler    This parameter is the input styler object.
- #  string  caption_string  This parameter is the styler caption.
+ #  styler  input_styler    The parameter is the input styler object.
+ #  string  caption_string  The parameter is the styler caption.
  #
  #
  #  Date                Description                                 Programmer
@@ -266,7 +270,7 @@ def save_png_return_styler \
  #  Function Name:  begin_program
  #
  #  Function Description:
- #      This function prints an announcement for the start of program execution, creates
+ #      The function prints an announcement for the start of program execution, creates
  #      the appropriate folders, and writes the same announcement to the log file.
  #
  #
@@ -278,7 +282,7 @@ def save_png_return_styler \
  #  Type    Name            Description
  #  -----   -------------   ----------------------------------------------
  #  string  program_designation_string
- #                          This parameter is the program designation.
+ #                          The parameter is the program designation.
  #
  #
  #  Date                Description                                 Programmer
@@ -314,7 +318,7 @@ def begin_program(program_designation_string = ''):
  #  Function Name:  end_program
  #
  #  Function Description:
- #      This function prints an end of program execution announcement, creates the 
+ #      The function prints an end of program execution announcement, creates the 
  #      appropriate folders, and writes the same announcement to the log file.
  #
  #
@@ -355,7 +359,7 @@ def end_program():
  #  Function Name:  set_log_mode
  #
  #  Function Description:
- #      This function sets the value for the global log flag (True/False).
+ #      The function sets the value for the global log flag (True/False).
  #
  #
  #  Return Type: n/a
@@ -365,7 +369,7 @@ def end_program():
  #
  #  Type    Name            Description
  #  -----   -------------   ----------------------------------------------
- #  boolean mode_boolean    This parameter is the desired Boolean value for the global 
+ #  boolean mode_boolean    The parameter is the desired Boolean value for the global 
  #                          log flag.
  #
  #
@@ -388,7 +392,7 @@ def set_log_mode(mode_boolean = True):
  #  Function Name:  set_image_mode
  #
  #  Function Description:
- #      This function sets the value for the global image flag (True/False).
+ #      The function sets the value for the global image flag (True/False).
  #
  #
  #  Return Type: n/a
@@ -398,7 +402,7 @@ def set_log_mode(mode_boolean = True):
  #
  #  Type    Name            Description
  #  -----   -------------   ----------------------------------------------
- #  boolean mode_boolean    This parameter is the desired Boolean value for the global 
+ #  boolean mode_boolean    The parameter is the desired Boolean value for the global 
  #                          image flag.
  #
  #
@@ -421,7 +425,7 @@ def set_image_mode(mode_boolean = True):
  #  Function Name:  set_program_designation
  #
  #  Function Description:
- #      This function sets the value for the global program designation string.
+ #      The function sets the value for the global program designation string.
  #
  #
  #  Return Type: n/a
@@ -432,7 +436,7 @@ def set_image_mode(mode_boolean = True):
  #  Type    Name            Description
  #  -----   -------------   ----------------------------------------------
  #  string  program_designation_string
- #                          This parameter is the text for the global program designation.
+ #                          The parameter is the text for the global program designation.
  #
  #
  #  Date                Description                                 Programmer
@@ -454,7 +458,7 @@ def set_program_designation(program_designation_string = ''):
  #  Function Name:  log_write_object
  #
  #  Function Description:
- #      This function takes an object as a parameter, and, if the global debug flag is true, 
+ #      The function takes an object as a parameter, and, if the global debug flag is true, 
  #      writes it to a debug file.
  #
  #
@@ -465,7 +469,7 @@ def set_program_designation(program_designation_string = ''):
  #
  #  Type    Name            Description
  #  -----   -------------   ----------------------------------------------
- #  object  input_object    This parameter is the object to be written to the log file.
+ #  object  input_object    The parameter is the object to be written to the log file.
  #
  #
  #  Date                Description                                 Programmer
@@ -491,7 +495,7 @@ def log_write_object(input_object):
  #  Function Name:  create_directory
  #
  #  Function Description:
- #      This function creates a folder if it does not exist.
+ #      The function creates a folder if it does not exist.
  #
  #
  #  Return Type: n/a
@@ -502,7 +506,7 @@ def log_write_object(input_object):
  #  Type    Name            Description
  #  -----   -------------   ----------------------------------------------
  #  string  directory_string
- #                          This parameter is the directory name.
+ #                          The parameter is the directory name.
  #
  #
  #  Date                Description                                 Programmer
@@ -530,7 +534,7 @@ def create_directory(directory_string):
  #  Function Name:  open_log_file
  #
  #  Function Description:
- #      This function opens the log file for appending.  If it does not exist, the 
+ #      The function opens the log file for appending.  If it does not exist, the 
  #      function creates it.
  #
  #
@@ -576,7 +580,7 @@ def open_log_file():
  #  Function Name:  print_and_log_text
  #
  #  Function Description:
- #      This function prints the received message then writes the message to the log file.
+ #      The function prints the received message then writes the message to the log file.
  #
  #
  #  Return Type: n/a
@@ -586,7 +590,7 @@ def open_log_file():
  #
  #  Type    Name            Description
  #  -----   -------------   ----------------------------------------------
- #  string  message_string  This parameter is the input message text string.
+ #  string  message_string  The parameter is the input message text string.
  #
  #
  #  Date                Description                                 Programmer
@@ -614,7 +618,7 @@ def print_and_log_text(message_string = ''):
  #  Function Name:  save_plot_image
  #
  #  Function Description:
- #      This function saves the image of a matplotlib plot to a file.
+ #      The function saves the image of a matplotlib plot to a file.
  #
  #
  #  Return Type: n/a
@@ -624,12 +628,12 @@ def print_and_log_text(message_string = ''):
  #
  #  Type    Name            Description
  #  -----   -------------   ----------------------------------------------
- #  string  caption_string  This parameter is the plot title.
- #  integer dpi_integer     This parameter is the dots per square inch for the image.
+ #  string  caption_string  The parameter is the plot title.
+ #  integer dpi_integer     The parameter is the dots per square inch for the image.
  #  float   pad_inches_float
- #                          This parameter is the buffer around the plot in inches.
+ #                          The parameter is the buffer around the plot in inches.
  #  string  image_format_string
- #                          This parameter is the image format (png, html, etc.).
+ #                          The parameter is the image format (png, html, etc.).
  #
  #
  #  Date                Description                                 Programmer
@@ -664,7 +668,7 @@ def save_plot_image \
  #  Function Name:  save_hvplot_image_to_html
  #
  #  Function Description:
- #      This function saves an hvplot to an html file.
+ #      The function saves an hvplot to an html file.
  #
  #
  #  Return Type: n/a
@@ -674,10 +678,10 @@ def save_plot_image \
  #
  #  Type    Name            Description
  #  -----   -------------   ----------------------------------------------
- #  object  hvplot_overlay  This parameter is the input hvplot overlay object.
- #  string  caption_string  This parameter is the plot title.
- #  integer height_integer  This parameter is the plot's height.
- #  integer width_integer   This parameter is the plot's width.
+ #  object  hvplot_overlay  The parameter is the input hvplot overlay object.
+ #  string  caption_string  The parameter is the plot title.
+ #  integer height_integer  The parameter is the plot's height.
+ #  integer width_integer   The parameter is the plot's width.
  #
  #
  #  Date                Description                                 Programmer
@@ -711,7 +715,7 @@ def save_hvplot_image_to_html \
  #  Function Name:  save_plotly_image
  #
  #  Function Description:
- #      This function saves a Plotly image to the images folder.
+ #      The function saves a Plotly image to the images folder.
  #
  #
  #  Return Type: n/a
@@ -721,9 +725,9 @@ def save_hvplot_image_to_html \
  #
  #  Type    Name            Description
  #  -----   -------------   ----------------------------------------------
- #  object  plotly_figure   This parameter is the Plotly Figure Object.
+ #  object  plotly_figure   The parameter is the Plotly Figure Object.
  #  string  figure_title_string
- #                          This parameter is the figure title.
+ #                          The parameter is the figure title.
  #
  #
  #  Date                Description                                 Programmer
@@ -741,6 +745,105 @@ def save_plotly_image \
         image_file_path_string = get_image_file_path(caption_string, 'png')
 
         plotly_figure.write_image(image_file_path_string)
+
+
+# In[20]:
+
+
+#*******************************************************************************************
+ #
+ #  Function Name:  set_logs_directory_path
+ #
+ #  Function Description:
+ #      The function sets the logs directory path.
+ #
+ #
+ #  Return Type: n/a
+ #
+ #
+ #  Function Parameters:
+ #
+ #  Type    Name            Description
+ #  -----   -------------   ----------------------------------------------
+ #  string  directory_path_string
+ #                          The parameter is the new directory path.
+ #
+ #
+ #  Date                Description                                 Programmer
+ #  ---------------     ------------------------------------        ------------------
+ #  04/11/2024          Initial Development                         Nicholas J. George
+ #
+ #******************************************************************************************/
+
+def set_logs_directory_path(directory_path_string):
+
+    logx_constants.LOGS_DIRECTORY_PATH = directory_path_string
+
+
+# In[21]:
+
+
+#*******************************************************************************************
+ #
+ #  Function Name:  set_images_directory_path
+ #
+ #  Function Description:
+ #      The function sets the images directory path.
+ #
+ #
+ #  Return Type: n/a
+ #
+ #
+ #  Function Parameters:
+ #
+ #  Type    Name            Description
+ #  -----   -------------   ----------------------------------------------
+ #  string  directory_path_string
+ #                          The parameter is the new directory path.
+ #
+ #
+ #  Date                Description                                 Programmer
+ #  ---------------     ------------------------------------        ------------------
+ #  04/11/2024          Initial Development                         Nicholas J. George
+ #
+ #******************************************************************************************/
+
+def set_images_directory_path(directory_path_string):
+
+    logx_constants.IMAGES_DIRECTORY_PATH = directory_path_string
+
+
+# In[22]:
+
+
+#*******************************************************************************************
+ #
+ #  Function Name:  set_base_log_file_name
+ #
+ #  Function Description:
+ #      The function sets the base log file name.
+ #
+ #
+ #  Return Type: n/a
+ #
+ #
+ #  Function Parameters:
+ #
+ #  Type    Name            Description
+ #  -----   -------------   ----------------------------------------------
+ #  string  base_file_path_string
+ #                          The parameter is the base file name.
+ #
+ #
+ #  Date                Description                                 Programmer
+ #  ---------------     ------------------------------------        ------------------
+ #  04/11/2024          Initial Development                         Nicholas J. George
+ #
+ #******************************************************************************************/
+
+def set_base_log_file_name(base_file_path_string):
+
+    logx_constants.BASE_LOG_FILE_NAME = base_file_path_string
 
 
 # In[ ]:
