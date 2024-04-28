@@ -12,6 +12,13 @@
  #      The Python script, logx.py, contains generic Python functions for writing 
  #      information to log files.  Here is the list:
  #
+ #  set_log_mode
+ #  set_image_mode
+ #  set_program_designation
+ #  set_logs_directory_path
+ #  set_images_directory_path
+ #  set_base_log_file_name
+ # 
  #  current_date_as_string
  #  current_timestamp_as_string
  #  current_timepoint_with_message
@@ -22,9 +29,6 @@
  #
  #  begin_program
  #  end_program
- #  set_log_mode
- #  set_image_mode
- #  set_program_designation
  #
  #  log_write_object
  #  create_directory
@@ -35,18 +39,12 @@
  #  save_hvplot_image_to_html
  #  save_plotly_image
  #
- #  set_logs_directory_path
- #  set_images_directory_path
- #  set_base_log_file_name
- #
  #
  #  Date            Description                             Programmer
  #  ----------      ------------------------------------    ------------------
  #  04/11/2024      Initial Development                     Nicholas J. George
  #
  #******************************************************************************************/
-
-import logx_constants
 
 import dataframe_image
 import os
@@ -66,6 +64,236 @@ CONSTANT_LOCAL_FILE_NAME = 'logx.py'
 
 
 # In[3]:
+
+
+LOG_FLAG = False
+
+IMAGE_FLAG = False
+
+PROGRAM_DESIGNATION = ''
+
+LOGS_DIRECTORY_PATH = './logs'
+
+IMAGES_DIRECTORY_PATH = './images'
+
+BASE_LOG_FILE_NAME = '_log.txt'
+
+LOG_FILE_PATH = ''
+
+LOG_TXT_FILE = None
+
+
+# In[4]:
+
+
+#*******************************************************************************************
+ #
+ #  Function Name:  set_log_mode
+ #
+ #  Function Description:
+ #      The function sets the value for the global log flag (True/False).
+ #
+ #
+ #  Return Type: n/a
+ #
+ #
+ #  Function Parameters:
+ #
+ #  Type    Name            Description
+ #  -----   -------------   ----------------------------------------------
+ #  boolean mode_boolean    The parameter is the desired Boolean value for the global 
+ #                          log flag.
+ #
+ #
+ #  Date                Description                                 Programmer
+ #  ---------------     ------------------------------------        ------------------
+ #  04/11/2024          Initial Development                         Nicholas J. George
+ #
+ #******************************************************************************************/
+
+def set_log_mode(mode_boolean = True):
+
+    global LOG_FLAG
+    
+    LOG_FLAG = mode_boolean
+
+
+# In[5]:
+
+
+#*******************************************************************************************
+ #
+ #  Function Name:  set_image_mode
+ #
+ #  Function Description:
+ #      The function sets the value for the global image flag (True/False).
+ #
+ #
+ #  Return Type: n/a
+ #
+ #
+ #  Function Parameters:
+ #
+ #  Type    Name            Description
+ #  -----   -------------   ----------------------------------------------
+ #  boolean mode_boolean    The parameter is the desired Boolean value for the global 
+ #                          image flag.
+ #
+ #
+ #  Date                Description                                 Programmer
+ #  ---------------     ------------------------------------        ------------------
+ #  04/11/2024          Initial Development                         Nicholas J. George
+ #
+ #******************************************************************************************/
+
+def set_image_mode(mode_boolean = True):
+
+    global IMAGE_FLAG
+    
+    IMAGE_FLAG = mode_boolean
+
+
+# In[6]:
+
+
+#*******************************************************************************************
+ #
+ #  Function Name:  set_program_designation
+ #
+ #  Function Description:
+ #      The function sets the value for the global program designation string.
+ #
+ #
+ #  Return Type: n/a
+ #
+ #
+ #  Function Parameters:
+ #
+ #  Type    Name            Description
+ #  -----   -------------   ----------------------------------------------
+ #  string  program_designation_string
+ #                          The parameter is the text for the global program designation.
+ #
+ #
+ #  Date                Description                                 Programmer
+ #  ---------------     ------------------------------------        ------------------
+ #  04/11/2024          Initial Development                         Nicholas J. George
+ #
+ #******************************************************************************************/
+
+def set_program_designation(program_designation_string = ''):
+
+    global PROGRAM_DESIGNATION
+    
+    PROGRAM_DESIGNATION = program_designation_string
+
+
+# In[7]:
+
+
+#*******************************************************************************************
+ #
+ #  Function Name:  set_logs_directory_path
+ #
+ #  Function Description:
+ #      The function sets the logs directory path.
+ #
+ #
+ #  Return Type: n/a
+ #
+ #
+ #  Function Parameters:
+ #
+ #  Type    Name            Description
+ #  -----   -------------   ----------------------------------------------
+ #  string  directory_path_string
+ #                          The parameter is the new directory path.
+ #
+ #
+ #  Date                Description                                 Programmer
+ #  ---------------     ------------------------------------        ------------------
+ #  04/11/2024          Initial Development                         Nicholas J. George
+ #
+ #******************************************************************************************/
+
+def set_logs_directory_path(directory_path_string):
+
+    global LOGS_DIRECTORY_PATH
+
+    LOGS_DIRECTORY_PATH = directory_path_string
+
+
+# In[8]:
+
+
+#*******************************************************************************************
+ #
+ #  Function Name:  set_images_directory_path
+ #
+ #  Function Description:
+ #      The function sets the images directory path.
+ #
+ #
+ #  Return Type: n/a
+ #
+ #
+ #  Function Parameters:
+ #
+ #  Type    Name            Description
+ #  -----   -------------   ----------------------------------------------
+ #  string  directory_path_string
+ #                          The parameter is the new directory path.
+ #
+ #
+ #  Date                Description                                 Programmer
+ #  ---------------     ------------------------------------        ------------------
+ #  04/11/2024          Initial Development                         Nicholas J. George
+ #
+ #******************************************************************************************/
+
+def set_images_directory_path(directory_path_string):
+
+    global IMAGES_DIRECTORY_PATH
+
+    IMAGES_DIRECTORY_PATH = directory_path_string
+
+
+# In[9]:
+
+
+#*******************************************************************************************
+ #
+ #  Function Name:  set_base_log_file_name
+ #
+ #  Function Description:
+ #      The function sets the base log file name.
+ #
+ #
+ #  Return Type: n/a
+ #
+ #
+ #  Function Parameters:
+ #
+ #  Type    Name            Description
+ #  -----   -------------   ----------------------------------------------
+ #  string  base_file_path_string
+ #                          The parameter is the base file name.
+ #
+ #
+ #  Date                Description                                 Programmer
+ #  ---------------     ------------------------------------        ------------------
+ #  04/11/2024          Initial Development                         Nicholas J. George
+ #
+ #******************************************************************************************/
+
+def set_base_log_file_name(base_file_path_string):
+
+    global BASE_LOG_FILE_NAME
+
+    BASE_LOG_FILE_NAME = base_file_path_string
+
+
+# In[10]:
 
 
 #*******************************************************************************************
@@ -100,7 +328,7 @@ def current_date_as_string(format_string = '%Y%m%d'):
     return todays_date.strftime(format_string)
 
 
-# In[4]:
+# In[11]:
 
 
 #*******************************************************************************************
@@ -135,7 +363,7 @@ def current_timestamp_as_string(format_string = '%Y/%m/%d %H:%M:%S'):
     return current_datetime.strftime(format_string)
 
 
-# In[5]:
+# In[12]:
 
 
 #*******************************************************************************************
@@ -172,7 +400,7 @@ def current_timepoint_with_message(message_string = ''):
     return timepoint_string
 
 
-# In[6]:
+# In[13]:
 
 
 #*******************************************************************************************
@@ -208,10 +436,7 @@ def get_image_file_path \
     temp_string = ''.join(filter(str.isalnum, caption_string))
     
     image_file_path \
-        = logx_constants.IMAGES_DIRECTORY_PATH \
-            + '/' \
-            + logx_constants.PROGRAM_DESIGNATION \
-            + temp_string
+        = IMAGES_DIRECTORY_PATH + '/' + PROGRAM_DESIGNATION + temp_string
     
     if image_format_string != '':
     
@@ -220,7 +445,7 @@ def get_image_file_path \
     return image_file_path
 
 
-# In[7]:
+# In[14]:
 
 
 #*******************************************************************************************
@@ -252,17 +477,17 @@ def save_png_return_styler \
         (input_styler,
          caption_string):
     
-    if logx_constants.IMAGE_FLAG == True:
+    if IMAGE_FLAG == True:
 
         image_file_path_string = get_image_file_path(caption_string, 'png')
-        
+
         dataframe_image.export(input_styler, image_file_path_string)
 
         
     return input_styler
 
 
-# In[8]:
+# In[15]:
 
 
 #*******************************************************************************************
@@ -293,9 +518,9 @@ def save_png_return_styler \
 
 def begin_program(program_designation_string = ''):
     
-    create_directory(logx_constants.LOGS_DIRECTORY_PATH)
+    create_directory(LOGS_DIRECTORY_PATH)
         
-    create_directory(logx_constants.IMAGES_DIRECTORY_PATH)
+    create_directory(IMAGES_DIRECTORY_PATH)
 
     set_program_designation(program_designation_string)
 
@@ -305,12 +530,12 @@ def begin_program(program_designation_string = ''):
     
     message_string = 'Program execution begins...\n'
         
-    if logx_constants.LOG_FLAG == True:
+    if LOG_FLAG == True:
     
         print_and_log_text(message_string) 
 
 
-# In[9]:
+# In[16]:
 
 
 #*******************************************************************************************
@@ -344,113 +569,14 @@ def end_program():
                 
     message_string = f'Program execution ends at {current_timestamp_string}.\n\n\n\n'
         
-    if logx_constants.LOG_FLAG == True:
+    if LOG_FLAG == True:
             
         print_and_log_text(message_string)
 
-        logx_constants.log_txt_file.close() 
+        LOG_TXT_FILE.close() 
 
 
-# In[10]:
-
-
-#*******************************************************************************************
- #
- #  Function Name:  set_log_mode
- #
- #  Function Description:
- #      The function sets the value for the global log flag (True/False).
- #
- #
- #  Return Type: n/a
- #
- #
- #  Function Parameters:
- #
- #  Type    Name            Description
- #  -----   -------------   ----------------------------------------------
- #  boolean mode_boolean    The parameter is the desired Boolean value for the global 
- #                          log flag.
- #
- #
- #  Date                Description                                 Programmer
- #  ---------------     ------------------------------------        ------------------
- #  04/11/2024          Initial Development                         Nicholas J. George
- #
- #******************************************************************************************/
-
-def set_log_mode(mode_boolean = True):
-    
-    logx_constants.LOG_FLAG = mode_boolean
-
-
-# In[11]:
-
-
-#*******************************************************************************************
- #
- #  Function Name:  set_image_mode
- #
- #  Function Description:
- #      The function sets the value for the global image flag (True/False).
- #
- #
- #  Return Type: n/a
- #
- #
- #  Function Parameters:
- #
- #  Type    Name            Description
- #  -----   -------------   ----------------------------------------------
- #  boolean mode_boolean    The parameter is the desired Boolean value for the global 
- #                          image flag.
- #
- #
- #  Date                Description                                 Programmer
- #  ---------------     ------------------------------------        ------------------
- #  04/11/2024          Initial Development                         Nicholas J. George
- #
- #******************************************************************************************/
-
-def set_image_mode(mode_boolean = True):
-    
-    logx_constants.IMAGE_FLAG = mode_boolean
-
-
-# In[12]:
-
-
-#*******************************************************************************************
- #
- #  Function Name:  set_program_designation
- #
- #  Function Description:
- #      The function sets the value for the global program designation string.
- #
- #
- #  Return Type: n/a
- #
- #
- #  Function Parameters:
- #
- #  Type    Name            Description
- #  -----   -------------   ----------------------------------------------
- #  string  program_designation_string
- #                          The parameter is the text for the global program designation.
- #
- #
- #  Date                Description                                 Programmer
- #  ---------------     ------------------------------------        ------------------
- #  04/11/2024          Initial Development                         Nicholas J. George
- #
- #******************************************************************************************/
-
-def set_program_designation(program_designation_string = ''):
-    
-    logx_constants.PROGRAM_DESIGNATION = program_designation_string
-
-
-# In[13]:
+# In[17]:
 
 
 #*******************************************************************************************
@@ -482,12 +608,12 @@ def log_write_object(input_object):
     
     message_string = f'\n\n' + str(input_object) + f'\n\n'
     
-    if logx_constants.LOG_FLAG == True:
+    if LOG_FLAG == True:
         
-        logx_constants.log_txt_file.write(message_string)
+        LOG_TXT_FILE.write(message_string)
 
 
-# In[14]:
+# In[18]:
 
 
 #*******************************************************************************************
@@ -526,7 +652,7 @@ def create_directory(directory_string):
         print(f'The script created directory, {directory_string}.\n')
 
 
-# In[15]:
+# In[19]:
 
 
 #*******************************************************************************************
@@ -555,24 +681,27 @@ def create_directory(directory_string):
  #******************************************************************************************/
 
 def open_log_file():
+
+    global LOG_FILE_PATH
+
+    global LOG_TXT_FILE
+    
     
     current_date_string = current_date_as_string()
 
-    program_designation_string = logx_constants.PROGRAM_DESIGNATION \
+    program_designation_string = PROGRAM_DESIGNATION
 
-    logx_constants.LOG_FILE_PATH \
-        = logx_constants.LOGS_DIRECTORY_PATH \
-            + '/' \
-            + current_date_string \
-            + program_designation_string \
-            + logx_constants.BASE_LOG_FILE_NAME
+    
+    LOG_FILE_PATH \
+        = LOGS_DIRECTORY_PATH + '/' + current_date_string \
+          + program_designation_string + BASE_LOG_FILE_NAME
 
-    if logx_constants.LOG_FLAG == True:
+    if LOG_FLAG == True:
         
-        logx_constants.log_txt_file = open(logx_constants.LOG_FILE_PATH, 'a')
+        LOG_TXT_FILE = open(LOG_FILE_PATH, 'a')
 
 
-# In[16]:
+# In[20]:
 
 
 #*******************************************************************************************
@@ -605,12 +734,12 @@ def print_and_log_text(message_string = ''):
     
     timepoint_message_string = current_timepoint_with_message(message_string)
     
-    if logx_constants.LOG_FLAG == True:
+    if LOG_FLAG == True:
     
-        logx_constants.log_txt_file.write(timepoint_message_string)    
+        LOG_TXT_FILE.write(timepoint_message_string)    
 
 
-# In[17]:
+# In[21]:
 
 
 #*******************************************************************************************
@@ -648,7 +777,7 @@ def save_plot_image \
          pad_inches_float = 0.5,
          image_format_string = 'png'):
 
-    if logx_constants.IMAGE_FLAG == True:
+    if IMAGE_FLAG == True:
 
         image_file_path_string \
             = get_image_file_path(caption_string, image_format_string)
@@ -660,7 +789,7 @@ def save_plot_image \
              pad_inches = pad_inches_float)
 
 
-# In[18]:
+# In[22]:
 
 
 #*******************************************************************************************
@@ -696,7 +825,7 @@ def save_hvplot_image_to_html \
          height_integer = 550,
          width_integer = 1100):
     
-    if logx_constants.IMAGE_FLAG == True:
+    if IMAGE_FLAG == True:
 
         temp_overlay = copy.copy(hvplot_overlay)
     
@@ -707,7 +836,7 @@ def save_hvplot_image_to_html \
         hvplot.save(temp_overlay, image_file_path_string)
 
 
-# In[19]:
+# In[23]:
 
 
 #*******************************************************************************************
@@ -740,110 +869,11 @@ def save_plotly_image \
         (plotly_figure,
          caption_string):
 
-    if logx_constants.IMAGE_FLAG == True:
+    if IMAGE_FLAG == True:
 
         image_file_path_string = get_image_file_path(caption_string, 'png')
 
         plotly_figure.write_image(image_file_path_string)
-
-
-# In[20]:
-
-
-#*******************************************************************************************
- #
- #  Function Name:  set_logs_directory_path
- #
- #  Function Description:
- #      The function sets the logs directory path.
- #
- #
- #  Return Type: n/a
- #
- #
- #  Function Parameters:
- #
- #  Type    Name            Description
- #  -----   -------------   ----------------------------------------------
- #  string  directory_path_string
- #                          The parameter is the new directory path.
- #
- #
- #  Date                Description                                 Programmer
- #  ---------------     ------------------------------------        ------------------
- #  04/11/2024          Initial Development                         Nicholas J. George
- #
- #******************************************************************************************/
-
-def set_logs_directory_path(directory_path_string):
-
-    logx_constants.LOGS_DIRECTORY_PATH = directory_path_string
-
-
-# In[21]:
-
-
-#*******************************************************************************************
- #
- #  Function Name:  set_images_directory_path
- #
- #  Function Description:
- #      The function sets the images directory path.
- #
- #
- #  Return Type: n/a
- #
- #
- #  Function Parameters:
- #
- #  Type    Name            Description
- #  -----   -------------   ----------------------------------------------
- #  string  directory_path_string
- #                          The parameter is the new directory path.
- #
- #
- #  Date                Description                                 Programmer
- #  ---------------     ------------------------------------        ------------------
- #  04/11/2024          Initial Development                         Nicholas J. George
- #
- #******************************************************************************************/
-
-def set_images_directory_path(directory_path_string):
-
-    logx_constants.IMAGES_DIRECTORY_PATH = directory_path_string
-
-
-# In[22]:
-
-
-#*******************************************************************************************
- #
- #  Function Name:  set_base_log_file_name
- #
- #  Function Description:
- #      The function sets the base log file name.
- #
- #
- #  Return Type: n/a
- #
- #
- #  Function Parameters:
- #
- #  Type    Name            Description
- #  -----   -------------   ----------------------------------------------
- #  string  base_file_path_string
- #                          The parameter is the base file name.
- #
- #
- #  Date                Description                                 Programmer
- #  ---------------     ------------------------------------        ------------------
- #  04/11/2024          Initial Development                         Nicholas J. George
- #
- #******************************************************************************************/
-
-def set_base_log_file_name(base_file_path_string):
-
-    logx_constants.BASE_LOG_FILE_NAME = base_file_path_string
 
 
 # In[ ]:

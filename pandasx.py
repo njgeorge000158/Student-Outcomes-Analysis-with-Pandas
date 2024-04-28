@@ -43,9 +43,7 @@
  #
  #******************************************************************************************/
 
-import logx_constants
 import logx
-import pandasx_constants
 import timex
 
 import hvplot.pandas
@@ -63,6 +61,57 @@ CONSTANT_LOCAL_FILE_NAME = 'pandasx.py'
 
 
 # In[3]:
+
+
+EQUATION_COEFFICIENT_PRECISION = 4
+
+
+GENERAL_TEXT_FORMAT = '{:}'
+
+INTEGER_FORMAT = '{:,}'
+
+FLOAT_FORMAT = '{:,.2f}'
+
+PERCENT_FORMAT = '{:,.2%}'
+
+FLOAT_AS_INTEGER_FORMAT = '{:,.0f}'
+
+CURRENCY_INTEGER_FORMAT = '$' + INTEGER_FORMAT
+
+CURRENCY_FLOAT_FORMAT = '$' + FLOAT_FORMAT
+
+CURRENCY_FLOAT_AS_INTEGER_FORMAT = '$' + FLOAT_AS_INTEGER_FORMAT
+
+PERCENT_FLOAT_FORMAT = FLOAT_FORMAT + '%'
+
+PERCENT_INTEGER_FORMAT = INTEGER_FORMAT + '%'
+
+TEMPERATURE_FLOAT_FORMAT = FLOAT_FORMAT +'° F'
+
+
+# In[4]:
+
+
+STATISTICS_INDEX_STRING_LIST \
+    = ['mean', 'median', 'mode', 'variance', 'std_dev', 'sem', 
+       'minimum', '25%', '50%', '75%', 'maximum', 'count']
+
+STATISTICS_FORMAT_DICTIONARY \
+    = {'mean': lambda x: f'{x:.4f}',
+       'median': lambda x: f'{x:.4f}',
+       'mode': lambda x: f'{x:.4f}',
+       'variance': lambda x: f'{x:.4f}',
+       'std_dev': lambda x: f'{x:.4f}',
+       'sem': lambda x: f'{x:.4f}',
+       'minimum': lambda x: f'{x:.2f}',
+       '25%': lambda x: f'{x:.2f}',
+       '50%': lambda x: f'{x:.2f}',
+       '75%': lambda x: f'{x:.2f}',
+       'maximum': lambda x: f'{x:.2f}',
+       'count': lambda x: f'{x:.0f}'}
+
+
+# In[5]:
 
 
 #*******************************************************************************************
@@ -157,7 +206,7 @@ def return_standard_format_styler \
                      decimal = '.')
 
 
-# In[4]:
+# In[6]:
 
 
 #*******************************************************************************************
@@ -189,7 +238,7 @@ def save_image_and_return_styler \
         (input_styler,
          title_string):
     
-    if logx_constants.IMAGE_FLAG == True:
+    if logx.IMAGE_FLAG == True:
 
         image_file_path_string = logx.get_image_file_path(title_string, 'png')
             
@@ -199,7 +248,7 @@ def save_image_and_return_styler \
     return input_styler
 
 
-# In[5]:
+# In[7]:
 
 
 #*******************************************************************************************
@@ -247,7 +296,7 @@ def return_formatted_table \
     return save_image_and_return_styler(current_styler, title_string)
 
 
-# In[6]:
+# In[8]:
 
 
 #*******************************************************************************************
@@ -293,7 +342,7 @@ def return_formatted_rows \
     return input_styler
 
 
-# In[7]:
+# In[9]:
 
 
 #*******************************************************************************************
@@ -357,7 +406,7 @@ def return_dataframe_description \
     return description_styler
 
 
-# In[8]:
+# In[10]:
 
 
 #*******************************************************************************************
@@ -395,7 +444,7 @@ def return_formatted_description \
     return save_image_and_return_styler(current_styler, title_string)
 
 
-# In[9]:
+# In[11]:
 
 
 #*******************************************************************************************
@@ -433,7 +482,7 @@ def display_dataframe_column_counts(input_dataframe):
             ('\033[1m' + f'{column}: ' + '{:,}\n'.format(count_integer) + '\033[0m')
 
 
-# In[10]:
+# In[12]:
 
 
 #*******************************************************************************************
@@ -473,7 +522,7 @@ def display_dataframe_column_unique_values(input_dataframe):
              + '\033[0m')
 
 
-# In[11]:
+# In[13]:
 
 
 #*******************************************************************************************
@@ -519,7 +568,7 @@ def display_series_unique_value_counts \
     return output_series
 
 
-# In[12]:
+# In[14]:
 
 
 #******************************************************************************************
@@ -610,7 +659,7 @@ def display_dataframe_hvplot \
     return hvplot_overlay
 
 
-# In[13]:
+# In[15]:
 
 
 #******************************************************************************************
@@ -658,7 +707,7 @@ def convert_timestamp_indices_to_date(input_series):
     return final_series
 
 
-# In[14]:
+# In[16]:
 
 
 #******************************************************************************************
@@ -724,7 +773,7 @@ def return_unique_indices_last_values(input_series):
     return final_series
 
 
-# In[15]:
+# In[17]:
 
 
 #******************************************************************************************
@@ -763,7 +812,7 @@ def return_date_indices(input_series):
     return final_series
 
 
-# In[16]:
+# In[18]:
 
 
 #*******************************************************************************************
@@ -824,7 +873,7 @@ def convert_to_percent_change(input_series):
     return final_series
 
 
-# In[17]:
+# In[19]:
 
 
 #*******************************************************************************************
@@ -873,7 +922,7 @@ def format_dataframe_from_dictionary \
     return input_styler
 
 
-# In[18]:
+# In[20]:
 
 
 #*******************************************************************************************
@@ -919,7 +968,7 @@ def return_statistics_as_list(input_series):
     return final_float_list
 
 
-# In[19]:
+# In[21]:
 
 
 #*******************************************************************************************
@@ -987,7 +1036,7 @@ def return_summary_statistics_as_dataframe(data_series):
     return pd.DataFrame(statistics_dictionary_list)
 
 
-# In[20]:
+# In[22]:
 
 
 #*******************************************************************************************
@@ -1026,11 +1075,11 @@ def return_statistics_styler_from_series \
         = pd.DataFrame \
             (statistics_float_list, 
              columns = [input_series.name], 
-             index = pandasx_constants.statistics_index_string_list)
+             index = STATISTICS_INDEX_STRING_LIST)
 
     statistics_styler \
         = format_dataframe_from_dictionary \
-             (statistics_dataframe, pandasx_constants.statistics_format_dictionary)
+             (statistics_dataframe, STATISTICS_FORMAT_DICTIONARY)
         
     statistics_styler \
         .set_caption(title_string) \
@@ -1049,7 +1098,7 @@ def return_statistics_styler_from_series \
     return save_image_and_return_styler(statistics_styler, title_string)
 
 
-# In[21]:
+# In[23]:
 
 
 #*******************************************************************************************
@@ -1084,7 +1133,7 @@ def return_statistics_styler_from_series_list \
         (input_series_list,
          title_string):
     
-    index_string_list = pandasx_constants.statistics_index_string_list
+    index_string_list = STATISTICS_INDEX_STRING_LIST
 
     for index, series in enumerate(input_series_list): 
 
@@ -1094,7 +1143,7 @@ def return_statistics_styler_from_series_list \
             = pd.DataFrame \
                 (statistics_float_list, 
                  columns = [series.name], 
-                 index = pandasx_constants.statistics_index_string_list)
+                 index = STATISTICS_INDEX_STRING_LIST)
 
         if index != 0:
 
@@ -1107,7 +1156,7 @@ def return_statistics_styler_from_series_list \
             
     statistics_styler \
         = format_dataframe_from_dictionary \
-             (statistics_dataframe, pandasx_constants.statistics_format_dictionary)
+             (statistics_dataframe, STATISTICS_FORMAT_DICTIONARY)
         
     statistics_styler \
         .set_caption(title_string) \
