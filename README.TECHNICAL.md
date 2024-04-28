@@ -32,13 +32,7 @@ python3 -m pip install dataframe-image
 
 The IPython notebook, city_schools.ipynb, uses the CSV files, schools_data.csv and students_data.csv, as input and will not run without them.  The interactive Python notebook must have the following Python scripts in the same folder with it:
 
-city_schools_constants.py
-
-logx_constants.py
-
 logx.py
-
-pandasx_constants.py
 
 pandasx.py
 
@@ -56,7 +50,7 @@ To place the IPython notebook in Log Mode or Image Mode set the parameter for th
 
 #### Source code
 
-city_schools.ipynb, city_schools_constants.py, logx_constants.py, logx.py, pandasx_constants.py, pandasx.py, timex.py
+city_schools.ipynb, logx.py, pandasx.py, timex.py
 
 #### Input files
 
@@ -85,8 +79,6 @@ Jupyter Notebook, Pandas, Python 3.11.4
 #### main branch
 
 |&rarr; [./city_schools_constants.py](./city_schools_constants.py)
-
-|&rarr; [./city_schools.ipynb](./city_schools.ipynb)
 
 |&rarr; [./README.TECHNICAL.md](./README.TECHNICAL.md)
 
