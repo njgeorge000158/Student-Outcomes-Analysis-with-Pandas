@@ -15,8 +15,15 @@
  #  set_log_mode
  #  set_image_mode
  #  set_program_designation
+ #
  #  set_logs_directory_path
  #  set_images_directory_path
+ #  set_resources_directory_path
+ #  set_sql_directory_path
+ #  set_visualization_directory_path
+ #  set_models_directory_path
+ #  set_backups_directory_path
+ #
  #  set_base_log_file_name
  # 
  #  current_date_as_string
@@ -72,9 +79,21 @@ IMAGE_FLAG = False
 
 PROGRAM_DESIGNATION = ''
 
+
 LOGS_DIRECTORY_PATH = './logs'
 
 IMAGES_DIRECTORY_PATH = './images'
+
+RESOURCES_DIRECTORY_PATH = './resources'
+
+SQL_DIRECTORY_PATH = './sql'
+
+VISUALIZATION_PATH = './visualization'
+
+MODELS_DIRECTORY_PATH = './models'
+
+BACKUPS_DIRECTORY_PATH = './backups'
+
 
 BASE_LOG_FILE_NAME = '_log.txt'
 
@@ -263,6 +282,181 @@ def set_images_directory_path(directory_path_string):
 
 #*******************************************************************************************
  #
+ #  Function Name:  set_resources_directory_path
+ #
+ #  Function Description:
+ #      The function sets the resources directory path.
+ #
+ #
+ #  Return Type: n/a
+ #
+ #
+ #  Function Parameters:
+ #
+ #  Type    Name            Description
+ #  -----   -------------   ----------------------------------------------
+ #  string  directory_path_string
+ #                          The parameter is the new directory path.
+ #
+ #
+ #  Date                Description                                 Programmer
+ #  ---------------     ------------------------------------        ------------------
+ #  04/11/2024          Initial Development                         Nicholas J. George
+ #
+ #******************************************************************************************/
+
+def set_resources_directory_path(directory_path_string):
+
+    global RESOURCES_DIRECTORY_PATH
+
+    RESOURCES_DIRECTORY_PATH = directory_path_string
+
+
+# In[10]:
+
+
+#*******************************************************************************************
+ #
+ #  Function Name:  set_sql_directory_path
+ #
+ #  Function Description:
+ #      The function sets the sql directory path.
+ #
+ #
+ #  Return Type: n/a
+ #
+ #
+ #  Function Parameters:
+ #
+ #  Type    Name            Description
+ #  -----   -------------   ----------------------------------------------
+ #  string  directory_path_string
+ #                          The parameter is the new directory path.
+ #
+ #
+ #  Date                Description                                 Programmer
+ #  ---------------     ------------------------------------        ------------------
+ #  04/11/2024          Initial Development                         Nicholas J. George
+ #
+ #******************************************************************************************/
+
+def set_sql_directory_path(directory_path_string):
+
+    global SQL_DIRECTORY_PATH
+
+    SQL_DIRECTORY_PATH = directory_path_string
+
+
+# In[11]:
+
+
+#*******************************************************************************************
+ #
+ #  Function Name:  set_visualzation_directory_path
+ #
+ #  Function Description:
+ #      The function sets the visualzation directory path.
+ #
+ #
+ #  Return Type: n/a
+ #
+ #
+ #  Function Parameters:
+ #
+ #  Type    Name            Description
+ #  -----   -------------   ----------------------------------------------
+ #  string  directory_path_string
+ #                          The parameter is the new directory path.
+ #
+ #
+ #  Date                Description                                 Programmer
+ #  ---------------     ------------------------------------        ------------------
+ #  04/11/2024          Initial Development                         Nicholas J. George
+ #
+ #******************************************************************************************/
+
+def set_visualzation_directory_path(directory_path_string):
+
+    global VISUALIZATION_DIRECTORY_PATH
+
+    VISUALIZATION_DIRECTORY_PATH = directory_path_string
+
+
+# In[12]:
+
+
+#*******************************************************************************************
+ #
+ #  Function Name:  set_models_directory_path
+ #
+ #  Function Description:
+ #      The function sets the models directory path.
+ #
+ #
+ #  Return Type: n/a
+ #
+ #
+ #  Function Parameters:
+ #
+ #  Type    Name            Description
+ #  -----   -------------   ----------------------------------------------
+ #  string  directory_path_string
+ #                          The parameter is the new directory path.
+ #
+ #
+ #  Date                Description                                 Programmer
+ #  ---------------     ------------------------------------        ------------------
+ #  04/11/2024          Initial Development                         Nicholas J. George
+ #
+ #******************************************************************************************/
+
+def set_models_directory_path(directory_path_string):
+
+    global MODELS_DIRECTORY_PATH
+
+    MODELS_DIRECTORY_PATH = directory_path_string
+
+
+# In[13]:
+
+
+#*******************************************************************************************
+ #
+ #  Function Name:  set_backups_directory_path
+ #
+ #  Function Description:
+ #      The function sets the backups directory path.
+ #
+ #
+ #  Return Type: n/a
+ #
+ #
+ #  Function Parameters:
+ #
+ #  Type    Name            Description
+ #  -----   -------------   ----------------------------------------------
+ #  string  directory_path_string
+ #                          The parameter is the new directory path.
+ #
+ #
+ #  Date                Description                                 Programmer
+ #  ---------------     ------------------------------------        ------------------
+ #  04/11/2024          Initial Development                         Nicholas J. George
+ #
+ #******************************************************************************************/
+
+def set_backups_directory_path(directory_path_string):
+
+    global BACKUPS_DIRECTORY_PATH
+
+    BACKUPS_DIRECTORY_PATH = directory_path_string
+
+
+# In[14]:
+
+
+#*******************************************************************************************
+ #
  #  Function Name:  set_base_log_file_name
  #
  #  Function Description:
@@ -293,7 +487,7 @@ def set_base_log_file_name(base_file_path_string):
     BASE_LOG_FILE_NAME = base_file_path_string
 
 
-# In[10]:
+# In[15]:
 
 
 #*******************************************************************************************
@@ -328,7 +522,7 @@ def current_date_as_string(format_string = '%Y%m%d'):
     return todays_date.strftime(format_string)
 
 
-# In[11]:
+# In[16]:
 
 
 #*******************************************************************************************
@@ -363,7 +557,7 @@ def current_timestamp_as_string(format_string = '%Y/%m/%d %H:%M:%S'):
     return current_datetime.strftime(format_string)
 
 
-# In[12]:
+# In[17]:
 
 
 #*******************************************************************************************
@@ -400,7 +594,7 @@ def current_timepoint_with_message(message_string = ''):
     return timepoint_string
 
 
-# In[13]:
+# In[18]:
 
 
 #*******************************************************************************************
@@ -445,7 +639,7 @@ def get_image_file_path \
     return image_file_path
 
 
-# In[14]:
+# In[19]:
 
 
 #*******************************************************************************************
@@ -487,7 +681,7 @@ def save_png_return_styler \
     return input_styler
 
 
-# In[15]:
+# In[20]:
 
 
 #*******************************************************************************************
@@ -535,7 +729,7 @@ def begin_program(program_designation_string = ''):
         print_and_log_text(message_string) 
 
 
-# In[16]:
+# In[21]:
 
 
 #*******************************************************************************************
@@ -576,7 +770,7 @@ def end_program():
         LOG_TXT_FILE.close() 
 
 
-# In[17]:
+# In[22]:
 
 
 #*******************************************************************************************
@@ -613,7 +807,7 @@ def log_write_object(input_object):
         LOG_TXT_FILE.write(message_string)
 
 
-# In[18]:
+# In[23]:
 
 
 #*******************************************************************************************
@@ -652,7 +846,7 @@ def create_directory(directory_string):
         print(f'The script created directory, {directory_string}.\n')
 
 
-# In[19]:
+# In[24]:
 
 
 #*******************************************************************************************
@@ -701,7 +895,7 @@ def open_log_file():
         LOG_TXT_FILE = open(LOG_FILE_PATH, 'a')
 
 
-# In[20]:
+# In[25]:
 
 
 #*******************************************************************************************
@@ -739,7 +933,7 @@ def print_and_log_text(message_string = ''):
         LOG_TXT_FILE.write(timepoint_message_string)    
 
 
-# In[21]:
+# In[26]:
 
 
 #*******************************************************************************************
@@ -789,7 +983,7 @@ def save_plot_image \
              pad_inches = pad_inches_float)
 
 
-# In[22]:
+# In[27]:
 
 
 #*******************************************************************************************
@@ -836,7 +1030,7 @@ def save_hvplot_image_to_html \
         hvplot.save(temp_overlay, image_file_path_string)
 
 
-# In[23]:
+# In[28]:
 
 
 #*******************************************************************************************
