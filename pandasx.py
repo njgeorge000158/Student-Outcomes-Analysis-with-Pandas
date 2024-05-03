@@ -525,9 +525,9 @@ def return_formatted_description \
 
 def display_dataframe_column_counts(input_dataframe):
 
-    for i, column in enumerate(student_loan_dataframe.columns):
+    for i, column in enumerate(input_dataframe.columns):
 
-        count_integer = student_loan_dataframe[column].nunique()
+        count_integer = input_dataframe[column].nunique()
 
         logx.print_and_log_text \
             ('\033[1m' + f'{column}: ' + '{:,}\n'.format(count_integer) + '\033[0m')
