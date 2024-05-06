@@ -12,17 +12,17 @@ In addition to those modules, the Jupyter Notebook requires the following to exe
 
 Here are the requisite Terminal commands for the installation of these peripheral modules:
 
-python3 -m pip install holoviews
+pip3 install -U holoviews
 
-python3 -m pip install hvplot
+pip3 install -U hvplot
 
-python3 -m pip install geoviews
+pip3 install -U geoviews
 
-python3 -m pip install geopy
+pip3 install -U geopy
 
-python3 -m pip install aspose-words
+pip3 install -U aspose-words
 
-python3 -m pip install dataframe-image
+pip3 install -U dataframe-image
 
 ----
 
