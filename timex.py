@@ -154,22 +154,22 @@ def return_future_date_days \
  #******************************************************************************************/
 
 def return_normalized_date_index(input_series_list):
-    
+
     sorted_series_list = sorted(input_series_list, key = len)
-    
-    
+
+
     for index, series in enumerate(sorted_series_list):
 
         index_string_list = [ele[5:] for ele in series.index.tolist()]
-        
+
         if index >= 1:
 
             temp_index_list = [ele for ele in temp_index_list if ele in index_string_list]
-        
+
         else:
 
             temp_index_list = index_string_list 
-        
+
 
     return temp_index_list
 
@@ -216,14 +216,14 @@ def return_normalized_series_list_as_dataframe \
         current_series_list \
             = [ele for i, ele in enumerate(current_series_list) if i not in omit_index_integer_list]
 
-            
+
     normalized_index_string_list = return_normalized_date_index(current_series_list)
 
     normalized_series_list = []
 
-            
+
     for index, series in enumerate(current_series_list):
-        
+
         index_string_list = [ele[5:] for ele in current_series_list[index].index.tolist()]
 
         current_series_list[index] = current_series_list[index].set_axis(index_string_list)
@@ -232,7 +232,7 @@ def return_normalized_series_list_as_dataframe \
         temp_string_list = []
 
         for i, element in enumerate(current_series_list[index]):
-            
+
             if str(current_series_list[index].index[i]) in normalized_index_string_list:
 
                 temp_string_list.append(element)
@@ -244,9 +244,9 @@ def return_normalized_series_list_as_dataframe \
 
         normalized_series_list.append(normalized_series)
 
-            
+
     normalized_dataframe = pd.DataFrame(normalized_series_list).transpose()
-        
+
     return normalized_dataframe
 
 
