@@ -133,7 +133,7 @@ LOG_TXT_FILE = None
 def set_log_mode(mode_boolean = True):
 
     global LOG_FLAG
-    
+
     LOG_FLAG = mode_boolean
 
 
@@ -168,7 +168,7 @@ def set_log_mode(mode_boolean = True):
 def set_image_mode(mode_boolean = True):
 
     global IMAGE_FLAG
-    
+
     IMAGE_FLAG = mode_boolean
 
 
@@ -203,7 +203,7 @@ def set_image_mode(mode_boolean = True):
 def set_program_designation(program_designation_string = ''):
 
     global PROGRAM_DESIGNATION
-    
+
     PROGRAM_DESIGNATION = program_designation_string
 
 
@@ -516,9 +516,9 @@ def set_base_log_file_name(base_file_path_string):
  #******************************************************************************************/
 
 def current_date_as_string(format_string = '%Y%m%d'):
-    
+
     todays_date = date.today()
-    
+
     return todays_date.strftime(format_string)
 
 
@@ -551,9 +551,9 @@ def current_date_as_string(format_string = '%Y%m%d'):
  #******************************************************************************************/
 
 def current_timestamp_as_string(format_string = '%Y/%m/%d %H:%M:%S'):
-    
+
     current_datetime = datetime.now()
-    
+
     return current_datetime.strftime(format_string)
 
 
@@ -586,9 +586,9 @@ def current_timestamp_as_string(format_string = '%Y/%m/%d %H:%M:%S'):
  #******************************************************************************************/
 
 def current_timepoint_with_message(message_string = ''):
-    
+
     current_timestamp_string = current_timestamp_as_string()
-    
+
     timepoint_string = f'\nTimepoint: {current_timestamp_string}\n' + message_string + '\n\n'
 
     return timepoint_string
@@ -622,20 +622,20 @@ def current_timepoint_with_message(message_string = ''):
  #  04/11/2024          Initial Development                         Nicholas J. George
  #
  #******************************************************************************************/
-    
+
 def get_image_file_path \
         (caption_string = 'test',
          image_format_string = ''):
-    
+
     temp_string = ''.join(filter(str.isalnum, caption_string))
-    
+
     image_file_path \
         = IMAGES_DIRECTORY_PATH + '/' + PROGRAM_DESIGNATION + temp_string
-    
+
     if image_format_string != '':
-    
+
         image_file_path += '.' + image_format_string
-        
+
     return image_file_path
 
 
@@ -670,14 +670,14 @@ def get_image_file_path \
 def save_png_return_styler \
         (input_styler,
          caption_string):
-    
+
     if IMAGE_FLAG == True:
 
         image_file_path_string = get_image_file_path(caption_string, 'png')
 
         dataframe_image.export(input_styler, image_file_path_string)
 
-        
+
     return input_styler
 
 
@@ -711,21 +711,21 @@ def save_png_return_styler \
  #******************************************************************************************/
 
 def begin_program(program_designation_string = ''):
-    
+
     create_directory(LOGS_DIRECTORY_PATH)
-        
+
     create_directory(IMAGES_DIRECTORY_PATH)
 
     set_program_designation(program_designation_string)
 
-    
+
     open_log_file()
 
-    
+
     message_string = 'Program execution begins...\n'
-        
+
     if LOG_FLAG == True:
-    
+
         print_and_log_text(message_string) 
 
 
@@ -758,13 +758,13 @@ def begin_program(program_designation_string = ''):
  #******************************************************************************************/
 
 def end_program():
-    
+
     current_timestamp_string = current_timestamp_as_string()
-                
+
     message_string = f'Program execution ends at {current_timestamp_string}.\n\n\n\n'
-        
+
     if LOG_FLAG == True:
-            
+
         print_and_log_text(message_string)
 
         LOG_TXT_FILE.close() 
@@ -799,11 +799,11 @@ def end_program():
  #******************************************************************************************/
 
 def log_write_object(input_object):
-    
+
     message_string = f'\n\n' + str(input_object) + f'\n\n'
-    
+
     if LOG_FLAG == True:
-        
+
         LOG_TXT_FILE.write(message_string)
 
 
@@ -836,13 +836,13 @@ def log_write_object(input_object):
  #******************************************************************************************/
 
 def create_directory(directory_string):
-    
+
     exist_boolean = os.path.exists(directory_string)
-    
+
     if exist_boolean == False:
-        
+
         os.makedirs(directory_string)
-            
+
         print(f'The script created directory, {directory_string}.\n')
 
 
@@ -879,19 +879,19 @@ def open_log_file():
     global LOG_FILE_PATH
 
     global LOG_TXT_FILE
-    
-    
+
+
     current_date_string = current_date_as_string()
 
     program_designation_string = PROGRAM_DESIGNATION
 
-    
+
     LOG_FILE_PATH \
         = LOGS_DIRECTORY_PATH + '/' + current_date_string \
           + program_designation_string + BASE_LOG_FILE_NAME
 
     if LOG_FLAG == True:
-        
+
         LOG_TXT_FILE = open(LOG_FILE_PATH, 'a')
 
 
@@ -923,13 +923,13 @@ def open_log_file():
  #******************************************************************************************/
 
 def print_and_log_text(message_string = ''):
-    
+
     print(message_string)
-    
+
     timepoint_message_string = current_timepoint_with_message(message_string)
-    
+
     if LOG_FLAG == True:
-    
+
         LOG_TXT_FILE.write(timepoint_message_string)    
 
 
@@ -1018,15 +1018,15 @@ def save_hvplot_image_to_html \
          caption_string = '',
          height_integer = 550,
          width_integer = 1100):
-    
+
     if IMAGE_FLAG == True:
 
         temp_overlay = copy.copy(hvplot_overlay)
-    
+
         temp_overlay.opts(width = width_integer, height = height_integer)
-        
+
         image_file_path_string = get_image_file_path(caption_string, 'html')
-            
+
         hvplot.save(temp_overlay, image_file_path_string)
 
 

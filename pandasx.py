@@ -281,20 +281,11 @@ def save_image_and_return_styler \
 
         image_file_path_string = logx.get_image_file_path(title_string, 'png')
 
-        if GOOGLE_COLAB_BOOLEAN == False:
-
-            dataframe_image.export \
-                (input_styler,
-                 image_file_path_string,
-                 max_rows = -1, max_cols = -1)
-
-        else:
-
-            dataframe_image.export \
-                (input_styler,
-                 image_file_path_string,
-                 table_conversion = 'selenium',
-                 max_rows = -1, max_cols = -1)
+        dataframe_image.export \
+            (input_styler,
+             image_file_path_string,
+             table_conversion = 'selenium',
+             max_rows = -1, max_cols = -1)
 
     return input_styler
 
