@@ -156,7 +156,7 @@ Jupyter Notebook, Pandas, Python 3.11.5
 
 |&rarr; [./logs/](./logs/)
 
-  &emsp; |&rarr; [./logs/20240419city_schools_log.txt](./logs/20240419city_schools_log.txt)
+  &emsp; |&rarr; [./logs/20240428city_schools_log.txt](./logs/20240428city_schools_log.txt)
 
   &emsp; |&rarr; [./logs/README.md](./logs/README.md)
 
