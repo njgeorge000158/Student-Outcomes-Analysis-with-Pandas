@@ -30,7 +30,7 @@ pip3 install -U dataframe-image
 
 ----
 
-The IPython notebook, city_schools.ipynb, uses the CSV files, schools_data.csv and students_data.csv, as input and will not run without them.  The interactive Python notebook must have the following Python scripts in the same folder with it:
+The Jupyter Notebook, city_schools.ipynb, uses the CSV files, schools_data.csv and students_data.csv, as input and will not run without them.  The interactive Python notebook must have the following Python scripts in the same folder with it:
 
 logx.py
 
