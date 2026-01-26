@@ -1,4 +1,4 @@
-This folder holds one log file from a test run of the IPython Notebook, city_schools.ipynb: the IPython Notebook generates these files in Log Mode, respectively (see [README.TECHNICAL.md](./README.TECHNICAL.md)).
+This folder holds one log file from a test run of the Jupyter Notebook, city_schools.ipynb: the Jupyter Notebook generates these files in Log Mode, respectively (see [README.TECHNICAL.md](./README.TECHNICAL.md)).
 
 ----
 
