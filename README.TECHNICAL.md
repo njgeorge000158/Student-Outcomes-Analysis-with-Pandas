@@ -34,13 +34,19 @@ The Jupyter Notebook, city_schools.ipynb, uses the CSV files, schools_data.csv a
 
 logx.py
 
+mathx.py
+
+matplotlib.py
+
 pandasx.py
+
+pymaceuticalsx.py
 
 timex.py
 
-If the folders, resources and logs are not present, the IPython notebook will create them.  The folder, resources, holds input files for the IPython Notebook; the folder, logs, contains log files from testing the IPython Notebook; and the folder, images, has the PNG image files of the IPython Notebook's tables and plots.
+If the folders, resources and logs are not present, the Jupyter Notebook will create them.  The folder, resources, holds input files for the Jupyter Notebook; the folder, logs, contains log files from testing the Jupyter Notebook; and the folder, images, has the PNG image files of the Jupyter Notebook's tables and plots.
 
-To place the IPython notebook in Log Mode or Image Mode set the parameter for the appropriate subroutine in coding cell #2 to True. In Log Mode, the notebook writes log information to a log file in the folder, logs. If the program is in Image Mode, it writes all DataFrames, hvplot maps, and matplotlib plots to PNG files to the folder, images.
+To place the Jupyter Notebook in Log Mode or Image Mode set the parameter for the appropriate subroutine in coding cell #2 to True. In Log Mode, the Notebook writes log information to a log file in the folder, logs. If the program is in Image Mode, it writes all DataFrames, hvplot maps, and matplotlib plots to PNG files to the folder, images.
 
 ----
 
@@ -50,7 +56,7 @@ To place the IPython notebook in Log Mode or Image Mode set the parameter for th
 
 #### Source code
 
-city_schools.ipynb, logx.py, pandasx.py, timex.py
+city_schools.ipynb, logx.py, mathx.py, matplotlib.py, pandasx.py, pymaceuticalsx.py, timex.py
 
 #### Input files
 
