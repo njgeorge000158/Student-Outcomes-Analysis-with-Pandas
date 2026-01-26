@@ -34,13 +34,7 @@ The Jupyter Notebook, city_schools.ipynb, uses the CSV files, schools_data.csv a
 
 logx.py
 
-mathx.py
-
-matplotlib.py
-
 pandasx.py
-
-pymaceuticalsx.py
 
 timex.py
 
@@ -84,13 +78,19 @@ Jupyter Notebook, Pandas, Python 3.11.5
 
 #### main branch
 
-|&rarr; [./city_schools_constants.py](./city_schools_constants.py)
+|&rarr; [./city_schools.ipynb](./city_schools.ipynb)
 
-|&rarr; [./README.TECHNICAL.md](./README.TECHNICAL.md)
+|&rarr; [./logx.py](./logx.py)
+
+|&rarr; [./pandasx.py](./pandasx.py)
 
 |&rarr; [./README.md](./README.md)
 
+|&rarr; [./README.TECHNICAL.md](./README.TECHNICAL.md)
+
 |&rarr; [./table-of-contents.md](./table-of-contents.md)
+
+|&rarr; [./timex.py](./timex.py)
 
 |&rarr; [./images/](./images/)
 
