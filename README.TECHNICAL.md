@@ -6,7 +6,7 @@
 
 ----
 
-If the computer has Anaconda, Jupyter Notebook, and a recent version of Python, the Jupyter Notebook already has the following dependencies installed: datetime, io, json, matplotlib, numpy, pandas, pathlib, os, pandas, requests, requests_html, and scipy.
+If the computer has Anaconda, Jupyter Notebook, and a recent version of Python, the Jupyter Notebook already has the following dependencies installed: datetime, io, json, matplotlib, numpy, pandas, pathlib, os, pandas, requests, and requests_html.
 
 In addition to those modules, the Jupyter Notebook requires the following to execute: holoviews, hvplot, geoviews, geopy, aspose-words, dataframe-image.
 
@@ -19,6 +19,8 @@ pip3 install -U hvplot
 pip3 install -U geoviews
 
 pip3 install -U geopy
+
+pip3 install -U scipy
 
 pip3 install -U aspose-words
 
