@@ -26,11 +26,25 @@
  #
  #  set_base_log_file_name
  # 
+ #  get_log_mode
+ #  get_image_mode
+ #  get_program_designation
+ #
+ #  get_logs_directory_path
+ #  get_images_directory_path
+ #  get_resources_directory_path
+ #  get_sql_directory_path
+ #  get_visualization_directory_path
+ #  get_models_directory_path
+ #  get_backups_directory_path
+ #
+ #  get_base_log_file_name
+ #
+ #  get_image_file_path
+ #
  #  current_date_as_text
  #  current_timestamp_as_text
  #  current_timepoint_with_message
- #
- #  get_image_file_path
  #
  #  return_styler_save_png
  #
@@ -52,6 +66,8 @@
  #  04/11/2024      Initial Development                     Nicholas J. George
  #  02/09/2026      Abbreviated variable names and added global configuration
  #                  dictionary                              Nicholas J. George
+ #  02/10/2026      Added functions for returning global values
+ #                                                          Nicholas J. George
  #
  #******************************************************************************************/
 
@@ -473,34 +489,31 @@ def set_base_log_file_name(base_file_path):
 
 #*******************************************************************************************
  #
- #  Function Name:  current_date_as_text
+ #  Function Name:  get_log_mode
  #
  #  Function Description:
- #      The function returns the current date as a formatted string for the names
- #      of log files.
+ #      The function returns the value of the global log flag (True/False).
  #
  #
- #  Return Type: string
+ #  Return Type: bool
  #
  #
  #  Function Parameters:
  #
  #  Type    Name            Description
  #  -----   -------------   ----------------------------------------------
- #  string  string_format   The parameter is optional and specifies the date format.
+ #  n/a     n/a             n/a
  #
  #
  #  Date                Description                                 Programmer
  #  ---------------     ------------------------------------        ------------------
- #  04/11/2024          Initial Development                         Nicholas J. George
+ #  02/10/2026          Initial Development                         Nicholas J. George
  #
  #******************************************************************************************/
 
-def current_date_as_text(string_format = '%Y%m%d'):
+def get_log_mode():
 
-    todays_date = date.today()
-
-    return todays_date.strftime(string_format)
+    return logs_config_dict['log_bool']
 
 
 # In[16]:
@@ -508,34 +521,31 @@ def current_date_as_text(string_format = '%Y%m%d'):
 
 #*******************************************************************************************
  #
- #  Function Name:  current_timestamp_as_text
+ #  Function Name:  get_image_mode
  #
  #  Function Description:
- #      The function returns the current date and time as a formatted string
- #      for timepoint entries in log files.
+ #      The function returns the value of the global image flag (True/False).
  #
  #
- #  Return Type: string
+ #  Return Type: bool
  #
  #
  #  Function Parameters:
  #
  #  Type    Name            Description
  #  -----   -------------   ----------------------------------------------
- #  string  string_format   The parameter is optional and specifies the datetime format.
+ #  n/a     n/a             n/a
  #
  #
  #  Date                Description                                 Programmer
  #  ---------------     ------------------------------------        ------------------
- #  04/11/2024          Initial Development                         Nicholas J. George
+ #  02/10/2026          Initial Development                         Nicholas J. George
  #
  #******************************************************************************************/
 
-def current_timestamp_as_text(string_format = '%Y/%m/%d %H:%M:%S'):
+def get_image_mode():
 
-    current_datetime = datetime.now()
-
-    return current_datetime.strftime(string_format)
+    return logs_config_dict['image_bool']
 
 
 # In[17]:
@@ -543,11 +553,10 @@ def current_timestamp_as_text(string_format = '%Y/%m/%d %H:%M:%S'):
 
 #*******************************************************************************************
  #
- #  Function Name:  current_timepoint_with_message
+ #  Function Name:  get_program_designation
  #
  #  Function Description:
- #      The function takes a message, formats it with a timestamp, and returns it 
- #      to the caller.
+ #      The function returns the value for the global program designation.
  #
  #
  #  Return Type: string
@@ -557,25 +566,277 @@ def current_timestamp_as_text(string_format = '%Y/%m/%d %H:%M:%S'):
  #
  #  Type    Name            Description
  #  -----   -------------   ----------------------------------------------
- #  string  message         The parameter is the optional message with the timepoint.
+ #  n/a     n/a             n/a
  #
  #
  #  Date                Description                                 Programmer
  #  ---------------     ------------------------------------        ------------------
- #  04/11/2024          Initial Development                         Nicholas J. George
+ #  02/10/2026          Initial Development                         Nicholas J. George
  #
  #******************************************************************************************/
 
-def current_timepoint_with_message(message = ''):
+def get_program_designation():
 
-    current_timestamp = current_timestamp_as_text()
-
-    timepoint = f'\nTimepoint: {current_timestamp}\n' + message + '\n\n'
-
-    return timepoint
+    return logs_config_dict['prgrm_dsgn']
 
 
 # In[18]:
+
+
+#*******************************************************************************************
+ #
+ #  Function Name:  get_logs_directory_path
+ #
+ #  Function Description:
+ #      The function returns the logs directory path.
+ #
+ #
+ #  Return Type: string
+ #
+ #
+ #  Function Parameters:
+ #
+ #  Type    Name            Description
+ #  -----   -------------   ----------------------------------------------
+ #  n/a     n/a             n/a
+ #
+ #
+ #  Date                Description                                 Programmer
+ #  ---------------     ------------------------------------        ------------------
+ #  02/10/2026          Initial Development                         Nicholas J. George
+ #
+ #******************************************************************************************/
+
+def get_logs_directory_path():
+
+    return logs_config_dict['logs_folder']
+
+
+# In[19]:
+
+
+#*******************************************************************************************
+ #
+ #  Function Name:  get_images_directory_path
+ #
+ #  Function Description:
+ #      The function returns the images directory path.
+ #
+ #
+ #  Return Type: string
+ #
+ #
+ #  Function Parameters:
+ #
+ #  Type    Name            Description
+ #  -----   -------------   ----------------------------------------------
+ #  n/a     n/a             n/a
+ #
+ #
+ #  Date                Description                                 Programmer
+ #  ---------------     ------------------------------------        ------------------
+ #  02/10/2026          Initial Development                         Nicholas J. George
+ #
+ #******************************************************************************************/
+
+def get_images_directory_path():
+
+    return logs_config_dict['images_folder']
+
+
+# In[20]:
+
+
+#*******************************************************************************************
+ #
+ #  Function Name:  get_resources_directory_path
+ #
+ #  Function Description:
+ #      The function returns the resources directory path.
+ #
+ #
+ #  Return Type: string
+ #
+ #
+ #  Function Parameters:
+ #
+ #  Type    Name            Description
+ #  -----   -------------   ----------------------------------------------
+ #  n/a     n/a             n/a
+ #
+ #
+ #  Date                Description                                 Programmer
+ #  ---------------     ------------------------------------        ------------------
+ #  02/10/2026          Initial Development                         Nicholas J. George
+ #
+ #******************************************************************************************/
+
+def get_resources_directory_path():
+
+    return logs_config_dict['resources_folder']
+
+
+# In[21]:
+
+
+#*******************************************************************************************
+ #
+ #  Function Name:  get_sql_directory_path
+ #
+ #  Function Description:
+ #      The function returns the sql directory path.
+ #
+ #
+ #  Return Type: string
+ #
+ #
+ #  Function Parameters:
+ #
+ #  Type    Name            Description
+ #  -----   -------------   ----------------------------------------------
+ #  n/a     n/a             n/a
+ #
+ #
+ #  Date                Description                                 Programmer
+ #  ---------------     ------------------------------------        ------------------
+ #  02/10/2026          Initial Development                         Nicholas J. George
+ #
+ #******************************************************************************************/
+
+def get_sql_directory_path():
+
+    return logs_config_dict['sql_folder']
+
+
+# In[22]:
+
+
+#*******************************************************************************************
+ #
+ #  Function Name:  get_visualzation_directory_path
+ #
+ #  Function Description:
+ #      The function returns the visualzation directory path.
+ #
+ #
+ #  Return Type: string
+ #
+ #
+ #  Function Parameters:
+ #
+ #  Type    Name            Description
+ #  -----   -------------   ----------------------------------------------
+ #  n/a     n/a             n/a
+ #
+ #
+ #  Date                Description                                 Programmer
+ #  ---------------     ------------------------------------        ------------------
+ #  02/10/2026          Initial Development                         Nicholas J. George
+ #
+ #******************************************************************************************/
+
+def get_visualzation_directory_path():
+
+    return logs_config_dict['visual_folder']
+
+
+# In[23]:
+
+
+#*******************************************************************************************
+ #
+ #  Function Name:  get_models_directory_path
+ #
+ #  Function Description:
+ #      The function returns the models directory path.
+ #
+ #
+ #  Return Type: string
+ #
+ #
+ #  Function Parameters:
+ #
+ #  Type    Name            Description
+ #  -----   -------------   ----------------------------------------------
+ #  n/a     n/a             n/a
+ #
+ #
+ #  Date                Description                                 Programmer
+ #  ---------------     ------------------------------------        ------------------
+ #  02/10/2026          Initial Development                         Nicholas J. George
+ #
+ #******************************************************************************************/
+
+def get_models_directory_path():
+
+    return logs_config_dict['models_folder']
+
+
+# In[24]:
+
+
+#*******************************************************************************************
+ #
+ #  Function Name:  get_backups_directory_path
+ #
+ #  Function Description:
+ #      The function returns the backups directory path.
+ #
+ #
+ #  Return Type: string
+ #
+ #
+ #  Function Parameters:
+ #
+ #  Type    Name            Description
+ #  -----   -------------   ----------------------------------------------
+ #  n/a     n/a             n/a
+ #
+ #
+ #  Date                Description                                 Programmer
+ #  ---------------     ------------------------------------        ------------------
+ #  02/10/2026          Initial Development                         Nicholas J. George
+ #
+ #******************************************************************************************/
+
+def get_backups_directory_path():
+
+    return logs_config_dict['backups_folder']
+
+
+# In[25]:
+
+
+#*******************************************************************************************
+ #
+ #  Function Name:  get_base_log_file_name
+ #
+ #  Function Description:
+ #      The function returns the base log file name.
+ #
+ #
+ #  Return Type: string
+ #
+ #
+ #  Function Parameters:
+ #
+ #  Type    Name            Description
+ #  -----   -------------   ----------------------------------------------
+ #  n/a     n/a             n/a
+ #
+ #
+ #  Date                Description                                 Programmer
+ #  ---------------     ------------------------------------        ------------------
+ #  02/10/2026          Initial Development                         Nicholas J. George
+ #
+ #******************************************************************************************/
+
+def get_base_log_file_name():
+
+    return logs_config_dict['base_log_name']
+
+
+# In[26]:
 
 
 #*******************************************************************************************
@@ -619,7 +880,114 @@ def get_image_file_path \
     return image_file_path
 
 
-# In[19]:
+# In[27]:
+
+
+#*******************************************************************************************
+ #
+ #  Function Name:  current_date_as_text
+ #
+ #  Function Description:
+ #      The function returns the current date as a formatted string for the names
+ #      of log files.
+ #
+ #
+ #  Return Type: string
+ #
+ #
+ #  Function Parameters:
+ #
+ #  Type    Name            Description
+ #  -----   -------------   ----------------------------------------------
+ #  string  string_format   The parameter is optional and specifies the date format.
+ #
+ #
+ #  Date                Description                                 Programmer
+ #  ---------------     ------------------------------------        ------------------
+ #  04/11/2024          Initial Development                         Nicholas J. George
+ #
+ #******************************************************************************************/
+
+def current_date_as_text(string_format = '%Y%m%d'):
+
+    todays_date = date.today()
+
+    return todays_date.strftime(string_format)
+
+
+# In[28]:
+
+
+#*******************************************************************************************
+ #
+ #  Function Name:  current_timestamp_as_text
+ #
+ #  Function Description:
+ #      The function returns the current date and time as a formatted string
+ #      for timepoint entries in log files.
+ #
+ #
+ #  Return Type: string
+ #
+ #
+ #  Function Parameters:
+ #
+ #  Type    Name            Description
+ #  -----   -------------   ----------------------------------------------
+ #  string  string_format   The parameter is optional and specifies the datetime format.
+ #
+ #
+ #  Date                Description                                 Programmer
+ #  ---------------     ------------------------------------        ------------------
+ #  04/11/2024          Initial Development                         Nicholas J. George
+ #
+ #******************************************************************************************/
+
+def current_timestamp_as_text(string_format = '%Y/%m/%d %H:%M:%S'):
+
+    current_datetime = datetime.now()
+
+    return current_datetime.strftime(string_format)
+
+
+# In[29]:
+
+
+#*******************************************************************************************
+ #
+ #  Function Name:  current_timepoint_with_message
+ #
+ #  Function Description:
+ #      The function takes a message, formats it with a timestamp, and returns it 
+ #      to the caller.
+ #
+ #
+ #  Return Type: string
+ #
+ #
+ #  Function Parameters:
+ #
+ #  Type    Name            Description
+ #  -----   -------------   ----------------------------------------------
+ #  string  message         The parameter is the optional message with the timepoint.
+ #
+ #
+ #  Date                Description                                 Programmer
+ #  ---------------     ------------------------------------        ------------------
+ #  04/11/2024          Initial Development                         Nicholas J. George
+ #
+ #******************************************************************************************/
+
+def current_timepoint_with_message(message = ''):
+
+    current_timestamp = current_timestamp_as_text()
+
+    timepoint = f'\nTimepoint: {current_timestamp}\n' + message + '\n\n'
+
+    return timepoint
+
+
+# In[30]:
 
 
 #*******************************************************************************************
@@ -661,7 +1029,7 @@ def save_png_return_styler \
     return input_styler
 
 
-# In[20]:
+# In[31]:
 
 
 #*******************************************************************************************
@@ -708,7 +1076,7 @@ def begin_program(prgrm_desig = ''):
         print_and_log_text(message) 
 
 
-# In[21]:
+# In[32]:
 
 
 #*******************************************************************************************
@@ -749,7 +1117,7 @@ def end_program():
         logs_config_dict['log_txt_file'].close() 
 
 
-# In[22]:
+# In[33]:
 
 
 #*******************************************************************************************
@@ -786,7 +1154,7 @@ def log_write_obj(input_obj):
         logs_config_dict['log_txt_file'].write(message)
 
 
-# In[23]:
+# In[34]:
 
 
 #*******************************************************************************************
@@ -824,7 +1192,7 @@ def create_directory(directory):
         print(f'The script created directory, {directory}.\n')
 
 
-# In[24]:
+# In[35]:
 
 
 #*******************************************************************************************
@@ -871,7 +1239,7 @@ def open_log_file():
         logs_config_dict['log_txt_file'] = open(logs_config_dict['log_folder'], 'a')
 
 
-# In[25]:
+# In[36]:
 
 
 #*******************************************************************************************
@@ -909,7 +1277,7 @@ def print_and_log_text(message = ''):
         logs_config_dict['log_txt_file'].write(timepoint_message)    
 
 
-# In[26]:
+# In[37]:
 
 
 #*******************************************************************************************
@@ -957,7 +1325,7 @@ def save_plot_image \
              pad_inches = pad_inches_flt)
 
 
-# In[27]:
+# In[38]:
 
 
 #*******************************************************************************************
@@ -1004,7 +1372,7 @@ def save_hvplot_image_to_html \
         hvplot.save(temp_overlay, image_file_path)
 
 
-# In[28]:
+# In[39]:
 
 
 #*******************************************************************************************
