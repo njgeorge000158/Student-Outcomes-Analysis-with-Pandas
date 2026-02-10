@@ -18,13 +18,13 @@
  #      save_image_and_return_styler
  #      return_formatted_table
  #      return_formatted_rows
- #      return_dataframe_description
+ #      return_df_description
  #      return_formatted_description
  #
- #      display_dataframe_column_counts
- #      display_dataframe_column_unique_values
+ #      display_df_column_counts
+ #      display_df_column_unique_values
  #      display_series_unique_value_counts
- #      display_dataframe_hvplot
+ #      display_df_hvplot
  #
  #      convert_timestamp_indices_to_date
  #      return_unique_indices_last_values
@@ -32,9 +32,9 @@
  #
  #      convert_to_percent_change
  #
- #      format_styler_from_dictionary
+ #      format_styler_from_dict
  #      return_statistics_as_list
- #      return_summary_statistics_as_dataframe
+ #      return_summary_statistics_as_df
  #      return_statistics_styler_from_series
  #      return_statistics_styler_from_series_list
  #
@@ -42,6 +42,7 @@
  #  Date            Description                             Programmer
  #  ----------      ------------------------------------    ------------------
  #  04/11/2024      Initial Development                     Nicholas J. George
+ #  02/09/2026      Abbreviated variable names              Nicholas J. George
  #
  #******************************************************************************************/
 
@@ -97,11 +98,11 @@ TEMPERATURE_FLOAT_FORMAT = FLOAT_FORMAT +'° F'
 # In[4]:
 
 
-STATISTICS_INDEX_STRING_LIST \
+stats_index_list \
     = ['mean', 'median', 'mode', 'variance', 'std_dev', 'sem',
        'minimum', '25%', '50%', '75%', 'maximum', 'count']
 
-STATISTICS_FORMAT_DICTIONARY \
+stats_format_dict \
     = {'mean': lambda x: f'{x:.4f}',
        'median': lambda x: f'{x:.4f}',
        'mode': lambda x: f'{x:.4f}',
@@ -134,7 +135,7 @@ STATISTICS_FORMAT_DICTIONARY \
  #
  #  Type    Name            Description
  #  -----   -------------   ----------------------------------------------
- #  boolean input_boolean   The parameter is the input boolean value.
+ #  boolean input_bool      The parameter is the input boolean value.
  #
  #
  #  Date                Description                                 Programmer
@@ -143,11 +144,11 @@ STATISTICS_FORMAT_DICTIONARY \
  #
  #******************************************************************************************/
 
-def set_google_colab(input_boolean):
+def set_google_colab(input_bool):
 
   global GOOGLE_COLAB_BOOLEAN
 
-  GOOGLE_COLAB_BOOLEAN = input_boolean
+  GOOGLE_COLAB_BOOLEAN = input_bool
 
 
 # In[6]:
@@ -169,13 +170,11 @@ def set_google_colab(input_boolean):
  #  Type    Name            Description
  #  -----   -------------   ----------------------------------------------
  #  dataframe
- #          input_dataframe The parameter is the input dataframe.
- #  string  title_string    The parameter is the table title.
- #  integer precision_integer
- #                          This optional parameter is the decimal place
+ #          input_df        The parameter is the input dataframe.
+ #  string  title           The parameter is the table title.
+ #  integer precision_int   This optional parameter is the decimal place
  #                          precision of the displayed numbers.
- #  boolean hide_index_boolean
- #                          This optional parameter indicates whether the
+ #  boolean hide_index_bool This optional parameter indicates whether the
  #                          index column is hidden or not.
  #
  #
@@ -186,19 +185,19 @@ def set_google_colab(input_boolean):
  #******************************************************************************************/
 
 def return_standard_format_styler \
-        (input_dataframe,
-         title_string,
-         precision_integer = 2,
-         hide_index_boolean = True):
+        (input_df,
+         title,
+         precision_int = 2,
+         hide_index_bool = True):
 
-    temp_dataframe = input_dataframe.copy()
+    temp_df = input_df.copy()
 
-    if hide_index_boolean == True:
+    if hide_index_bool == True:
 
         return \
-            temp_dataframe \
+            temp_df \
                 .style \
-                .set_caption(title_string) \
+                .set_caption(title) \
                 .set_table_styles \
                     ([dict \
                         (selector = 'caption',
@@ -214,7 +213,7 @@ def return_standard_format_styler \
                         'color':
                         'blue'}) \
                 .format \
-                    (precision = precision_integer,
+                    (precision = precision_int,
                      thousands = ',',
                      decimal = '.') \
                 .hide()
@@ -222,9 +221,9 @@ def return_standard_format_styler \
     else:
 
         return \
-            temp_dataframe \
+            temp_df \
                 .style \
-                .set_caption(title_string) \
+                .set_caption(title) \
                 .set_table_styles \
                     ([dict \
                         (selector = 'caption',
@@ -240,7 +239,7 @@ def return_standard_format_styler \
                         'color':
                         'blue'}) \
                 .format \
-                    (precision = precision_integer,
+                    (precision = precision_int,
                      thousands = ',',
                      decimal = '.')
 
@@ -264,7 +263,7 @@ def return_standard_format_styler \
  #  Type    Name            Description
  #  -----   -------------   ----------------------------------------------
  #  styler  input_styler    The parameter is the input styler object.
- #  string  title_string    The parameter is the table title.
+ #  string  title           The parameter is the table title.
  #
  #
  #  Date                Description                                 Programmer
@@ -275,15 +274,15 @@ def return_standard_format_styler \
 
 def save_image_and_return_styler \
         (input_styler,
-         title_string):
+         title):
 
-    if logx.IMAGE_FLAG == True:
+    if logx.logs_config_dict['image_bool'] == True:
 
-        image_file_path_string = logx.get_image_file_path(title_string, 'png')
+        image_file_path = logx.get_image_file_path(title, 'png')
 
         dataframe_image.export \
             (input_styler,
-             image_file_path_string,
+             image_file_path,
              table_conversion = 'selenium',
              max_rows = -1, max_cols = -1)
 
@@ -309,12 +308,10 @@ def save_image_and_return_styler \
  #  Type    Name            Description
  #  -----   -------------   ----------------------------------------------
  #  dataframe
- #          input_dataframe The parameter is the input dataframe.
- #  string  title_string    The parameter is the table title.
- #  integer line_count_integer
- #                          The parameter is the number of displayed records.
- #  boolean hide_index_boolean
- #                          The parameter indicates whether the index is present.
+ #          input_df        The parameter is the input dataframe.
+ #  string  title           The parameter is the table title.
+ #  integer line_count_int  The parameter is the number of displayed records.
+ #  boolean hide_index_bool The parameter indicates whether the index is present.
  #
  #
  #  Date                Description                                 Programmer
@@ -324,18 +321,18 @@ def save_image_and_return_styler \
  #******************************************************************************************/
 
 def return_formatted_table \
-        (input_dataframe,
-         title_string,
-         line_count_integer = 10,
-         hide_index_boolean = True):
+        (input_df,
+         title,
+         line_count_int = 10,
+         hide_index_bool = True):
 
     current_styler \
         = return_standard_format_styler \
-            (input_dataframe.head(line_count_integer),
-             title_string,
-             hide_index_boolean = hide_index_boolean)
+            (input_df.head(line_count_int),
+             title,
+             hide_index_bool = hide_index_bool)
 
-    return save_image_and_return_styler(current_styler, title_string)
+    return save_image_and_return_styler(current_styler, title)
 
 
 # In[9]:
@@ -358,8 +355,7 @@ def return_formatted_table \
  #  -----   -------------   ----------------------------------------------
  #  styler  input_styler    The parameter is the input styler.
  #  dictionary
- #          format_dictionary
- #                          The parameter is the dicitionary with the format specifications.
+ #          format_dict     The parameter is the dicitionary with the format specifications.
  #
  #
  #  Date                Description                                 Programmer
@@ -370,9 +366,9 @@ def return_formatted_table \
 
 def return_formatted_rows \
         (input_styler,
-         format_dictionary):
+         format_dict):
 
-    for key, value in format_dictionary.items():
+    for key, value in format_dict.items():
 
         row_number = input_styler.index.get_loc(key)
 
@@ -389,7 +385,7 @@ def return_formatted_rows \
 
 #*******************************************************************************************
  #
- #  Function Name:  return_dataframe_description
+ #  Function Name:  return_df_description
  #
  #  Function Description:
  #      This function takes a dataframe and returns the its formatted data statistics.
@@ -403,8 +399,8 @@ def return_formatted_rows \
  #  Type    Name            Description
  #  -----   -------------   ----------------------------------------------
  #  dataframe
- #          input_dataframe The parameter is the input dataframe.
- #  string  title_string    The parameter is the description title.
+ #          input_df        The parameter is the input dataframe.
+ #  string  title           The parameter is the description title.
  #
  #
  #  Date                Description                                 Programmer
@@ -413,13 +409,13 @@ def return_formatted_rows \
  #
  #******************************************************************************************/
 
-def return_dataframe_description \
-        (input_dataframe,
-         title_string):
+def return_df_description \
+        (input_df,
+         title):
 
-    description_dataframe = input_dataframe.describe()
+    description_df = input_df.describe()
 
-    format_dictionary \
+    format_dict \
         = {'count': lambda x: f'{x:,.0f}',
            'mean': lambda x: f'{x:,.2f}',
            'std': lambda x: f'{x:,.2f}',
@@ -430,10 +426,10 @@ def return_dataframe_description \
            'max': lambda x: f'{x:,.0f}'}
 
     description_styler \
-        = return_formatted_rows(description_dataframe.style, format_dictionary)
+        = return_formatted_rows(description_df.style, format_dict)
 
     description_styler \
-        .set_caption(title_string) \
+        .set_caption(title) \
         .set_table_styles \
             ([{'selector': 'caption',
                'props': [('color', 'black'),
@@ -467,8 +463,8 @@ def return_dataframe_description \
  #  Type    Name            Description
  #  -----   -------------   ----------------------------------------------
  #  dataframe
- #          input_dataframe The parameter is the input dataframe.
- #  string  title_string    The parameter is the description title.
+ #          input_df        The parameter is the input dataframe.
+ #  string  title           The parameter is the description title.
  #
  #
  #  Date                Description                                 Programmer
@@ -478,12 +474,12 @@ def return_dataframe_description \
  #******************************************************************************************/
 
 def return_formatted_description \
-        (input_dataframe,
-         title_string):
+        (input_df,
+         title):
 
-    current_styler = return_dataframe_description(input_dataframe, title_string)
+    current_styler = return_df_description(input_df, title)
 
-    return save_image_and_return_styler(current_styler, title_string)
+    return save_image_and_return_styler(current_styler, title)
 
 
 # In[12]:
@@ -491,7 +487,7 @@ def return_formatted_description \
 
 #*******************************************************************************************
  #
- #  Function Name:  display_dataframe_column_counts
+ #  Function Name:  display_df_column_counts
  #
  #  Function Description:
  #      This function displays a dataframe's column counts.
@@ -505,7 +501,7 @@ def return_formatted_description \
  #  Type    Name            Description
  #  -----   -------------   ----------------------------------------------
  #  dataframe
- #          input_dataframe The parameter is the input dataframe.
+ #          input_df        The parameter is the input dataframe.
  #
  #
  #  Date                Description                                 Programmer
@@ -514,14 +510,14 @@ def return_formatted_description \
  #
  #******************************************************************************************/
 
-def display_dataframe_column_counts(input_dataframe):
+def display_df_column_counts(input_df):
 
-    for i, column in enumerate(input_dataframe.columns):
+    for i, column in enumerate(input_df.columns):
 
-        count_integer = input_dataframe[column].nunique()
+        count_int = input_df[column].nunique()
 
         logx.print_and_log_text \
-            ('\033[1m' + f'{column}: ' + '{:,}\n'.format(count_integer) + '\033[0m')
+            ('\033[1m' + f'{column}: ' + '{:,}\n'.format(count_int) + '\033[0m')
 
 
 # In[13]:
@@ -529,7 +525,7 @@ def display_dataframe_column_counts(input_dataframe):
 
 #*******************************************************************************************
  #
- #  Function Name:  display_dataframe_column_unique_values
+ #  Function Name:  display_df_column_unique_values
  #
  #  Function Description:
  #      This function displays the dataframe column unique values.
@@ -543,7 +539,7 @@ def display_dataframe_column_counts(input_dataframe):
  #  Type    Name            Description
  #  -----   -------------   ----------------------------------------------
  #  dataframe
- #          input_dataframe The parameter is the input dataframe.
+ #          input_df        The parameter is the input dataframe.
  #
  #
  #  Date                Description                                 Programmer
@@ -552,15 +548,15 @@ def display_dataframe_column_counts(input_dataframe):
  #
  #******************************************************************************************/
 
-def display_dataframe_column_unique_values(input_dataframe):
+def display_df_column_unique_values(input_df):
 
-    for i, column in enumerate(input_dataframe.columns):
+    for i, column in enumerate(input_df.columns):
 
-        value_string_list = input_dataframe[column].unique().tolist()
+        value_list = input_df[column].unique().tolist()
 
         logx.print_and_log_text \
             ('\033[1m' + f'{column}:\n'
-             + f'{sorted(value_string_list, reverse = False)}\n\n'
+             + f'{sorted(value_list, reverse = False)}\n\n'
              + '\033[0m')
 
 
@@ -584,7 +580,7 @@ def display_dataframe_column_unique_values(input_dataframe):
  #  Type    Name            Description
  #  -----   -------------   ----------------------------------------------
  #  dataframe
- #          input_dataframe The parameter is the input dataframe.
+ #          input_df        The parameter is the input dataframe.
  #
  #
  #  Date                Description                                 Programmer
@@ -595,11 +591,11 @@ def display_dataframe_column_unique_values(input_dataframe):
 
 def display_series_unique_value_counts \
         (input_series,
-         series_name_string = 'output_series'):
+         series_name = 'output_series'):
 
     output_series = input_series.value_counts().sort_values(ascending = False)
 
-    output_series.name = series_name_string
+    output_series.name = series_name
 
 
     for i, v in output_series.items():
@@ -615,7 +611,7 @@ def display_series_unique_value_counts \
 
 #******************************************************************************************
  #
- #  Function Name:  display_dataframe_hvplot
+ #  Function Name:  display_df_hvplot
  #
  #  Function Description:
  #      This function receives a dataframe and displays a formatted hvplot.
@@ -629,29 +625,25 @@ def display_series_unique_value_counts \
  #  Type    Name            Description
  #  -----   -------------   ----------------------------------------------
  #  dataframe
- #          input_dataframe The parameter is the input dataframe.
- #  string  title_string    The parameter is the plot's title.
- #  string  color_column_string
- #                          The parameter is the color column name.
- #  string  size_column_string
- #                          The parameter is the size column name.
- #  float   longitude_column_string
+ #          input_df        The parameter is the input dataframe.
+ #  string  title           The parameter is the plot's title.
+ #  string  color_column    The parameter is the color column name.
+ #  string  size_column     The parameter is the size column name.
+ #  float   longitude_column
  #                          The parameter is the longitude column name.
- #  float   latitude_column_string
- #                          The parameter is the latitude column name.
- #  string  x_label_string  The parameter is the x-axis label.
- #  string  y_label_string  The parameter is the y-axis label.
+ #  float   latitude_column The parameter is the latitude column name.
+ #  string  x_label         The parameter is the x-axis label.
+ #  string  y_label         The parameter is the y-axis label.
  #  float tuple
- #          x_limit_float_tuple
+ #          x_limit_flt_tuple
  #                          The parameter the HVPlot limits for the x-axis.
  #  float tuple
- #          y_limit_float_tuple
+ #          y_limit_flt_tuple
  #                          The parameter the HVPlot limits for the y-axis.
- #  float   alpha_float     The parameter the alpha value for the markers.
- #  string  tiles_string
- #                          The parameter indicates the type of map (OSM, ESRI, etc.).
+ #  float   alpha_flt     The parameter the alpha value for the markers.
+ #  string  tiles           The parameter indicates the type of map (OSM, ESRI, etc.).
  #  string list
- #          hover_columns_string_list
+ #          hover_columns_list
  #                          The parameter is the list of column names
  #                          for the hover message.
  #
@@ -662,41 +654,41 @@ def display_series_unique_value_counts \
  #
  #******************************************************************************************/
 
-def display_dataframe_hvplot \
-        (input_dataframe,
-         title_string,
-         color_column_string,
-         size_column_string,
-         longitude_column_string,
-         latitude_column_string,
-         x_label_string = '',
-         y_label_string = '',
-         x_limit_float_tuple = (-180, 180),
-         y_limit_float_tuple = (-55, 75),
-         alpha_float = 0.7,
-         tiles_string = 'OSM',
-         hover_columns_string_list = []):
+def display_df_hvplot \
+        (input_df,
+         title,
+         color_column,
+         size_column,
+         longitude_column,
+         latitude_column,
+         x_label = '',
+         y_label = '',
+         x_limit_flt_tuple = (-180, 180),
+         y_limit_flt_tuple = (-55, 75),
+         alpha_flt = 0.7,
+         tiles = 'OSM',
+         hover_columns_list = []):
 
     hvplot_overlay \
-        = input_dataframe \
+        = input_df \
             .hvplot \
             .points \
-                (longitude_column_string,
-                 latitude_column_string,
-                 xlabel = x_label_string,
-                 ylabel = y_label_string,
+                (longitude_column,
+                 latitude_column,
+                 xlabel = x_label,
+                 ylabel = y_label,
                  geo = True,
-                 color = color_column_string,
-                 size = size_column_string,
-                 xlim = x_limit_float_tuple,
-                 ylim = y_limit_float_tuple,
-                 alpha = alpha_float,
-                 tiles = tiles_string,
-                 title = title_string,
-                 hover_cols = hover_columns_string_list)
+                 color = color_column,
+                 size = size_column,
+                 xlim = x_limit_flt_tuple,
+                 ylim = y_limit_flt_tuple,
+                 alpha = alpha_flt,
+                 tiles = tiles,
+                 title = title,
+                 hover_cols = hover_columns_list)
 
 
-    logx.save_hvplot_image_to_html(hvplot_overlay, title_string)
+    logx.save_hvplot_image_to_html(hvplot_overlay, title)
 
     return hvplot_overlay
 
@@ -784,33 +776,33 @@ def return_unique_indices_last_values(input_series):
     temp_series.dropna(inplace = True)
 
 
-    last_index_integer = len(temp_series) - 1
+    last_index_int = len(temp_series) - 1
 
-    index_integer_list = []
+    index_int_list = []
 
-    values_integer_list = []
+    values_int_list = []
 
 
     for index, row in enumerate(temp_series):
 
-        if index < last_index_integer:
+        if index < last_index_int:
 
             if (temp_series.index[index]).date() != (temp_series.index[index + 1]).date():
 
-                index_integer_list.append(temp_series.index[index])
+                index_int_list.append(temp_series.index[index])
 
-                values_integer_list.append(temp_series.iloc[index])
+                values_int_list.append(temp_series.iloc[index])
 
-        elif index == last_index_integer:
+        elif index == last_index_int:
 
             if (temp_series.index[index]).date() != (temp_series.index[index - 1]).date():
 
-                index_integer_list.append(temp_series.index[index])
+                index_int_list.append(temp_series.index[index])
 
-                values_integer_list.append(temp_series.iloc[index])
+                values_int_list.append(temp_series.iloc[index])
 
 
-    final_series = pd.Series(values_integer_list, index = index_integer_list)
+    final_series = pd.Series(values_int_list, index = index_int_list)
 
     return final_series
 
@@ -845,11 +837,11 @@ def return_unique_indices_last_values(input_series):
 
 def return_date_indices(input_series):
 
-    index_integer_list = convert_timestamp_indices_to_date(input_series).tolist()
+    index_int_list = convert_timestamp_indices_to_date(input_series).tolist()
 
-    values_integer_list = input_series.tolist()
+    values_int_list = input_series.tolist()
 
-    final_series = pd.Series(values_integer_list, index = index_integer_list)
+    final_series = pd.Series(values_int_list, index = index_int_list)
 
     return final_series
 
@@ -884,30 +876,30 @@ def return_date_indices(input_series):
 
 def convert_to_percent_change(input_series):
 
-    input_float_nparray = input_series.to_numpy()
+    input_flt_nparray = input_series.to_numpy()
 
-    temp_float_nparray = input_float_nparray * 0.0
+    temp_flt_nparray = input_flt_nparray * 0.0
 
 
-    for i, element in enumerate(input_float_nparray):
+    for i, element in enumerate(input_flt_nparray):
 
         if i != 0:
 
-            if input_float_nparray[i - 1] != 0.0:
+            if input_flt_nparray[i - 1] != 0.0:
 
-                temp_float_nparray[i] \
-                    = ((element - input_float_nparray[i - 1]) / input_float_nparray[i - 1]) * 100
+                temp_flt_nparray[i] \
+                    = ((element - input_flt_nparray[i - 1]) / input_flt_nparray[i - 1]) * 100
 
             else:
 
-                temp_float_nparray[i] = 0.0
+                temp_flt_nparray[i] = 0.0
 
         else:
 
-            temp_float_nparray[i] = 0.0
+            temp_flt_nparray[i] = 0.0
 
 
-    final_series = pd.Series(temp_float_nparray, index = input_series.index)
+    final_series = pd.Series(temp_flt_nparray, index = input_series.index)
 
     final_series.drop(final_series.index[0], inplace = True)
 
@@ -920,7 +912,7 @@ def convert_to_percent_change(input_series):
 
 #*******************************************************************************************
  #
- #  Function Name:  format_dataframe_from_dictionary
+ #  Function Name:  format_df_from_dict
  #
  #  Function Description:
  #      This function formats a dataframe based on a format dictionary and returns a styler.
@@ -934,10 +926,9 @@ def convert_to_percent_change(input_series):
  #  Type    Name            Description
  #  -----   -------------   ----------------------------------------------
  #  dataframe
- #          input_dataframe The parameter is the input dataframe.
+ #          input_df        The parameter is the input dataframe.
  #  dictionary
- #          format_dictionary
- #                          The parameter is the format dictionary.
+ #          format_dict     The parameter is the format dictionary.
  #
  #
  #  Date                Description                                 Programmer
@@ -946,13 +937,13 @@ def convert_to_percent_change(input_series):
  #
  #******************************************************************************************/
 
-def format_dataframe_from_dictionary \
-        (input_dataframe,
-         format_dictionary):
+def format_df_from_dict \
+        (input_df,
+         format_dict):
 
-    input_styler = input_dataframe.style
+    input_styler = input_df.style
 
-    for index, format in format_dictionary.items():
+    for index, format in format_dict.items():
 
         row_index = input_styler.index.get_loc(index)
 
@@ -982,7 +973,7 @@ def format_dataframe_from_dictionary \
  #
  #  Type    Name            Description
  #  -----   -------------   ----------------------------------------------
- #  series  data_series     The parameter is the input series.
+ #  series  input_series    The parameter is the input series.
  #
  #
  #  Date                Description                                 Programmer
@@ -993,7 +984,7 @@ def format_dataframe_from_dictionary \
 
 def return_statistics_as_list(input_series):
 
-    final_float_list \
+    final_flt_list \
         = [input_series.mean(),
            input_series.median(),
            input_series.mode()[0],
@@ -1007,7 +998,7 @@ def return_statistics_as_list(input_series):
            input_series.max(),
            input_series.count()]
 
-    return final_float_list
+    return final_flt_list
 
 
 # In[22]:
@@ -1015,7 +1006,7 @@ def return_statistics_as_list(input_series):
 
 #*******************************************************************************************
  #
- #  Function Name:  return_summary_statistics_as_dataframe
+ #  Function Name:  return_summary_statistics_as_df
  #
  #  Function Description:
  #      This function converts a data series into summary statistics, assigns
@@ -1029,7 +1020,7 @@ def return_statistics_as_list(input_series):
  #
  #  Type    Name            Description
  #  -----   -------------   ----------------------------------------------
- #  series  data_series     The parameter is the input series.
+ #  series  input_series    The parameter is the input series.
  #
  #
  #  Date                Description                                 Programmer
@@ -1038,44 +1029,44 @@ def return_statistics_as_list(input_series):
  #
  #******************************************************************************************/
 
-def return_summary_statistics_as_dataframe(data_series):
+def return_summary_statistics_as_df(input_series):
 
     # This line of code allocates the distribution for the quartiles.
-    quartiles_series = data_series.quantile([0.25, 0.50, 0.75])
+    quartiles_series = input_series.quantile([0.25, 0.50, 0.75])
 
     # These lines of code establish the lower quartile and the upper quartile.
-    lower_quartile_float = quartiles_series[0.25]
+    lower_quartile_flt = quartiles_series[0.25]
 
-    upper_quartile_float = quartiles_series[0.75]
+    upper_quartile_flt = quartiles_series[0.75]
 
     # This line of code calculates the interquartile range (IQR).
-    interquartile_range_float = upper_quartile_float - lower_quartile_float
+    interquartile_range_flt = upper_quartile_flt - lower_quartile_flt
 
     # These line of code calculate the lower bound and upper bound
     # of the distribution.
-    lower_bound_float = lower_quartile_float - (1.5*interquartile_range_float)
+    lower_bound_flt = lower_quartile_flt - (1.5*interquartile_range_flt)
 
-    upper_bound_float = upper_quartile_float + (1.5*interquartile_range_float)
+    upper_bound_flt = upper_quartile_flt + (1.5*interquartile_range_flt)
 
     # This line of code establishes a list of outliers.
     outliers_series \
-        = data_series.loc[(data_series < lower_bound_float) | (data_series > upper_bound_float)]
+        = input_series.loc[(input_series < lower_bound_flt) | (input_series > upper_bound_flt)]
 
     # This line of code finds the number of outliers.
-    outlier_count_integer = len(outliers_series)
+    outlier_count_int = len(outliers_series)
 
     # These lines of code create a list of all the summary statistics and store
     # the data in a DataFrame.
-    statistics_dictionary_list \
-        = [{'lower_quartile': lower_quartile_float,
-            'upper_quartile': upper_quartile_float,
-            'interquartile_range': interquartile_range_float,
+    statistics_dict_list \
+        = [{'lower_quartile': lower_quartile_flt,
+            'upper_quartile': upper_quartile_flt,
+            'interquartile_range': interquartile_range_flt,
             'median': quartiles_series[0.5],
-            'lower_boundary': lower_bound_float,
-            'upper_boundary': upper_bound_float,
-            'outlier_count': outlier_count_integer}]
+            'lower_boundary': lower_bound_flt,
+            'upper_boundary': upper_bound_flt,
+            'outlier_count': outlier_count_int}]
 
-    return pd.DataFrame(statistics_dictionary_list)
+    return pd.DataFrame(statistics_dict_list)
 
 
 # In[23]:
@@ -1098,7 +1089,7 @@ def return_summary_statistics_as_dataframe(data_series):
  #  Type    Name            Description
  #  -----   -------------   ----------------------------------------------
  #  series  input_series    The parameter is the input series.
- #  string  title_string    The parameter is the title of the styler.
+ #  string  title           The parameter is the title of the styler.
  #
  #
  #  Date                Description                                 Programmer
@@ -1109,22 +1100,22 @@ def return_summary_statistics_as_dataframe(data_series):
 
 def return_statistics_styler_from_series \
         (input_series,
-         title_string):
+         title):
 
-    statistics_float_list = return_statistics_as_list(input_series)
+    statistics_flt_list = return_statistics_as_list(input_series)
 
-    statistics_dataframe \
+    statistics_df \
         = pd.DataFrame \
-            (statistics_float_list,
+            (statistics_flt_list,
              columns = [input_series.name],
-             index = STATISTICS_INDEX_STRING_LIST)
+             index = stats_index_list)
 
     statistics_styler \
-        = format_dataframe_from_dictionary \
-             (statistics_dataframe, STATISTICS_FORMAT_DICTIONARY)
+        = format_df_from_dict \
+             (statistics_df, stats_format_dict)
 
     statistics_styler \
-        .set_caption(title_string) \
+        .set_caption(title) \
         .set_table_styles \
             ([{'selector': 'caption',
                'props': [('color', 'black'),
@@ -1137,7 +1128,7 @@ def return_statistics_styler_from_series \
                 'color': 'blue'})
 
 
-    return save_image_and_return_styler(statistics_styler, title_string)
+    return save_image_and_return_styler(statistics_styler, title)
 
 
 # In[24]:
@@ -1162,7 +1153,7 @@ def return_statistics_styler_from_series \
  #  -----   -------------   ----------------------------------------------
  #  list    input_series_list
  #                          The parameter is the input series list.
- #  string  title_string    The parameter is the title for the styler.
+ #  string  title           The parameter is the title for the styler.
  #
  #
  #  Date                Description                                 Programmer
@@ -1173,35 +1164,35 @@ def return_statistics_styler_from_series \
 
 def return_statistics_styler_from_series_list \
         (input_series_list,
-         title_string):
+         title):
 
-    index_string_list = STATISTICS_INDEX_STRING_LIST
+    index_list = stats_index_list
 
     for index, series in enumerate(input_series_list):
 
-        statistics_float_list = return_statistics_as_list(series)
+        statistics_flt_list = return_statistics_as_list(series)
 
-        temp_dataframe \
+        temp_df \
             = pd.DataFrame \
-                (statistics_float_list,
+                (statistics_flt_list,
                  columns = [series.name],
-                 index = STATISTICS_INDEX_STRING_LIST)
+                 index = stats_index_list)
 
         if index != 0:
 
-            statistics_dataframe \
-                = pd.concat([statistics_dataframe, temp_dataframe], axis = 1)
+            statistics_df \
+                = pd.concat([statistics_df, temp_df], axis = 1)
         else:
 
-            statistics_dataframe = temp_dataframe.copy()
+            statistics_df = temp_df.copy()
 
 
     statistics_styler \
-        = format_dataframe_from_dictionary \
-             (statistics_dataframe, STATISTICS_FORMAT_DICTIONARY)
+        = format_df_from_dict \
+             (statistics_df, stats_format_dict)
 
     statistics_styler \
-        .set_caption(title_string) \
+        .set_caption(title) \
         .set_table_styles \
             ([{'selector': 'caption',
                'props': [('color', 'black'),

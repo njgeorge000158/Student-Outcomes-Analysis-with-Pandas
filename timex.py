@@ -13,15 +13,16 @@
  #      dates and times.  Here is the list:
  #
  #  return_prior_date_days
- #  return_future_date_string
+ #  return_future_date
  #
  #  return_normalized_date_index
- #  return_normalized_series_list_as_dataframe
+ #  return_normalized_series_list_as_df
  #
  #
  #  Date            Description                             Programmer
  #  ----------      ------------------------------------    ------------------
  #  04/11/2024      Initial Development                     Nicholas J. George
+ #  02/09/2026      Abbreviated variable names              Nicholas J. George
  #
  #******************************************************************************************/
 
@@ -51,10 +52,9 @@ pd.options.mode.chained_assignment = None
  #
  #  Type    Name            Description
  #  -----   -------------   ----------------------------------------------
- #  string  date_string     The parameter is the date.
- #  integer days_integer    The parameter is the number of days
- #  string  date_format_string
- #                          The parameter is the date format.
+ #  string  date            The parameter is the date.
+ #  integer days_int        The parameter is the number of days
+ #  string  date_format     The parameter is the date format.
  #
  #
  #  Date                Description                                 Programmer
@@ -64,18 +64,18 @@ pd.options.mode.chained_assignment = None
  #******************************************************************************************/
 
 def return_prior_date_days \
-        (date_string, 
-         days_integer = 365, 
-         date_format_string = '%Y-%m-%d'):
+        (date, 
+         days_int = 365, 
+         date_format = '%Y-%m-%d'):
 
-    current_date = dt.strptime(date_string, date_format_string)
+    current_date = dt.strptime(date, date_format)
 
-    prior_date = current_date.date() - timedelta(days = days_integer)
+    prior_date = current_date.date() - timedelta(days = days_int)
 
-    prior_date_string = dt.strftime(prior_date, date_format_string)
+    prior_date = dt.strftime(prior_date, date_format)
 
 
-    return prior_date_string
+    return prior_date
 
 
 # In[3]:
@@ -96,10 +96,9 @@ def return_prior_date_days \
  #
  #  Type    Name            Description
  #  -----   -------------   ----------------------------------------------
- #  string  date_string     The parameter is the date.
- #  integer days_integer    The parameter is the number of days
- #  string  date_format_string
- #                          The parameter is the date format.
+ #  string  date            The parameter is the date.
+ #  integer days_int        The parameter is the number of days
+ #  string  date_format     The parameter is the date format.
  #
  #
  #  Date                Description                                 Programmer
@@ -109,18 +108,18 @@ def return_prior_date_days \
  #******************************************************************************************/
 
 def return_future_date_days \
-        (date_string, 
-         days_integer, 
-         date_format_string = '%Y-%m-%d'):
+        (date, 
+         days_int, 
+         date_format = '%Y-%m-%d'):
 
-    current_date = dt.strptime(date_string, date_format_string)
+    current_date = dt.strptime(date, date_format)
 
-    future_date = current_date.date() + timedelta(days = days_integer)
+    future_date = current_date.date() + timedelta(days = days_int)
 
-    future_date_string = dt.strftime(prior_date, date_format_string)
+    future_date = dt.strftime(prior_date, date_format)
 
 
-    return future_date_string
+    return future_date
 
 
 # In[4]:
@@ -142,9 +141,9 @@ def return_future_date_days \
  #
  #  Type    Name            Description
  #  -----   -------------   ----------------------------------------------
- #  list    input_series_list
- #                          The parameter is an input series list of date strings 
- #                          with the format, yyyy-mm-dd.
+ #  list    input_series_list     
+ #                          The parameter is the unsorted input series list 
+ #                          of date strings with the format, yyyy-mm-dd.
  #
  #
  #  Date                Description                                 Programmer
@@ -155,20 +154,20 @@ def return_future_date_days \
 
 def return_normalized_date_index(input_series_list):
 
-    sorted_series_list = sorted(input_series_list, key = len)
+    current_series_list = sorted(input_series_list, key = len)
 
 
-    for index, series in enumerate(sorted_series_list):
+    for i, series in enumerate(current_series_list):
 
-        index_string_list = [ele[5:] for ele in series.index.tolist()]
+        index_list = [x[5:] for x in series.index.tolist()]
 
-        if index >= 1:
+        if i >= 1:
 
-            temp_index_list = [ele for ele in temp_index_list if ele in index_string_list]
+            temp_index_list = [x for x in temp_index_list if x in index_list]
 
         else:
 
-            temp_index_list = index_string_list 
+            temp_index_list = index_list 
 
 
     return temp_index_list
@@ -179,7 +178,7 @@ def return_normalized_date_index(input_series_list):
 
 #*******************************************************************************************
  #
- #  Function Name:  return_normalized_series_list_as_dataframe
+ #  Function Name:  return_normalized_series_list_as_df
  #
  #  Function Description:
  #      This function returns a dataframe from a series list normalized 
@@ -193,9 +192,9 @@ def return_normalized_date_index(input_series_list):
  #
  #  Type    Name            Description
  #  -----   -------------   ----------------------------------------------
- #  list    input_series_list
- #                          The parameter is a input series list.
- #  list    omit_index_integer_list
+ #  list    input_series_list     
+ #                         The parameter is a input series list.
+ #  list    omit_index_int_list
  #                          The parameter is the list of omitted series list indices.
  #
  #
@@ -205,49 +204,47 @@ def return_normalized_date_index(input_series_list):
  #
  #******************************************************************************************/
 
-def return_normalized_series_list_as_dataframe \
+def return_normalized_series_list_as_df \
         (input_series_list,
-         omit_index_integer_list = None):
+         omit_index_int_list = None):
 
     current_series_list = input_series_list.copy()
 
-    if omit_index_integer_list != None:
+    if omit_index_int_list != None:
 
         current_series_list \
-            = [ele for i, ele in enumerate(current_series_list) if i not in omit_index_integer_list]
+            = [x for i, x in enumerate(current_series_list) if i not in omit_index_int_list]
 
 
-    normalized_index_string_list = return_normalized_date_index(current_series_list)
+    normalized_index_list = return_normalized_date_index(current_series_list)
 
     normalized_series_list = []
 
 
     for index, series in enumerate(current_series_list):
 
-        index_string_list = [ele[5:] for ele in current_series_list[index].index.tolist()]
+        index_list = [x[5:] for x in current_series_list[index].index.tolist()]
 
-        current_series_list[index] = current_series_list[index].set_axis(index_string_list)
-
-
-        temp_string_list = []
-
-        for i, element in enumerate(current_series_list[index]):
-
-            if str(current_series_list[index].index[i]) in normalized_index_string_list:
-
-                temp_string_list.append(element)
+        current_series_list[index] = current_series_list[index].set_axis(index_list)
 
 
-        normalized_series = pd.Series(temp_string_list, index = normalized_index_string_list)
+        temp_list = []
+
+        for j, x in enumerate(current_series_list[index]):
+
+            if str(current_series_list[index].index[j]) in normalized_index_list:
+
+                temp_list.append(x)
+
+
+        normalized_series = pd.Series(temp_list, index = normalized_index_list)
 
         normalized_series.name = current_series_list[index].name
 
         normalized_series_list.append(normalized_series)
 
 
-    normalized_dataframe = pd.DataFrame(normalized_series_list).transpose()
-
-    return normalized_dataframe
+    return pd.DataFrame(normalized_series_list).transpose()
 
 
 # In[ ]:
