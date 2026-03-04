@@ -8,7 +8,6 @@ __pycache__/
 
 logx.py
 pandasx.py
-timex.py
 
 # Distribution / packaging
 .Python
