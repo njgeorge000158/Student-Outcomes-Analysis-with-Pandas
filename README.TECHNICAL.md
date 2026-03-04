@@ -22,8 +22,6 @@ pip3 install -U geopy
 
 pip3 install -U scipy
 
-pip3 install -U aspose-words
-
 pip3 install -U dataframe-image
 
 pip3 install -U selenium
@@ -40,8 +38,6 @@ logx.py
 
 pandasx.py
 
-timex.py
-
 If the folders, resources and logs are not present, the Jupyter Notebook will create them.  The folder, resources, holds input files for the Jupyter Notebook; the folder, logs, contains log files from testing the Jupyter Notebook; and the folder, images, has the PNG image files of the Jupyter Notebook's tables and plots.
 
 To place the Jupyter Notebook in Log Mode or Image Mode set the parameter for the appropriate subroutine in coding cell #2 to True. In Log Mode, the Notebook writes log information to a log file in the folder, logs. If the program is in Image Mode, it writes all DataFrames, hvplot maps, and matplotlib plots to PNG files to the folder, images.
@@ -54,7 +50,7 @@ To place the Jupyter Notebook in Log Mode or Image Mode set the parameter for th
 
 #### Source code
 
-city_schools.ipynb, logx.py, mathx.py, matplotlib.py, pandasx.py, pymaceuticalsx.py, timex.py
+city_schools.ipynb, logx.py, pandasx.py
 
 #### Input files
 
@@ -93,8 +89,6 @@ Jupyter Notebook, Pandas, Python 3.11.5
 |&rarr; [./README.TECHNICAL.md](./README.TECHNICAL.md)
 
 |&rarr; [./table-of-contents.md](./table-of-contents.md)
-
-|&rarr; [./timex.py](./timex.py)
 
 |&rarr; [./images/](./images/)
 
@@ -161,6 +155,8 @@ Jupyter Notebook, Pandas, Python 3.11.5
 |&rarr; [./logs/](./logs/)
 
   &emsp; |&rarr; [./logs/20240428city_schools_log.txt](./logs/20240428city_schools_log.txt)
+
+  &emsp; |&rarr; [./logs/20260303city_schools_log.txt](./logs/20260303city_schools_log.txt)
 
   &emsp; |&rarr; [./logs/README.md](./logs/README.md)
 
