@@ -12,39 +12,46 @@
  #      The Python script, logx.py, contains generic Python functions for writing 
  #      information to log files.  Here is the list:
  #
+ #  get_logs_config_dict
+ #  set_logs_config_dict
+ #
+ #  get_log_mode
  #  set_log_mode
+ #
+ #  get_image_mode
  #  set_image_mode
+ #
+ #  get_program_designation
  #  set_program_designation
  #
+ #  get_logs_directory_path
  #  set_logs_directory_path
+ #
+ #  get_images_directory_path
  #  set_images_directory_path
+ #
+ #  get_resources_directory_path
  #  set_resources_directory_path
+ #
+ #  get_sql_directory_path
  #  set_sql_directory_path
+ #
+ #  get_visualization_directory_path
  #  set_visualization_directory_path
+ #
+ #  get_models_directory_path
  #  set_models_directory_path
+ #
+ #  get_backups_directory_path
  #  set_backups_directory_path
  #
- #  set_base_log_file_name
- # 
- #  get_log_mode
- #  get_image_mode
- #  get_program_designation
- #
- #  get_logs_directory_path
- #  get_images_directory_path
- #  get_resources_directory_path
- #  get_sql_directory_path
- #  get_visualization_directory_path
- #  get_models_directory_path
- #  get_backups_directory_path
- #
  #  get_base_log_file_name
+ #  set_base_log_file_name
  #
- #  get_image_file_path
- #
- #  current_date_as_text
- #  current_timestamp_as_text
- #  current_timepoint_with_message
+ #  curr_img_file_path
+ #  curr_date_as_txt
+ #  curr_timestp_as_txt
+ #  curr_timept_with_msg
  #
  #  return_styler_save_png
  #
@@ -61,13 +68,10 @@
  #  save_plotly_image
  #
  #
- #  Date            Description                             Programmer
- #  ----------      ------------------------------------    ------------------
- #  04/11/2024      Initial Development                     Nicholas J. George
- #  02/09/2026      Abbreviated variable names and added global configuration
- #                  dictionary                              Nicholas J. George
- #  02/10/2026      Added functions for returning global values
- #                                                          Nicholas J. George
+ #  Date                Description                                 Programmer
+ #  ---------------     ------------------------------------        ------------------
+ #  04/11/2024          Initial Development                         Nicholas J. George
+ #  02/18/2026          Upgraded Module                             Nicholas J. George
  #
  #******************************************************************************************/
 
@@ -75,12 +79,10 @@ import os
 import copy
 
 import dataframe_image as dfi
+import datetime as dt
 import matplotlib.pyplot as plt
 
 import hvplot.pandas
-
-from datetime import date
-from datetime import datetime
 
 
 # In[2]:
@@ -104,8 +106,9 @@ logs_config_dict \
        'log_folder': '',
        'log_txt_file': None,
        'prgrm_dsgn': '',
-       'log_bool': False,
-       'image_bool': False}
+       'bbox_inches': 'tight',
+       'log_mode': False,
+       'img_mode': False}
 
 
 # In[4]:
@@ -113,34 +116,31 @@ logs_config_dict \
 
 #*******************************************************************************************
  #
- #  Function Name:  set_log_mode
+ #  Function Name:  get_logs_config_dict
  #
  #  Function Description:
- #      The function sets the value for the global log flag (True/False).
+ #      The function returns the configuration dictionary.
  #
  #
- #  Return Type: n/a
+ #  Return Type: dictionary
  #
  #
  #  Function Parameters:
  #
- #  Type    Name            Description
- #  -----   -------------   ----------------------------------------------
- #  boolean mode_bool       The parameter is the desired Boolean value 
- #                          for the global log flag.
+ #  Type           Name             Description
+ #  ------------   --------------   --------------------------------------------------
+ #  n/a            n/a              n/a
  #
  #
  #  Date                Description                                 Programmer
  #  ---------------     ------------------------------------        ------------------
- #  04/11/2024          Initial Development                         Nicholas J. George
+ #  02/18/2026          Initial Development                         Nicholas J. George
  #
  #******************************************************************************************/
 
-def set_log_mode(mode_bool = True):
+def get_logs_config_dict():
 
-    global logs_config_dict
-
-    logs_config_dict['log_bool'] = mode_bool
+    return logs_config_dict
 
 
 # In[5]:
@@ -148,10 +148,10 @@ def set_log_mode(mode_bool = True):
 
 #*******************************************************************************************
  #
- #  Function Name:  set_image_mode
+ #  Function Name:  set_logs_config_dict
  #
  #  Function Description:
- #      The function sets the value for the global image flag (True/False).
+ #      The function sets the configuration dictionary.
  #
  #
  #  Return Type: n/a
@@ -159,332 +159,25 @@ def set_log_mode(mode_bool = True):
  #
  #  Function Parameters:
  #
- #  Type    Name            Description
- #  -----   -------------   ----------------------------------------------
- #  boolean mode_bool       The parameter is the desired Boolean value 
- #                          for the global image flag.
+ #  Type           Name             Description
+ #  ------------   --------------   --------------------------------------------------
+ #  dictionary     config_dict      The parameter is the new configuration dictionary.
  #
  #
  #  Date                Description                                 Programmer
  #  ---------------     ------------------------------------        ------------------
- #  04/11/2024          Initial Development                         Nicholas J. George
+ #  02/18/2026          Initial Development                         Nicholas J. George
  #
  #******************************************************************************************/
 
-def set_image_mode(mode_bool = True):
+def set_logs_config_dict(config_dict):
 
     global logs_config_dict
 
-    logs_config_dict['image_bool'] = mode_bool
+    logs_config_dict = config_dict
 
 
 # In[6]:
-
-
-#*******************************************************************************************
- #
- #  Function Name:  set_program_designation
- #
- #  Function Description:
- #      The function sets the value for the global program designation string.
- #
- #
- #  Return Type: n/a
- #
- #
- #  Function Parameters:
- #
- #  Type    Name            Description
- #  -----   -------------   ----------------------------------------------
- #  string  prgrm_desig     The parameter is the text for the global program designation.
- #
- #
- #  Date                Description                                 Programmer
- #  ---------------     ------------------------------------        ------------------
- #  04/11/2024          Initial Development                         Nicholas J. George
- #
- #******************************************************************************************/
-
-def set_program_designation(prgrm_desig = ''):
-
-    global logs_config_dict
-
-    logs_config_dict['prgrm_dsgn'] = prgrm_desig
-
-
-# In[7]:
-
-
-#*******************************************************************************************
- #
- #  Function Name:  set_logs_directory_path
- #
- #  Function Description:
- #      The function sets the logs directory path.
- #
- #
- #  Return Type: n/a
- #
- #
- #  Function Parameters:
- #
- #  Type    Name            Description
- #  -----   -------------   ----------------------------------------------
- #  string  directory_path  The parameter is the new directory path.
- #
- #
- #  Date                Description                                 Programmer
- #  ---------------     ------------------------------------        ------------------
- #  04/11/2024          Initial Development                         Nicholas J. George
- #
- #******************************************************************************************/
-
-def set_logs_directory_path(directory_path):
-
-    global logs_config_dict
-
-    logs_config_dict['logs_folder'] = directory_path
-
-
-# In[8]:
-
-
-#*******************************************************************************************
- #
- #  Function Name:  set_images_directory_path
- #
- #  Function Description:
- #      The function sets the images directory path.
- #
- #
- #  Return Type: n/a
- #
- #
- #  Function Parameters:
- #
- #  Type    Name            Description
- #  -----   -------------   ----------------------------------------------
- #  string  directory_path  The parameter is the new directory path.
- #
- #
- #  Date                Description                                 Programmer
- #  ---------------     ------------------------------------        ------------------
- #  04/11/2024          Initial Development                         Nicholas J. George
- #
- #******************************************************************************************/
-
-def set_images_directory_path(directory_path):
-
-    global logs_config_dict
-
-    logs_config_dict['images_folder'] = directory_path
-
-
-# In[9]:
-
-
-#*******************************************************************************************
- #
- #  Function Name:  set_resources_directory_path
- #
- #  Function Description:
- #      The function sets the resources directory path.
- #
- #
- #  Return Type: n/a
- #
- #
- #  Function Parameters:
- #
- #  Type    Name            Description
- #  -----   -------------   ----------------------------------------------
- #  string  directory_path  The parameter is the new directory path.
- #
- #
- #  Date                Description                                 Programmer
- #  ---------------     ------------------------------------        ------------------
- #  04/11/2024          Initial Development                         Nicholas J. George
- #
- #******************************************************************************************/
-
-def set_resources_directory_path(directory_path):
-
-    global logs_config_dict
-
-    logs_config_dict['resources_folder'] = directory_path
-
-
-# In[10]:
-
-
-#*******************************************************************************************
- #
- #  Function Name:  set_sql_directory_path
- #
- #  Function Description:
- #      The function sets the sql directory path.
- #
- #
- #  Return Type: n/a
- #
- #
- #  Function Parameters:
- #
- #  Type    Name            Description
- #  -----   -------------   ----------------------------------------------
- #  string  directory_path  The parameter is the new directory path.
- #
- #
- #  Date                Description                                 Programmer
- #  ---------------     ------------------------------------        ------------------
- #  04/11/2024          Initial Development                         Nicholas J. George
- #
- #******************************************************************************************/
-
-def set_sql_directory_path(directory_path):
-
-    global logs_config_dict
-
-    logs_config_dict['sql_folder'] = directory_path
-
-
-# In[11]:
-
-
-#*******************************************************************************************
- #
- #  Function Name:  set_visualzation_directory_path
- #
- #  Function Description:
- #      The function sets the visualzation directory path.
- #
- #
- #  Return Type: n/a
- #
- #
- #  Function Parameters:
- #
- #  Type    Name            Description
- #  -----   -------------   ----------------------------------------------
- #  string  directory_path  The parameter is the new directory path.
- #
- #
- #  Date                Description                                 Programmer
- #  ---------------     ------------------------------------        ------------------
- #  04/11/2024          Initial Development                         Nicholas J. George
- #
- #******************************************************************************************/
-
-def set_visualzation_directory_path(directory_path):
-
-    global logs_config_dict
-
-    logs_config_dict['visual_folder'] = directory_path
-
-
-# In[12]:
-
-
-#*******************************************************************************************
- #
- #  Function Name:  set_models_directory_path
- #
- #  Function Description:
- #      The function sets the models directory path.
- #
- #
- #  Return Type: n/a
- #
- #
- #  Function Parameters:
- #
- #  Type    Name            Description
- #  -----   -------------   ----------------------------------------------
- #  string  directory_path  The parameter is the new directory path.
- #
- #
- #  Date                Description                                 Programmer
- #  ---------------     ------------------------------------        ------------------
- #  04/11/2024          Initial Development                         Nicholas J. George
- #
- #******************************************************************************************/
-
-def set_models_directory_path(directory_path):
-
-    global logs_config_dict
-
-    logs_config_dict['models_folder'] = directory_path
-
-
-# In[13]:
-
-
-#*******************************************************************************************
- #
- #  Function Name:  set_backups_directory_path
- #
- #  Function Description:
- #      The function sets the backups directory path.
- #
- #
- #  Return Type: n/a
- #
- #
- #  Function Parameters:
- #
- #  Type    Name            Description
- #  -----   -------------   ----------------------------------------------
- #  string  directory_path  The parameter is the new directory path.
- #
- #
- #  Date                Description                                 Programmer
- #  ---------------     ------------------------------------        ------------------
- #  04/11/2024          Initial Development                         Nicholas J. George
- #
- #******************************************************************************************/
-
-def set_backups_directory_path(directory_path):
-
-    global logs_config_dict
-
-    logs_config_dict['backups_folder'] = directory_path
-
-
-# In[14]:
-
-
-#*******************************************************************************************
- #
- #  Function Name:  set_base_log_file_name
- #
- #  Function Description:
- #      The function sets the base log file name.
- #
- #
- #  Return Type: n/a
- #
- #
- #  Function Parameters:
- #
- #  Type    Name            Description
- #  -----   -------------   ----------------------------------------------
- #  string  base_file_path  The parameter is the base file name.
- #
- #
- #  Date                Description                                 Programmer
- #  ---------------     ------------------------------------        ------------------
- #  04/11/2024          Initial Development                         Nicholas J. George
- #
- #******************************************************************************************/
-
-def set_base_log_file_name(base_file_path):
-
-    global logs_config_dict
-
-    logs_config_dict['base_log_name'] = base_file_path
-
-
-# In[15]:
 
 
 #*******************************************************************************************
@@ -500,23 +193,57 @@ def set_base_log_file_name(base_file_path):
  #
  #  Function Parameters:
  #
- #  Type    Name            Description
- #  -----   -------------   ----------------------------------------------
- #  n/a     n/a             n/a
+ #  Type           Name             Description
+ #  ------------   --------------   --------------------------------------------------
+ #  n/a            n/a              n/a
  #
  #
  #  Date                Description                                 Programmer
  #  ---------------     ------------------------------------        ------------------
- #  02/10/2026          Initial Development                         Nicholas J. George
+ #  02/18/2026          Initial Development                         Nicholas J. George
  #
  #******************************************************************************************/
 
 def get_log_mode():
 
-    return logs_config_dict['log_bool']
+    return logs_config_dict['log_mode']
 
 
-# In[16]:
+# In[7]:
+
+
+#*******************************************************************************************
+ #
+ #  Function Name:  set_log_mode
+ #
+ #  Function Description:
+ #      The function sets the global log mode.
+ #
+ #
+ #  Return Type: n/a
+ #
+ #
+ #  Function Parameters:
+ #
+ #  Type           Name             Description
+ #  ------------   --------------   --------------------------------------------------
+ #  boolean        mode_bool        The parameter is the new log mode.
+ #
+ #
+ #  Date                Description                                 Programmer
+ #  ---------------     ------------------------------------        ------------------
+ #  02/18/2026          Initial Development                         Nicholas J. George
+ #
+ #******************************************************************************************/
+
+def set_log_mode(mode_bool):
+
+    global logs_config_dict
+
+    logs_config_dict['log_mode'] = mode_bool
+
+
+# In[8]:
 
 
 #*******************************************************************************************
@@ -532,23 +259,57 @@ def get_log_mode():
  #
  #  Function Parameters:
  #
- #  Type    Name            Description
- #  -----   -------------   ----------------------------------------------
- #  n/a     n/a             n/a
+ #  Type           Name             Description
+ #  ------------   --------------   --------------------------------------------------
+ #  n/a            n/a              n/a
  #
  #
  #  Date                Description                                 Programmer
  #  ---------------     ------------------------------------        ------------------
- #  02/10/2026          Initial Development                         Nicholas J. George
+ #  02/18/2026          Initial Development                         Nicholas J. George
  #
  #******************************************************************************************/
 
 def get_image_mode():
 
-    return logs_config_dict['image_bool']
+    return logs_config_dict['img_mode']
 
 
-# In[17]:
+# In[9]:
+
+
+#*******************************************************************************************
+ #
+ #  Function Name:  set_image_mode
+ #
+ #  Function Description:
+ #      The function sets the global image mode.
+ #
+ #
+ #  Return Type: n/a
+ #
+ #
+ #  Function Parameters:
+ #
+ #  Type           Name             Description
+ #  ------------   --------------   --------------------------------------------------
+ #  boolean        mode_bool        The parameter is the new image mode.
+ #
+ #
+ #  Date                Description                                 Programmer
+ #  ---------------     ------------------------------------        ------------------
+ #  02/18/2026          Initial Development                         Nicholas J. George
+ #
+ #******************************************************************************************/
+
+def set_image_mode(mode_bool):
+
+    global logs_config_dict
+
+    logs_config_dict['img_mode'] = mode_bool
+
+
+# In[10]:
 
 
 #*******************************************************************************************
@@ -564,14 +325,14 @@ def get_image_mode():
  #
  #  Function Parameters:
  #
- #  Type    Name            Description
- #  -----   -------------   ----------------------------------------------
- #  n/a     n/a             n/a
+ #  Type           Name             Description
+ #  ------------   --------------   --------------------------------------------------
+ #  n/a            n/a              n/a
  #
  #
  #  Date                Description                                 Programmer
  #  ---------------     ------------------------------------        ------------------
- #  02/10/2026          Initial Development                         Nicholas J. George
+ #  02/18/2026          Initial Development                         Nicholas J. George
  #
  #******************************************************************************************/
 
@@ -580,7 +341,42 @@ def get_program_designation():
     return logs_config_dict['prgrm_dsgn']
 
 
-# In[18]:
+# In[11]:
+
+
+#*******************************************************************************************
+ #
+ #  Function Name:  set_program_designation
+ #
+ #  Function Description:
+ #      The function sets the value for the global program designation string.
+ #
+ #
+ #  Return Type: n/a
+ #
+ #
+ #  Function Parameters:
+ #
+ #  Type           Name             Description
+ #  ------------   --------------   --------------------------------------------------
+ #  string         prgrm_desig      The parameter is the text for the global program 
+ #                                  designation.
+ #
+ #
+ #  Date                Description                                 Programmer
+ #  ---------------     ------------------------------------        ------------------
+ #  02/18/2026          Initial Development                         Nicholas J. George
+ #
+ #******************************************************************************************/
+
+def set_program_designation(prgrm_desig = ''):
+
+    global logs_config_dict
+
+    logs_config_dict['prgrm_dsgn'] = prgrm_desig
+
+
+# In[12]:
 
 
 #*******************************************************************************************
@@ -596,14 +392,14 @@ def get_program_designation():
  #
  #  Function Parameters:
  #
- #  Type    Name            Description
- #  -----   -------------   ----------------------------------------------
- #  n/a     n/a             n/a
+ #  Type           Name             Description
+ #  ------------   --------------   --------------------------------------------------
+ #  n/a            n/a              n/a
  #
  #
  #  Date                Description                                 Programmer
  #  ---------------     ------------------------------------        ------------------
- #  02/10/2026          Initial Development                         Nicholas J. George
+ #  02/18/2026          Initial Development                         Nicholas J. George
  #
  #******************************************************************************************/
 
@@ -612,7 +408,41 @@ def get_logs_directory_path():
     return logs_config_dict['logs_folder']
 
 
-# In[19]:
+# In[13]:
+
+
+#*******************************************************************************************
+ #
+ #  Function Name:  set_logs_directory_path
+ #
+ #  Function Description:
+ #      The function sets the logs directory path.
+ #
+ #
+ #  Return Type: n/a
+ #
+ #
+ #  Function Parameters:
+ #
+ #  Type           Name             Description
+ #  ------------   --------------   --------------------------------------------------
+ #  string         upd_dir_path     The parameter is the updated logs directory path.
+ #
+ #
+ #  Date                Description                                 Programmer
+ #  ---------------     ------------------------------------        ------------------
+ #  02/18/2026          Initial Development                         Nicholas J. George
+ #
+ #******************************************************************************************/
+
+def set_logs_directory_path(upd_dir_path):
+
+    global logs_config_dict
+
+    logs_config_dict['logs_folder'] = upd_dir_path
+
+
+# In[14]:
 
 
 #*******************************************************************************************
@@ -628,14 +458,14 @@ def get_logs_directory_path():
  #
  #  Function Parameters:
  #
- #  Type    Name            Description
- #  -----   -------------   ----------------------------------------------
- #  n/a     n/a             n/a
+ #  Type           Name             Description
+ #  ------------   --------------   --------------------------------------------------
+ #  n/a            n/a              n/a
  #
  #
  #  Date                Description                                 Programmer
  #  ---------------     ------------------------------------        ------------------
- #  02/10/2026          Initial Development                         Nicholas J. George
+ #  02/18/2026          Initial Development                         Nicholas J. George
  #
  #******************************************************************************************/
 
@@ -644,7 +474,41 @@ def get_images_directory_path():
     return logs_config_dict['images_folder']
 
 
-# In[20]:
+# In[15]:
+
+
+#*******************************************************************************************
+ #
+ #  Function Name:  set_images_directory_path
+ #
+ #  Function Description:
+ #      The function sets the images directory path.
+ #
+ #
+ #  Return Type: n/a
+ #
+ #
+ #  Function Parameters:
+ #
+ #  Type           Name             Description
+ #  ------------   --------------   --------------------------------------------------
+ #  string         upd_dir_path     The parameter is the updated images directory path.
+ #
+ #
+ #  Date                Description                                 Programmer
+ #  ---------------     ------------------------------------        ------------------
+ #  02/18/2026          Initial Development                         Nicholas J. George
+ #
+ #******************************************************************************************/
+
+def set_images_directory_path(upd_dir_path):
+
+    global logs_config_dict
+
+    logs_config_dict['images_folder'] = upd_dir_path
+
+
+# In[16]:
 
 
 #*******************************************************************************************
@@ -660,14 +524,14 @@ def get_images_directory_path():
  #
  #  Function Parameters:
  #
- #  Type    Name            Description
- #  -----   -------------   ----------------------------------------------
- #  n/a     n/a             n/a
+ #  Type           Name             Description
+ #  ------------   --------------   --------------------------------------------------
+ #  n/a            n/a              n/a
  #
  #
  #  Date                Description                                 Programmer
  #  ---------------     ------------------------------------        ------------------
- #  02/10/2026          Initial Development                         Nicholas J. George
+ #  02/18/2026          Initial Development                         Nicholas J. George
  #
  #******************************************************************************************/
 
@@ -676,7 +540,41 @@ def get_resources_directory_path():
     return logs_config_dict['resources_folder']
 
 
-# In[21]:
+# In[17]:
+
+
+#*******************************************************************************************
+ #
+ #  Function Name:  set_resources_directory_path
+ #
+ #  Function Description:
+ #      The function sets the resources directory path.
+ #
+ #
+ #  Return Type: n/a
+ #
+ #
+ #  Function Parameters:
+ #
+ #  Type           Name             Description
+ #  ------------   --------------   --------------------------------------------------
+ #  string         upd_dir_path     The parameter is the updated resources directory path.
+ #
+ #
+ #  Date                Description                                 Programmer
+ #  ---------------     ------------------------------------        ------------------
+ #  02/18/2026          Initial Development                         Nicholas J. George
+ #
+ #******************************************************************************************/
+
+def set_resources_directory_path(upd_dir_path):
+
+    global logs_config_dict
+
+    logs_config_dict['resources_folder'] = upd_dir_path
+
+
+# In[18]:
 
 
 #*******************************************************************************************
@@ -692,14 +590,14 @@ def get_resources_directory_path():
  #
  #  Function Parameters:
  #
- #  Type    Name            Description
- #  -----   -------------   ----------------------------------------------
- #  n/a     n/a             n/a
+ #  Type           Name             Description
+ #  ------------   --------------   --------------------------------------------------
+ #  n/a            n/a              n/a
  #
  #
  #  Date                Description                                 Programmer
  #  ---------------     ------------------------------------        ------------------
- #  02/10/2026          Initial Development                         Nicholas J. George
+ #  02/18/2026          Initial Development                         Nicholas J. George
  #
  #******************************************************************************************/
 
@@ -708,7 +606,41 @@ def get_sql_directory_path():
     return logs_config_dict['sql_folder']
 
 
-# In[22]:
+# In[19]:
+
+
+#*******************************************************************************************
+ #
+ #  Function Name:  set_sql_directory_path
+ #
+ #  Function Description:
+ #      The function sets the sql directory path.
+ #
+ #
+ #  Return Type: n/a
+ #
+ #
+ #  Function Parameters:
+ #
+ #  Type           Name             Description
+ #  ------------   --------------   --------------------------------------------------
+ #  string         upd_dir_path     The parameter is the updated sql directory path.
+ #
+ #
+ #  Date                Description                                 Programmer
+ #  ---------------     ------------------------------------        ------------------
+ #  02/18/2026          Initial Development                         Nicholas J. George
+ #
+ #******************************************************************************************/
+
+def set_sql_directory_path(upd_dir_path):
+
+    global logs_config_dict
+
+    logs_config_dict['sql_folder'] = upd_dir_path
+
+
+# In[20]:
 
 
 #*******************************************************************************************
@@ -724,14 +656,14 @@ def get_sql_directory_path():
  #
  #  Function Parameters:
  #
- #  Type    Name            Description
- #  -----   -------------   ----------------------------------------------
- #  n/a     n/a             n/a
+ #  Type           Name             Description
+ #  ------------   --------------   --------------------------------------------------
+ #  n/a            n/a              n/a
  #
  #
  #  Date                Description                                 Programmer
  #  ---------------     ------------------------------------        ------------------
- #  02/10/2026          Initial Development                         Nicholas J. George
+ #  02/18/2026          Initial Development                         Nicholas J. George
  #
  #******************************************************************************************/
 
@@ -740,7 +672,42 @@ def get_visualzation_directory_path():
     return logs_config_dict['visual_folder']
 
 
-# In[23]:
+# In[21]:
+
+
+#*******************************************************************************************
+ #
+ #  Function Name:  set_visualzation_directory_path
+ #
+ #  Function Description:
+ #      The function sets the visualzation directory path.
+ #
+ #
+ #  Return Type: n/a
+ #
+ #
+ #  Function Parameters:
+ #
+ #  Type           Name             Description
+ #  ------------   --------------   --------------------------------------------------
+ #  string         upd_dir_path     The parameter is the updated visualization directory
+ #                                  path.
+ #
+ #
+ #  Date                Description                                 Programmer
+ #  ---------------     ------------------------------------        ------------------
+ #  02/18/2026          Initial Development                         Nicholas J. George
+ #
+ #******************************************************************************************/
+
+def set_visualzation_directory_path(upd_dir_path):
+
+    global logs_config_dict
+
+    logs_config_dict['visual_folder'] = upd_dir_path
+
+
+# In[22]:
 
 
 #*******************************************************************************************
@@ -756,20 +723,54 @@ def get_visualzation_directory_path():
  #
  #  Function Parameters:
  #
- #  Type    Name            Description
- #  -----   -------------   ----------------------------------------------
- #  n/a     n/a             n/a
+ #  Type           Name             Description
+ #  ------------   --------------   --------------------------------------------------
+ #  n/a            n/a              n/a
  #
  #
  #  Date                Description                                 Programmer
  #  ---------------     ------------------------------------        ------------------
- #  02/10/2026          Initial Development                         Nicholas J. George
+ #  02/18/2026          Initial Development                         Nicholas J. George
  #
  #******************************************************************************************/
 
 def get_models_directory_path():
 
     return logs_config_dict['models_folder']
+
+
+# In[23]:
+
+
+#*******************************************************************************************
+ #
+ #  Function Name:  set_models_directory_path
+ #
+ #  Function Description:
+ #      The function sets the models directory path.
+ #
+ #
+ #  Return Type: n/a
+ #
+ #
+ #  Function Parameters:
+ #
+ #  Type           Name             Description
+ #  ------------   --------------   --------------------------------------------------
+ #  string         upd_dir_path     The parameter is the updated models directory path.
+ #
+ #
+ #  Date                Description                                 Programmer
+ #  ---------------     ------------------------------------        ------------------
+ #  02/18/2026          Initial Development                         Nicholas J. George
+ #
+ #******************************************************************************************/
+
+def set_models_directory_path(upd_dir_path):
+
+    global logs_config_dict
+
+    logs_config_dict['models_folder'] = upd_dir_path
 
 
 # In[24]:
@@ -788,14 +789,14 @@ def get_models_directory_path():
  #
  #  Function Parameters:
  #
- #  Type    Name            Description
- #  -----   -------------   ----------------------------------------------
- #  n/a     n/a             n/a
+ #  Type           Name             Description
+ #  ------------   --------------   --------------------------------------------------
+ #  n/a            n/a              n/a
  #
  #
  #  Date                Description                                 Programmer
  #  ---------------     ------------------------------------        ------------------
- #  02/10/2026          Initial Development                         Nicholas J. George
+ #  02/18/2026          Initial Development                         Nicholas J. George
  #
  #******************************************************************************************/
 
@@ -805,6 +806,40 @@ def get_backups_directory_path():
 
 
 # In[25]:
+
+
+#*******************************************************************************************
+ #
+ #  Function Name:  set_backups_directory_path
+ #
+ #  Function Description:
+ #      The function sets the backups directory path.
+ #
+ #
+ #  Return Type: n/a
+ #
+ #
+ #  Function Parameters:
+ #
+ #  Type           Name             Description
+ #  ------------   --------------   --------------------------------------------------
+ #  string         upd_dir_path     The parameter is the updated backups directory path.
+ #
+ #
+ #  Date                Description                                 Programmer
+ #  ---------------     ------------------------------------        ------------------
+ #  02/18/2026          Initial Development                         Nicholas J. George
+ #
+ #******************************************************************************************/
+
+def set_backups_directory_path(upd_dir_path):
+
+    global logs_config_dict
+
+    logs_config_dict['backups_folder'] = upd_dir_path
+
+
+# In[26]:
 
 
 #*******************************************************************************************
@@ -820,14 +855,14 @@ def get_backups_directory_path():
  #
  #  Function Parameters:
  #
- #  Type    Name            Description
- #  -----   -------------   ----------------------------------------------
- #  n/a     n/a             n/a
+ #  Type           Name             Description
+ #  ------------   --------------   --------------------------------------------------
+ #  n/a            n/a              n/a
  #
  #
  #  Date                Description                                 Programmer
  #  ---------------     ------------------------------------        ------------------
- #  02/10/2026          Initial Development                         Nicholas J. George
+ #  02/18/2026          Initial Development                         Nicholas J. George
  #
  #******************************************************************************************/
 
@@ -836,12 +871,46 @@ def get_base_log_file_name():
     return logs_config_dict['base_log_name']
 
 
-# In[26]:
+# In[27]:
 
 
 #*******************************************************************************************
  #
- #  Function Name:  get_image_file_path
+ #  Function Name:  set_base_log_file_name
+ #
+ #  Function Description:
+ #      The function sets the base log file name.
+ #
+ #
+ #  Return Type: n/a
+ #
+ #
+ #  Function Parameters:
+ #
+ #  Type           Name             Description
+ #  ------------   --------------   --------------------------------------------------
+ #  string         base_file_path   The parameter is the updated base file name.
+ #
+ #
+ #  Date                Description                                 Programmer
+ #  ---------------     ------------------------------------        ------------------
+ #  02/18/2026          Initial Development                         Nicholas J. George
+ #
+ #******************************************************************************************/
+
+def set_base_log_file_name(upd_file_name):
+
+    global logs_config_dict
+
+    logs_config_dict['base_log_name'] = upd_file_nam
+
+
+# In[28]:
+
+
+#*******************************************************************************************
+ #
+ #  Function Name:  curr_img_file_path
  #
  #  Function Description:
  #      The function uses a plot's caption to determine the image file path.
@@ -852,40 +921,41 @@ def get_base_log_file_name():
  #
  #  Function Parameters:
  #
- #  Type    Name            Description
- #  -----   -------------   ----------------------------------------------
- #  string  caption         The parameter is the plot title.
- #  string  image_format    The parameter is the image format file suffix.    
+ #  Type           Name             Description
+ #  ------------   --------------   --------------------------------------------------
+ #  string         caption          The parameter is the plot title.
+ #  string         img_fmt          The parameter is the image format file suffix.    
  #
  #
  #  Date                Description                                 Programmer
  #  ---------------     ------------------------------------        ------------------
- #  04/11/2024          Initial Development                         Nicholas J. George
+ #  02/18/2026          Initial Development                         Nicholas J. George
  #
  #******************************************************************************************/
 
-def get_image_file_path \
+def curr_img_file_path \
         (caption = 'test',
-         image_format = ''):
+         img_fmt = ''):
 
     temp = ''.join(filter(str.isalnum, caption))
 
-    image_file_path \
+    img_file_path \
         = logs_config_dict['images_folder'] + '/' + logs_config_dict['prgrm_dsgn'] + temp
 
-    if image_format != '':
+    if img_fmt != '':
 
-        image_file_path += '.' + image_format
-
-    return image_file_path
+        img_file_path += '.' + img_fmt
 
 
-# In[27]:
+    return img_file_path
+
+
+# In[29]:
 
 
 #*******************************************************************************************
  #
- #  Function Name:  current_date_as_text
+ #  Function Name:  curr_date_as_txt
  #
  #  Function Description:
  #      The function returns the current date as a formatted string for the names
@@ -897,30 +967,31 @@ def get_image_file_path \
  #
  #  Function Parameters:
  #
- #  Type    Name            Description
- #  -----   -------------   ----------------------------------------------
- #  string  string_format   The parameter is optional and specifies the date format.
+ #  Type           Name             Description
+ #  ------------   --------------   --------------------------------------------------
+ #  string         fmt              The parameter is optional and specifies the date 
+ #                                  format.
  #
  #
  #  Date                Description                                 Programmer
  #  ---------------     ------------------------------------        ------------------
- #  04/11/2024          Initial Development                         Nicholas J. George
+ #  02/18/2026          Initial Development                         Nicholas J. George
  #
  #******************************************************************************************/
 
-def current_date_as_text(string_format = '%Y%m%d'):
+def curr_date_as_txt(fmt = '%Y%m%d'):
 
-    todays_date = date.today()
+    curr_date = dt.date.today()
 
-    return todays_date.strftime(string_format)
+    return curr_date.strftime(fmt)
 
 
-# In[28]:
+# In[30]:
 
 
 #*******************************************************************************************
  #
- #  Function Name:  current_timestamp_as_text
+ #  Function Name:  curr_timestp_as_txt
  #
  #  Function Description:
  #      The function returns the current date and time as a formatted string
@@ -932,30 +1003,29 @@ def current_date_as_text(string_format = '%Y%m%d'):
  #
  #  Function Parameters:
  #
- #  Type    Name            Description
- #  -----   -------------   ----------------------------------------------
- #  string  string_format   The parameter is optional and specifies the datetime format.
+ #  Type           Name             Description
+ #  ------------   --------------   --------------------------------------------------
+ #  string         fmt              The parameter is optional and specifies the datetime 
+ #                                  format.
  #
  #
  #  Date                Description                                 Programmer
  #  ---------------     ------------------------------------        ------------------
- #  04/11/2024          Initial Development                         Nicholas J. George
+ #  02/18/2026          Initial Development                         Nicholas J. George
  #
  #******************************************************************************************/
 
-def current_timestamp_as_text(string_format = '%Y/%m/%d %H:%M:%S'):
+def curr_timestp_as_txt(fmt = '%Y/%m/%d %H:%M:%S'):
 
-    current_datetime = datetime.now()
-
-    return current_datetime.strftime(string_format)
+    return dt.datetime.now().strftime(fmt)
 
 
-# In[29]:
+# In[31]:
 
 
 #*******************************************************************************************
  #
- #  Function Name:  current_timepoint_with_message
+ #  Function Name:  curr_timept_with_msg
  #
  #  Function Description:
  #      The function takes a message, formats it with a timestamp, and returns it 
@@ -967,32 +1037,29 @@ def current_timestamp_as_text(string_format = '%Y/%m/%d %H:%M:%S'):
  #
  #  Function Parameters:
  #
- #  Type    Name            Description
- #  -----   -------------   ----------------------------------------------
- #  string  message         The parameter is the optional message with the timepoint.
+ #  Type           Name             Description
+ #  ------------   --------------   --------------------------------------------------
+ #  string         msg              The parameter is the optional message with the 
+ #                                  timepoint.
  #
  #
  #  Date                Description                                 Programmer
  #  ---------------     ------------------------------------        ------------------
- #  04/11/2024          Initial Development                         Nicholas J. George
+ #  02/18/2026          Initial Development                         Nicholas J. George
  #
  #******************************************************************************************/
 
-def current_timepoint_with_message(message = ''):
+def curr_timept_with_msg(msg = ''):
 
-    current_timestamp = current_timestamp_as_text()
-
-    timepoint = f'\nTimepoint: {current_timestamp}\n' + message + '\n\n'
-
-    return timepoint
+    return f'\nTimepoint: {curr_timestp_as_txt()}\n' + msg + '\n\n'
 
 
-# In[30]:
+# In[32]:
 
 
 #*******************************************************************************************
  #
- #  Function Name:  save_png_return_styler
+ #  Function Name:  sv_png_rtn_styler
  #
  #  Function Description:
  #      The function saves the styler object as a png image file then returns it.
@@ -1003,33 +1070,33 @@ def current_timepoint_with_message(message = ''):
  #
  #  Function Parameters:
  #
- #  Type    Name            Description
- #  -----   -------------   ----------------------------------------------
- #  styler  input_styler    The parameter is the input styler object.
- #  string  caption         The parameter is the styler caption.
+ #  Type           Name             Description
+ #  ------------   --------------   --------------------------------------------------
+ #  styler         input_styler     The parameter is the input styler object.
+ #  string         caption          The parameter is the styler caption.
  #
  #
  #  Date                Description                                 Programmer
  #  ---------------     ------------------------------------        ------------------
- #  04/11/2024          Initial Development                         Nicholas J. George
+ #  02/18/2026          Initial Development                         Nicholas J. George
  #
  #******************************************************************************************/
 
-def save_png_return_styler \
+def sv_png_rtn_styler \
         (input_styler,
          caption):
 
-    if logs_config_dict['image_bool'] == True:
+    if logs_config_dict['img_mode'] == True:
 
-        image_file_path = get_image_file_path(caption, 'png')
+        img_file_path = curr_img_file_path(caption, 'png')
 
-        dfi.export(input_styler, image_file_path)
+        dfi.export(input_styler, img_file_path)
 
 
     return input_styler
 
 
-# In[31]:
+# In[33]:
 
 
 #*******************************************************************************************
@@ -1046,14 +1113,14 @@ def save_png_return_styler \
  #
  #  Function Parameters:
  #
- #  Type    Name            Description
- #  -----   -------------   ----------------------------------------------
- #  string  prgrm_desig     The parameter is the program designation.
+ #  Type           Name             Description
+ #  ------------   --------------   --------------------------------------------------
+ #  string         prgrm_desig      The parameter is the program designation.
  #
  #
  #  Date                Description                                 Programmer
  #  ---------------     ------------------------------------        ------------------
- #  04/11/2024          Initial Development                         Nicholas J. George
+ #  02/18/2026          Initial Development                         Nicholas J. George
  #
  #******************************************************************************************/
 
@@ -1069,14 +1136,14 @@ def begin_program(prgrm_desig = ''):
     open_log_file()
 
 
-    message = 'Program execution begins...\n'
+    msg = 'Program execution begins...\n'
 
-    if logs_config_dict['log_bool'] == True:
+    if logs_config_dict['log_mode'] == True:
 
-        print_and_log_text(message) 
+        print_and_log_text(msg) 
 
 
-# In[32]:
+# In[34]:
 
 
 #*******************************************************************************************
@@ -1093,31 +1160,31 @@ def begin_program(prgrm_desig = ''):
  #
  #  Function Parameters:
  #
- #  Type    Name            Description
- #  -----   -------------   ----------------------------------------------
- #  n/a     n/a             n/a
+ #  Type           Name             Description
+ #  ------------   --------------   --------------------------------------------------
+ #  n/a            n/a              n/a
  #
  #
  #  Date                Description                                 Programmer
  #  ---------------     ------------------------------------        ------------------
- #  04/11/2024          Initial Development                         Nicholas J. George
+ #  02/18/2026          Initial Development                         Nicholas J. George
  #
  #******************************************************************************************/
 
 def end_program():
 
-    current_timestamp = current_timestamp_as_text()
+    curr_ts = curr_timestp_as_txt()
 
-    message = f'Program execution ends at {current_timestamp}.\n\n\n\n'
+    msg = f'Program execution ends at {curr_ts}.\n\n\n\n'
 
-    if logs_config_dict['log_bool'] == True:
+    if logs_config_dict['log_mode'] == True:
 
-        print_and_log_text(message)
+        print_and_log_text(msg)
 
         logs_config_dict['log_txt_file'].close() 
 
 
-# In[33]:
+# In[35]:
 
 
 #*******************************************************************************************
@@ -1134,27 +1201,28 @@ def end_program():
  #
  #  Function Parameters:
  #
- #  Type    Name            Description
- #  -----   -------------   ----------------------------------------------
- #  object  input_obj       The parameter is the object to be written to the log file.
+ #  Type           Name             Description
+ #  ------------   --------------   --------------------------------------------------
+ #  object         input_obj        The parameter is the object to be written to the 
+ #                                  log file.
  #
  #
  #  Date                Description                                 Programmer
  #  ---------------     ------------------------------------        ------------------
- #  04/11/2024          Initial Development                         Nicholas J. George
+ #  02/18/2026          Initial Development                         Nicholas J. George
  #
  #******************************************************************************************/
 
 def log_write_obj(input_obj):
 
-    message = f'\n\n' + str(input_obj) + f'\n\n'
+    msg = f'\n\n' + str(input_obj) + f'\n\n'
 
-    if logs_config_dict['log_bool'] == True:
+    if logs_config_dict['log_mode'] == True:
 
-        logs_config_dict['log_txt_file'].write(message)
+        logs_config_dict['log_txt_file'].write(msg)
 
 
-# In[34]:
+# In[36]:
 
 
 #*******************************************************************************************
@@ -1170,29 +1238,29 @@ def log_write_obj(input_obj):
  #
  #  Function Parameters:
  #
- #  Type    Name            Description
- #  -----   -------------   ----------------------------------------------
- #  string  directory       The parameter is the directory name.
+ #  Type           Name             Description
+ #  ------------   --------------   --------------------------------------------------
+ #  string         dir_path         The parameter is the directory name.
  #
  #
  #  Date                Description                                 Programmer
  #  ---------------     ------------------------------------        ------------------
- #  04/11/2024          Initial Development                         Nicholas J. George
+ #  02/18/2026          Initial Development                         Nicholas J. George
  #
  #******************************************************************************************/
 
-def create_directory(directory):
+def create_directory(dir_path):
 
-    exist_bool = os.path.exists(directory)
+    exist_bool = os.path.exists(dir_path)
 
     if exist_bool == False:
 
-        os.makedirs(directory)
+        os.makedirs(dir_path)
 
-        print(f'The script created directory, {directory}.\n')
+        print(f'The script created directory, {dir_path}.\n')
 
 
-# In[35]:
+# In[37]:
 
 
 #*******************************************************************************************
@@ -1209,14 +1277,14 @@ def create_directory(directory):
  #
  #  Function Parameters:
  #
- #  Type    Name            Description
- #  -----   -------------   ----------------------------------------------
- #  n/a     n/a             n/a
+ #  Type           Name             Description
+ #  ------------   --------------   --------------------------------------------------
+ #  n/a            n/a              n/a
  #
  #
  #  Date                Description                                 Programmer
  #  ---------------     ------------------------------------        ------------------
- #  04/11/2024          Initial Development                         Nicholas J. George
+ #  02/18/2026          Initial Development                         Nicholas J. George
  #
  #******************************************************************************************/
 
@@ -1225,21 +1293,21 @@ def open_log_file():
     global logs_config_dict
 
 
-    current_date = current_date_as_text()
+    curr_date = curr_date_as_txt()
 
     prgrm_desig = logs_config_dict['prgrm_dsgn']
 
 
     logs_config_dict['log_folder'] \
-        = logs_config_dict['logs_folder'] + '/' + current_date \
+        = logs_config_dict['logs_folder'] + '/' + curr_date \
           + prgrm_desig + logs_config_dict['base_log_name']
 
-    if logs_config_dict['log_bool'] == True:
+    if logs_config_dict['log_mode'] == True:
 
         logs_config_dict['log_txt_file'] = open(logs_config_dict['log_folder'], 'a')
 
 
-# In[36]:
+# In[38]:
 
 
 #*******************************************************************************************
@@ -1255,29 +1323,29 @@ def open_log_file():
  #
  #  Function Parameters:
  #
- #  Type    Name            Description
- #  -----   -------------   ----------------------------------------------
- #  string  message         The parameter is the input message text.
+ #  Type           Name             Description
+ #  ------------   --------------   --------------------------------------------------
+ #  string         msg              The parameter is the input message text.
  #
  #
  #  Date                Description                                 Programmer
  #  ---------------     ------------------------------------        ------------------
- #  04/11/2024          Initial Development                         Nicholas J. George
+ #  02/18/2026          Initial Development                         Nicholas J. George
  #
  #******************************************************************************************/
 
-def print_and_log_text(message = ''):
+def print_and_log_text(msg = ''):
 
-    print(message)
+    print(msg)
 
-    timepoint_message = current_timepoint_with_message(message)
+    tp_msg = curr_timept_with_msg(msg)
 
-    if logs_config_dict['log_bool'] == True:
+    if logs_config_dict['log_mode'] == True:
 
-        logs_config_dict['log_txt_file'].write(timepoint_message)    
+        logs_config_dict['log_txt_file'].write(tp_msg)    
 
 
-# In[37]:
+# In[39]:
 
 
 #*******************************************************************************************
@@ -1293,39 +1361,39 @@ def print_and_log_text(message = ''):
  #
  #  Function Parameters:
  #
- #  Type    Name            Description
- #  -----   -------------   ----------------------------------------------
- #  string  caption         The parameter is the plot title.
- #  integer dpi_int         The parameter is the dots per square inch for the image.
- #  float   pad_inches_flt  The parameter is the buffer around the plot in inches.
- #  string  image_format    The parameter is the image format (png, html, etc.).
+ #  Type           Name             Description
+ #  ------------   --------------   --------------------------------------------------
+ #  string         caption         The parameter is the plot title.
+ #  integer        dpi_int         The parameter is the dots per square inch for the image.
+ #  float          pad_inch_flt    The parameter is the buffer around the plot in inches.
+ #  string         img_fmt         The parameter is the image format (png, html, etc.).
  #
  #
  #  Date                Description                                 Programmer
  #  ---------------     ------------------------------------        ------------------
- #  04/11/2024          Initial Development                         Nicholas J. George
+ #  02/18/2026          Initial Development                         Nicholas J. George
  #
  #******************************************************************************************/
 
 def save_plot_image \
         (caption = '',
          dpi_int = 300,
-         pad_inches_flt = 0.5,
-         image_format = 'png'):
+         pad_inch_flt = 0.5,
+         img_fmt = 'png'):
 
-    if logs_config_dict['image_bool'] == True:
+    if logs_config_dict['img_mode'] == True:
 
-        image_file_path \
-            = get_image_file_path(caption, image_format)
+        img_file_path \
+            = curr_img_file_path(caption, img_fmt)
 
         plt.savefig \
-            (image_file_path, 
+            (img_file_path, 
              dpi = dpi_int, 
-             bbox_inches = 'tight', 
-             pad_inches = pad_inches_flt)
+             bbox_inches = logs_config_dict['bbox_inches'], 
+             pad_inches = pad_inch_flt)
 
 
-# In[38]:
+# In[40]:
 
 
 #*******************************************************************************************
@@ -1341,38 +1409,39 @@ def save_plot_image \
  #
  #  Function Parameters:
  #
- #  Type    Name            Description
- #  -----   -------------   ----------------------------------------------
- #  object  hvplot_overlay  The parameter is the input hvplot overlay object.
- #  string  caption         The parameter is the plot title.
- #  integer height_int      The parameter is the plot's height.
- #  integer width_int       The parameter is the plot's width.
+ #  Type           Name             Description
+ #  ------------   --------------   --------------------------------------------------
+ #  object         hvplot_ovl       The parameter is the input hvplot overlay object.
+ #  string         caption          The parameter is the plot title.
+ #  integer        height_int       The parameter is the plot's height.
+ #  integer        width_int        The parameter is the plot's width.
  #
  #
  #  Date                Description                                 Programmer
  #  ---------------     ------------------------------------        ------------------
- #  04/11/2024          Initial Development                         Nicholas J. George
+ #  02/18/2026          Initial Development                         Nicholas J. George
  #
  #******************************************************************************************/
 
 def save_hvplot_image_to_html \
-        (hvplot_overlay,
+        (hvplot_ovl,
          caption = '',
          height_int = 550,
          width_int = 1100):
 
-    if logs_config_dict['image_bool'] == True:
+    if logs_config_dict['img_mode'] == True:
 
-        temp_overlay = copy.copy(hvplot_overlay)
+        tmp_ovl = copy.copy(hvplot_ovl)
 
-        temp_overlay.opts(width = width_int, height = height_int)
-
-        image_file_path = get_image_file_path(caption, 'html')
-
-        hvplot.save(temp_overlay, image_file_path)
+        tmp_ovl.opts(width = width_int, height = height_int)
 
 
-# In[39]:
+        img_file_path = curr_img_file_path(caption, 'html')
+
+        hvplot.save(tmp_ovl, img_file_path)
+
+
+# In[41]:
 
 
 #*******************************************************************************************
@@ -1388,27 +1457,27 @@ def save_hvplot_image_to_html \
  #
  #  Function Parameters:
  #
- #  Type    Name            Description
- #  -----   -------------   ----------------------------------------------
- #  object  plotly_figure   The parameter is the Plotly Figure Object.
- #  string  figure_title    The parameter is the figure title.
+ #  Type           Name             Description
+ #  ------------   --------------   --------------------------------------------------
+ #  object         plotly_fig       The parameter is the plotly figure object.
+ #  string         fig_title        The parameter is the figure title.
  #
  #
  #  Date                Description                                 Programmer
  #  ---------------     ------------------------------------        ------------------
- #  04/11/2024          Initial Development                         Nicholas J. George
+ #  02/18/2026          Initial Development                         Nicholas J. George
  #
  #******************************************************************************************/
 
 def save_plotly_image \
-        (plotly_figure,
-         caption):
+        (plotly_fig,
+         fig_title):
 
-    if logs_config_dict['image_bool'] == True:
+    if logs_config_dict['img_mode'] == True:
 
-        image_file_path = get_image_file_path(caption, 'png')
+        img_file_path = curr_img_file_path(fig_title, 'png')
 
-        plotly_figure.write_image(image_file_path)
+        plotly_fig.write_image(img_file_path)
 
 
 # In[ ]:
