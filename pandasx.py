@@ -680,20 +680,16 @@ def rtn_std_fmt_styler \
         = input_df \
             .style \
             .set_caption(title) \
-            .set_table_styles \
-                (style_dict['table_styles']) \
-            .set_properties \
-                (**style_dict['properties']) \
+            .set_table_styles(style_dict['table_styles']) \
+            .set_properties(**style_dict['properties']) \
             .format \
-                (style_dict['format'])
+                (precision = style_dict['format']['precision'],
+                 thousands = style_dict['format']['thousands'],
+                 decimal = style_dict['format']['decimal'])
 
-    if hide_idx_bool == True:
+    if hide_idx_bool == True: return fmt_styler.hide()
 
-        return fmt_styler.hide()
-
-    else:
-
-        return fmt_styler
+    else: return fmt_styler
 
 
 # In[19]:
@@ -818,19 +814,15 @@ def rtn_df_desc \
         (input_df,
          title):
 
-    desc_df \
-        = input_df.describe()
+    desc_df = input_df.describe()
 
-    desc_styler \
-        = rtn_fmt_rows(desc_df.style, stats_dict['desc'])
+    desc_styler = rtn_fmt_rows(desc_df.style, stats_dict['desc'])
 
     return \
         desc_styler \
             .set_caption(title) \
-            .set_table_styles \
-                (style_dict['table_styles']) \
-            .set_properties \
-                (**style_dict['properties'])
+            .set_table_styles(style_dict['table_styles']) \
+            .set_properties(**style_dict['properties'])
 
 
 # In[22]:
@@ -1042,9 +1034,7 @@ def disp_series_list_stats \
 
     for idx, title in enumerate(title_array):
 
-        stats_df \
-            = rtn_smry_stats_as_df \
-                (input_list[idx])
+        stats_df = rtn_smry_stats_as_df(input_list[idx])
 
         caption \
             = 'Table ' \
@@ -1053,13 +1043,10 @@ def disp_series_list_stats \
               + stats_type \
               + f' Statistics for {title}'
 
-        curr_styler \
-            = rtn_std_fmt_styler \
-                (stats_df, caption)
 
-        curr_styler \
-            = sv_img_rtn_styler \
-                (curr_styler, caption)
+        curr_styler = rtn_std_fmt_styler(stats_df, caption)
+
+        curr_styler = sv_img_rtn_styler(curr_styler, caption)
 
 
         display(curr_styler)
@@ -1264,8 +1251,7 @@ def rtn_stats_styler_from_series \
         (input_series,
          title):
 
-    stats_list \
-        = rtn_stats_list(input_series)
+    stats_list = rtn_stats_list(input_series)
 
     stats_df \
         = pd.DataFrame \
@@ -1273,9 +1259,7 @@ def rtn_stats_styler_from_series \
              columns = [input_series.name],
              index = stats_dict['idx'])
 
-    stats_styler \
-        = fmt_df_from_dict \
-             (stats_df, stats_dict['format'])
+    stats_styler = fmt_df_from_dict(stats_df, stats_dict['format'])
 
     stats_styler \
         .set_caption(title) \
@@ -1324,8 +1308,7 @@ def rtn_stats_styler_from_series_list \
 
     for idx, series in enumerate(input_list):
 
-        stats_flt_array \
-            = rtn_stats_as_array(series)
+        stats_flt_array = rtn_stats_as_array(series)
 
         temp_df \
             = pd.DataFrame \
@@ -1333,19 +1316,12 @@ def rtn_stats_styler_from_series_list \
                  columns = [series.name],
                  index = stats_dict['idx'])
 
-        if idx != 0:
+        if idx != 0: stats_df = pd.concat([stats_df, temp_df], axis = 1)
 
-            stats_df \
-                = pd.concat([stats_df, temp_df], axis = 1)
-
-        else:
-
-            stats_df = temp_df.copy()
+        else: stats_df = temp_df.copy()
 
 
-    stats_styler \
-        = fmt_df_from_dict \
-             (stats_df, stats_dict['format'])
+    stats_styler = fmt_df_from_dict(stats_df, stats_dict['format'])
 
     stats_styler \
         .set_caption(title) \
