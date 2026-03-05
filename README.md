@@ -6,21 +6,21 @@
 
 ----
 
-**Overview**
+## **Overview**
 
 As chief data scientist for the city's school district, I conducted a comprehensive analysis of high school standardized test results and related data to identify trends in academic performance. While the data paints a reasonably clear picture of current conditions, it also raises important questions about the underlying drivers of those trends.
 
-**District Overview**
+## **District Overview**
 
 A preliminary review of district-wide metrics reveals a system of modest but uneven performance. The district's 15 high schools collectively serve approximately 39,000 students on a combined annual operating budget of $24.7 million. Average school test scores fall within a narrow range of 79 to 82, and most schools report passing rates between 75% and 85%. These figures suggest a system performing adequately on the surface — yet they obscure a more troubling reality: the district's overall passing rate stands at just 65%, well below what school-level averages alone would imply. This discrepancy warranted deeper investigation.
 
-**Charter vs. Public Schools: A Tale of Two Systems**
+## **Charter vs. Public Schools: A Tale of Two Systems**
 
 The district's 15 high schools are divided into two distinct categories: seven charter schools and eight public schools. Examining per-student spending — a more meaningful metric than total budget — reveals a striking disparity. Public schools spend an average of $644 per student, above the district-wide average of $633, while charter schools spend considerably less at an average of $600 per student. Despite this funding advantage, public schools consistently underperform their charter counterparts.
 
 The performance gap is stark. The five highest-performing schools in the district are all charter schools, while the five lowest-performing are all public schools. Charter school passing rates exceed 90%, whereas public school passing rates languish around 65% — a gap of roughly 25 percentage points. School size adds another dimension to this divide: all seven public schools are large institutions, while charter schools vary in size, comprising one large, five medium, and two small schools. This suggests that school size may be a contributing factor to performance differences, though it does not fully explain the gap on its own.
 
-**Grade-Level Trends: Stability or Stagnation?**
+## **Grade-Level Trends: Stability or Stagnation?**
 
 An examination of test scores and passing rates by grade level across all schools yields two notable observations. First, performance metrics are remarkably consistent from grade to grade within each school. Second, the difference between mean and median values is negligible in nearly every case, implying symmetrical score distributions.
 
@@ -28,7 +28,7 @@ The grade-level stability is particularly worth scrutinizing. One theoretically 
 
 The combination of stable performance metrics and near-identical mean and median values across all schools is, however, statistically unusual. Such uniformity raises questions about the integrity of the underlying data, and the possibility that these datasets are artificially generated cannot be dismissed.
 
-**Key Findings and Recommendations**
+## **Key Findings and Recommendations**
 
 This analysis establishes several clear trends:
 
