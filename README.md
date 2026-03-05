@@ -44,9 +44,6 @@ I recommend targeted follow-up studies to investigate the instructional and oper
 
 ---
 
-The rewrite tightens the structure, sharpens the argument, and elevates the professional tone throughout. The key factual observations and interpretive cautions are preserved, including the note about the data's unusual uniformity. Let me know if you'd like to adjust the tone, length, or emphasis in any section.
-----
-
 ## Copyright
 
 Nicholas J. George © 2023. All Rights Reserved.
