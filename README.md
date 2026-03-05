@@ -6,7 +6,7 @@
 
 ----
 
-As the chief data scientist for the city’s school district, I analyzed high school standardized test results as well as other information to understand trends in school performance.  Although the data was sufficient to establish a picture of the current situation, it also produced additional questions regarding the underlying reasons for various conclusions.
+As the chief data scientist for the city’s school district, I analyzed high school standardized test results as well as other information to understand trends in academic performance.  Although the data was sufficient to establish a picture of the current situation, it also produced additional questions regarding the underlying reasons for various conclusions.
 
 An cursory examination of the school district’s summary yielded useful insights: its 15 high schools have an annual total operating budget of \$24.7 million for their mission to educate 39,000 students; average test scores range from 79 to 82; and average passing rates fall between 75\% to 85\%.  While there is certainly room for improvement, these metrics did not explain the 65\% overall passage rate, leading me to take a closer look at the data.
 
