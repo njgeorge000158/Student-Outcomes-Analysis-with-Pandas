@@ -10,7 +10,7 @@ As the chief data scientist for the city’s school district, I analyzed high sc
 
 -	More spending per student does not translate into better performance, especially in math (Table 10.1).
 
--	Charter high schools significantly outperform public high schools (Table 13.1).  
+-	Charter schools significantly outperform public schools (Table 13.1).  
 
 -	Small and medium-sized schools are comparable in performance, yet large schools are lagging (Table 12.1).
 
