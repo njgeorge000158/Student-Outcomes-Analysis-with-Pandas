@@ -6,7 +6,7 @@
 
 ----
 
-As the chief data scientist for the city’s school district, I analyzed district-wide standardized test results as well as other information to understand trends in school performance.  Although the data was sufficient to establish a picture of the current situation, it also produced additional questions regarding the underlying reasons for various conclusions.  The analysis identified the following trends:
+As the chief data scientist for the city’s school district, I analyzed high school standardized test results as well as other information to understand trends in school performance.  Although the data was sufficient to establish a picture of the current situation, it also produced additional questions regarding the underlying reasons for various conclusions.  The analysis identified the following trends:
 
 -	More spending per student does not translate into better performance, especially in math (Table 10.1).
 
