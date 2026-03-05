@@ -2,11 +2,11 @@
 
 ----
 
-# PyCitySchools Analysis
+# **District High School Academic Performance Analysis**
 
 ----
 
-**District High School Academic Performance Analysis**
+**Overview**
 
 As chief data scientist for the city's school district, I conducted a comprehensive analysis of high school standardized test results and related data to identify trends in academic performance. While the data paints a reasonably clear picture of current conditions, it also raises important questions about the underlying drivers of those trends.
 
