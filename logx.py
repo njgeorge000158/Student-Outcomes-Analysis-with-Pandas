@@ -63,9 +63,11 @@
  #  open_log_file
  #  print_and_log_text
  #
- #  save_plot_image
- #  save_hvplot_image_to_html
+ #  save_matplotlib_image
+ #  save_hvplot_map_image
  #  save_plotly_image
+ #  save_folium_map_image
+ #  save_map_image
  #
  #
  #  Date                Description                                 Programmer
@@ -77,6 +79,7 @@
 
 import os
 import copy
+import folium
 
 import dataframe_image as dfi
 import datetime as dt
@@ -1350,7 +1353,7 @@ def print_and_log_text(msg = ''):
 
 #*******************************************************************************************
  #
- #  Function Name:  save_plot_image
+ #  Function Name:  save_matplotlib_image
  #
  #  Function Description:
  #      The function saves the image of a matplotlib plot to a file.
@@ -1375,7 +1378,7 @@ def print_and_log_text(msg = ''):
  #
  #******************************************************************************************/
 
-def save_plot_image \
+def save_matplotlib_image \
         (caption = '',
          dpi_int = 300,
          pad_inch_flt = 0.5,
@@ -1398,54 +1401,6 @@ def save_plot_image \
 
 #*******************************************************************************************
  #
- #  Function Name:  save_hvplot_image_to_html
- #
- #  Function Description:
- #      The function saves an hvplot to an html file.
- #
- #
- #  Return Type: n/a
- #
- #
- #  Function Parameters:
- #
- #  Type           Name             Description
- #  ------------   --------------   --------------------------------------------------
- #  object         hvplot_ovl       The parameter is the input hvplot overlay object.
- #  string         caption          The parameter is the plot title.
- #  integer        height_int       The parameter is the plot's height.
- #  integer        width_int        The parameter is the plot's width.
- #
- #
- #  Date                Description                                 Programmer
- #  ---------------     ------------------------------------        ------------------
- #  02/18/2026          Initial Development                         Nicholas J. George
- #
- #******************************************************************************************/
-
-def save_hvplot_image_to_html \
-        (hvplot_ovl,
-         caption = '',
-         height_int = 550,
-         width_int = 1100):
-
-    if logs_config_dict['img_mode'] == True:
-
-        tmp_ovl = copy.copy(hvplot_ovl)
-
-        tmp_ovl.opts(width = width_int, height = height_int)
-
-
-        img_file_path = curr_img_file_path(caption, 'html')
-
-        hvplot.save(tmp_ovl, img_file_path)
-
-
-# In[41]:
-
-
-#*******************************************************************************************
- #
  #  Function Name:  save_plotly_image
  #
  #  Function Description:
@@ -1460,7 +1415,7 @@ def save_hvplot_image_to_html \
  #  Type           Name             Description
  #  ------------   --------------   --------------------------------------------------
  #  object         plotly_fig       The parameter is the plotly figure object.
- #  string         fig_title        The parameter is the figure title.
+ #  string         title            The parameter is the figure title.
  #
  #
  #  Date                Description                                 Programmer
@@ -1471,13 +1426,144 @@ def save_hvplot_image_to_html \
 
 def save_plotly_image \
         (plotly_fig,
-         fig_title):
+         title):
 
     if logs_config_dict['img_mode'] == True:
 
-        img_file_path = curr_img_file_path(fig_title, 'png')
+        img_file_path = curr_img_file_path(title, 'png')
 
         plotly_fig.write_image(img_file_path)
+
+
+# In[41]:
+
+
+#*******************************************************************************************
+ #
+ #  Function Name:  save_folium_map_image
+ #
+ #  Function Description:
+ #      The function saves a folium map to an html file.
+ #
+ #
+ #  Return Type: n/a
+ #
+ #
+ #  Function Parameters:
+ #
+ #  Type           Name             Description
+ #  ------------   --------------   --------------------------------------------------
+ #  object         folium_map       The parameter is the input folium map object.
+ #  string         title            The parameter is the plot title.
+ #
+ #
+ #  Date                Description                                 Programmer
+ #  ---------------     ------------------------------------        ------------------
+ #  02/18/2026          Initial Development                         Nicholas J. George
+ #
+ #******************************************************************************************/
+
+def save_folium_map_image \
+        (folium_map,
+         title):
+
+    if logs_config_dict['img_mode'] == True:
+
+        img_file_path = curr_img_file_path(title, 'html')
+
+        folium_map.save(img_file_path)
+
+
+# In[42]:
+
+
+#*******************************************************************************************
+ #
+ #  Function Name:  save_hvplot_map_image
+ #
+ #  Function Description:
+ #      The function saves an hvplot to an html file.
+ #
+ #
+ #  Return Type: n/a
+ #
+ #
+ #  Function Parameters:
+ #
+ #  Type           Name             Description
+ #  ------------   --------------   --------------------------------------------------
+ #  object         hvplot_ovl       The parameter is the input hvplot overlay object.
+ #  string         title            The parameter is the plot title.
+ #  integer        height_int       The parameter is the plot's height.
+ #  integer        width_int        The parameter is the plot's width.
+ #
+ #
+ #  Date                Description                                 Programmer
+ #  ---------------     ------------------------------------        ------------------
+ #  02/18/2026          Initial Development                         Nicholas J. George
+ #
+ #******************************************************************************************/
+
+def save_hvplot_map_image \
+        (hvplot_ovl,
+         title,
+         height_int,
+         width_int):
+
+    if logs_config_dict['img_mode'] == True:
+
+        tmp_ovl = copy.copy(hvplot_ovl)
+
+        tmp_ovl.opts(width = width_int, height = height_int)
+
+
+        img_file_path = curr_img_file_path(title, 'html')
+
+        hvplot.save(tmp_ovl, img_file_path)
+
+
+# In[43]:
+
+
+#*******************************************************************************************
+ #
+ #  Function Name:  save_map_image
+ #
+ #  Function Description:
+ #      The function saves a map image to an html file.
+ #
+ #
+ #  Return Type: n/a
+ #
+ #
+ #  Function Parameters:
+ #
+ #  Type           Name             Description
+ #  ------------   --------------   --------------------------------------------------
+ #  object         input_obj        The parameter is the input map object.
+ #  string         title            The parameter is the plot title.
+ #  integer        height_int       The parameter is the plot's height.
+ #  integer        width_int        The parameter is the plot's width.
+ #
+ #
+ #  Date                Description                                 Programmer
+ #  ---------------     ------------------------------------        ------------------
+ #  02/18/2026          Initial Development                         Nicholas J. George
+ #
+ #******************************************************************************************/
+
+def save_map_image \
+        (input_obj,
+         title = '',
+         input_type = 'folium',
+         height_int = 550,
+         width_int = 1100):
+
+    if logs_config_dict['img_mode'] == True:
+
+        if  input_type == 'folium': save_folium_map_image(input_obj, title)
+
+        elif input_type == 'hvplot': save_hvplot_map_image(input_obj, title, height_int, width_int)
 
 
 # In[ ]:

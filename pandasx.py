@@ -24,9 +24,6 @@
  #      get_style_dict
  #      set_style_dict
  #
- #      get_hvplot_dict
- #      set_hvplot_dict
- #
  #      fmt_df_from_dict
  #      sv_img_rtn_styler
  #
@@ -40,7 +37,6 @@
  #      disp_df_col_unq_val
  #      disp_series_unq_val_cnts
  #      disp_series_list_stats
- #      disp_df_hvplot
  #
  #      rtn_stats_list
  #      rtn_smry_stats_as_df
@@ -56,8 +52,6 @@
  #******************************************************************************************/
 
 import logx
-
-import hvplot.pandas
 
 import dataframe_image as dfi
 import numpy as np
@@ -108,20 +102,6 @@ style_dict \
        'format': {'precision': 2,
                   'thousands': ',',
                   'decimal': '.'}}
-
-hvplot_dict \
-    = {'lng_col': 'longitude',
-       'lat_col': 'latitude',
-       'color_col': 'city',
-       'size_col': 'humidity',
-       'x_lbl': '',
-       'y_lbl': '',
-       'geo': True,
-       'x_lmt': (-180, 180),
-       'y_lmt': (-55, 75),
-       'alpha': 0.7,
-       'tiles': 'OSM',
-       'hover_cols': []}
 
 stats_dict \
     = {'idx': np.array(['mean', 'median', 'mode', 'variance', 'std_dev', 'sem',
@@ -417,72 +397,6 @@ def set_style_dict(upd_style_dict):
 
 #*******************************************************************************************
  #
- #  Function Name:  get_hvplot_dict
- #
- #  Function Description:
- #      This function returns the global hvplot parameters dictionary.
- #
- #
- #  Return Type: dictionary
- #
- #
- #  Function Parameters:
- #
- #  Type           Name             Description
- #  ------------   --------------   --------------------------------------------------
- #  n/a            n/a              n/a
- #
- #
- #  Date                Description                                 Programmer
- #  ---------------     ------------------------------------        ------------------
- #  02/18/2026          Initial Development                         Nicholas J. George
- #
- #******************************************************************************************/
-
-def get_hvplot_dict(): 
-
-    return hvplot_dict
-
-
-# In[13]:
-
-
-#*******************************************************************************************
- #
- #  Function Name:  set_hvplot_dict
- #
- #  Function Description:
- #      This function sets the global hvplot parameters dictionary.
- #
- #
- #  Return Type: n/a
- #
- #
- #  Function Parameters:
- #
- #  Type           Name             Description
- #  ------------   --------------   --------------------------------------------------
- #  dictionary     upd_hvplot_dict  The parameter is the updated hvplot dictionary.
- #
- #
- #  Date                Description                                 Programmer
- #  ---------------     ------------------------------------        ------------------
- #  02/18/2026          Initial Development                         Nicholas J. George
- #
- #******************************************************************************************/
-
-def set_hvplot_dict(upd_hvplot_dict): 
-
-    global hvplot_dict
-
-    hvplot_dict = upd_hvplot_dict
-
-
-# In[14]:
-
-
-#*******************************************************************************************
- #
  #  Function Name:  get_stats_dict
  #
  #  Function Description:
@@ -511,7 +425,7 @@ def get_stats_dict():
     return stats_dict
 
 
-# In[15]:
+# In[13]:
 
 
 #*******************************************************************************************
@@ -546,7 +460,7 @@ def set_stats_dict(upd_stats_dict):
   stats_dict = upd_stats_dict
 
 
-# In[16]:
+# In[14]:
 
 
 #*******************************************************************************************
@@ -596,7 +510,7 @@ def fmt_df_from_dict \
     return input_styler
 
 
-# In[17]:
+# In[15]:
 
 
 #*******************************************************************************************
@@ -641,7 +555,7 @@ def sv_img_rtn_styler \
     return input_styler
 
 
-# In[18]:
+# In[16]:
 
 
 #*******************************************************************************************
@@ -692,7 +606,7 @@ def rtn_std_fmt_styler \
     else: return fmt_styler
 
 
-# In[19]:
+# In[17]:
 
 
 #*******************************************************************************************
@@ -737,7 +651,7 @@ def rtn_fmt_tbl \
     return sv_img_rtn_styler(curr_styler, title)
 
 
-# In[20]:
+# In[18]:
 
 
 #*******************************************************************************************
@@ -782,7 +696,7 @@ def rtn_fmt_rows \
     return input_styler
 
 
-# In[21]:
+# In[19]:
 
 
 #*******************************************************************************************
@@ -825,7 +739,7 @@ def rtn_df_desc \
             .set_properties(**style_dict['properties'])
 
 
-# In[22]:
+# In[20]:
 
 
 #*******************************************************************************************
@@ -862,7 +776,7 @@ def rtn_fmt_desc \
     return sv_img_rtn_styler(curr_styler, title)
 
 
-# In[23]:
+# In[21]:
 
 
 #*******************************************************************************************
@@ -899,7 +813,7 @@ def disp_df_col_cnts(input_df):
             ('\033[1m' + f'{col}: ' + '{:,}\n'.format(cnt_int) + '\033[0m')
 
 
-# In[24]:
+# In[22]:
 
 
 #*******************************************************************************************
@@ -942,7 +856,7 @@ def disp_df_col_unq_val \
              + '\033[0m')
 
 
-# In[25]:
+# In[23]:
 
 
 #*******************************************************************************************
@@ -995,7 +909,7 @@ def disp_series_unq_val_cnts \
     return srtd_series
 
 
-# In[26]:
+# In[24]:
 
 
 #*******************************************************************************************
@@ -1052,63 +966,7 @@ def disp_series_list_stats \
         display(curr_styler)
 
 
-# In[27]:
-
-
-#******************************************************************************************
- #
- #  Function Name:  disp_df_hvplot
- #
- #  Function Description:
- #      This function receives a dataframe and displays a formatted hvplot. This function
- #      uses the global dictionary hvplot_dict for its remaining parameters.
- #
- #
- #  Return Type: hvplot overlay
- #
- #
- #  Function Parameters:
- #
- #  Type           Name             Description
- #  ------------   --------------   --------------------------------------------------
- #  dataframe      input_df         The parameter is the input dataframe.
- #  string         title            The parameter is the plot's title.
- #
- #
- #  Date                Description                                 Programmer
- #  ---------------     ------------------------------------        ------------------
- #  02/18/2026          Initial Development                         Nicholas J. George
- #
- #******************************************************************************************/
-
-def disp_df_hvplot \
-        (input_df,
-         title):
-
-    hvplot_overlay \
-        = input_df \
-            .hvplot \
-            .points \
-                (hvplot_dict['lng_col'],
-                 hvplot_dict['lat_col'],
-                 xlabel = hvplot_dict['x_lbl'],
-                 ylabel = hvplot_dict['y_lbl'],
-                 geo = hvplot_dict['geo'],
-                 color = hvplot_dict['color_col'],
-                 size = hvplot_dict['size_col'],
-                 xlim = hvplot_dict['x_lmt'],
-                 ylim = hvplot_dict['y_lmt'],
-                 alpha = hvplot_dict['alpha'],
-                 tiles = hvplot_dict['tiles'],
-                 title = title,
-                 hover_cols = hvplot_dict['hover_cols'])
-
-    logx.save_hvplot_image_to_html(hvplot_overlay, title)
-
-    return hvplot_overlay
-
-
-# In[28]:
+# In[25]:
 
 
 #*******************************************************************************************
@@ -1154,7 +1012,7 @@ def rtn_stats_list(input_series):
     return stats_list
 
 
-# In[29]:
+# In[26]:
 
 
 #*******************************************************************************************
@@ -1219,7 +1077,7 @@ def rtn_smry_stats_as_df(input_series):
     return pd.DataFrame(stats_dict_list)
 
 
-# In[30]:
+# In[27]:
 
 
 #*******************************************************************************************
@@ -1272,7 +1130,7 @@ def rtn_stats_styler_from_series \
     return sv_img_rtn_styler(stats_styler, title)
 
 
-# In[31]:
+# In[28]:
 
 
 #*******************************************************************************************
