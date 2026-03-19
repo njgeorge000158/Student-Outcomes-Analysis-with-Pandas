@@ -13,39 +13,29 @@
  #      information to log files.  Here is the list:
  #
  #  get_logs_config_dict
- #  set_logs_config_dict
- #
  #  get_log_mode
- #  set_log_mode
- #
  #  get_image_mode
- #  set_image_mode
- #
  #  get_program_designation
- #  set_program_designation
- #
  #  get_logs_directory_path
- #  set_logs_directory_path
- #
+ #  set_logs_config_dict
  #  get_images_directory_path
- #  set_images_directory_path
- #
  #  get_resources_directory_path
- #  set_resources_directory_path
- #
  #  get_sql_directory_path
- #  set_sql_directory_path
- #
  #  get_visualization_directory_path
- #  set_visualization_directory_path
- #
  #  get_models_directory_path
- #  set_models_directory_path
- #
  #  get_backups_directory_path
- #  set_backups_directory_path
- #
  #  get_base_log_file_name
+ #
+ #  set_log_mode
+ #  set_image_mode
+ #  set_program_designation
+ #  set_logs_directory_path
+ #  set_images_directory_path
+ #  set_resources_directory_path
+ #  set_sql_directory_path
+ #  set_visualization_directory_path
+ #  set_models_directory_path
+ #  set_backups_directory_path
  #  set_base_log_file_name
  #
  #  curr_img_file_path
@@ -53,7 +43,7 @@
  #  curr_timestp_as_txt
  #  curr_timept_with_msg
  #
- #  return_styler_save_png
+ #  rtn_styler_save_png
  #
  #  begin_program
  #  end_program
@@ -120,12 +110,22 @@ logs_config_dict \
 #*******************************************************************************************
  #
  #  Function Name:  get_logs_config_dict
+ #                  get_log_mode
+ #                  get_image_mode
+ #                  get_program_designation
+ #                  get_logs_directory_path
+ #                  get_images_directory_path
+ #                  get_resources_directory_path
+ #                  get_visualzation_directory_path
+ #                  get_models_directory_path
+ #                  get_backups_directory_path
+ #                  get_base_log_file_name
  #
  #  Function Description:
- #      The function returns the configuration dictionary.
+ #      The function returns the values from the configuration dictionary.
  #
  #
- #  Return Type: dictionary
+ #  Return Type: varies
  #
  #
  #  Function Parameters:
@@ -141,9 +141,18 @@ logs_config_dict \
  #
  #******************************************************************************************/
 
-def get_logs_config_dict():
-
-    return logs_config_dict
+def get_logs_config_dict(): return copy.deepcopy(logs_config_dict)
+def get_log_mode(): return logs_config_dict['log_mode']
+def get_image_mode(): return logs_config_dict['img_mode']
+def get_program_designation(): return logs_config_dict['prgrm_dsgn']
+def get_logs_directory_path(): return logs_config_dict['logs_folder']
+def get_images_directory_path(): return logs_config_dict['images_folder']
+def get_resources_directory_path(): return logs_config_dict['resources_folder']
+def get_sql_directory_path(): return logs_config_dict['sql_folder']
+def get_visualzation_directory_path(): return logs_config_dict['visual_folder']
+def get_models_directory_path(): return logs_config_dict['models_folder']
+def get_backups_directory_path(): return logs_config_dict['backups_folder']
+def get_base_log_file_name(): return logs_config_dict['base_log_name']
 
 
 # In[5]:
@@ -177,42 +186,10 @@ def set_logs_config_dict(config_dict):
 
     global logs_config_dict
 
-    logs_config_dict = config_dict
+    logs_config_dict = copy.deepcopy(config_dict)
 
 
 # In[6]:
-
-
-#*******************************************************************************************
- #
- #  Function Name:  get_log_mode
- #
- #  Function Description:
- #      The function returns the value of the global log flag (True/False).
- #
- #
- #  Return Type: bool
- #
- #
- #  Function Parameters:
- #
- #  Type           Name             Description
- #  ------------   --------------   --------------------------------------------------
- #  n/a            n/a              n/a
- #
- #
- #  Date                Description                                 Programmer
- #  ---------------     ------------------------------------        ------------------
- #  02/18/2026          Initial Development                         Nicholas J. George
- #
- #******************************************************************************************/
-
-def get_log_mode():
-
-    return logs_config_dict['log_mode']
-
-
-# In[7]:
 
 
 #*******************************************************************************************
@@ -246,39 +223,7 @@ def set_log_mode(mode_bool):
     logs_config_dict['log_mode'] = mode_bool
 
 
-# In[8]:
-
-
-#*******************************************************************************************
- #
- #  Function Name:  get_image_mode
- #
- #  Function Description:
- #      The function returns the value of the global image flag (True/False).
- #
- #
- #  Return Type: bool
- #
- #
- #  Function Parameters:
- #
- #  Type           Name             Description
- #  ------------   --------------   --------------------------------------------------
- #  n/a            n/a              n/a
- #
- #
- #  Date                Description                                 Programmer
- #  ---------------     ------------------------------------        ------------------
- #  02/18/2026          Initial Development                         Nicholas J. George
- #
- #******************************************************************************************/
-
-def get_image_mode():
-
-    return logs_config_dict['img_mode']
-
-
-# In[9]:
+# In[7]:
 
 
 #*******************************************************************************************
@@ -312,39 +257,7 @@ def set_image_mode(mode_bool):
     logs_config_dict['img_mode'] = mode_bool
 
 
-# In[10]:
-
-
-#*******************************************************************************************
- #
- #  Function Name:  get_program_designation
- #
- #  Function Description:
- #      The function returns the value for the global program designation.
- #
- #
- #  Return Type: string
- #
- #
- #  Function Parameters:
- #
- #  Type           Name             Description
- #  ------------   --------------   --------------------------------------------------
- #  n/a            n/a              n/a
- #
- #
- #  Date                Description                                 Programmer
- #  ---------------     ------------------------------------        ------------------
- #  02/18/2026          Initial Development                         Nicholas J. George
- #
- #******************************************************************************************/
-
-def get_program_designation():
-
-    return logs_config_dict['prgrm_dsgn']
-
-
-# In[11]:
+# In[8]:
 
 
 #*******************************************************************************************
@@ -379,39 +292,7 @@ def set_program_designation(prgrm_desig = ''):
     logs_config_dict['prgrm_dsgn'] = prgrm_desig
 
 
-# In[12]:
-
-
-#*******************************************************************************************
- #
- #  Function Name:  get_logs_directory_path
- #
- #  Function Description:
- #      The function returns the logs directory path.
- #
- #
- #  Return Type: string
- #
- #
- #  Function Parameters:
- #
- #  Type           Name             Description
- #  ------------   --------------   --------------------------------------------------
- #  n/a            n/a              n/a
- #
- #
- #  Date                Description                                 Programmer
- #  ---------------     ------------------------------------        ------------------
- #  02/18/2026          Initial Development                         Nicholas J. George
- #
- #******************************************************************************************/
-
-def get_logs_directory_path():
-
-    return logs_config_dict['logs_folder']
-
-
-# In[13]:
+# In[9]:
 
 
 #*******************************************************************************************
@@ -445,39 +326,7 @@ def set_logs_directory_path(upd_dir_path):
     logs_config_dict['logs_folder'] = upd_dir_path
 
 
-# In[14]:
-
-
-#*******************************************************************************************
- #
- #  Function Name:  get_images_directory_path
- #
- #  Function Description:
- #      The function returns the images directory path.
- #
- #
- #  Return Type: string
- #
- #
- #  Function Parameters:
- #
- #  Type           Name             Description
- #  ------------   --------------   --------------------------------------------------
- #  n/a            n/a              n/a
- #
- #
- #  Date                Description                                 Programmer
- #  ---------------     ------------------------------------        ------------------
- #  02/18/2026          Initial Development                         Nicholas J. George
- #
- #******************************************************************************************/
-
-def get_images_directory_path():
-
-    return logs_config_dict['images_folder']
-
-
-# In[15]:
+# In[10]:
 
 
 #*******************************************************************************************
@@ -511,39 +360,7 @@ def set_images_directory_path(upd_dir_path):
     logs_config_dict['images_folder'] = upd_dir_path
 
 
-# In[16]:
-
-
-#*******************************************************************************************
- #
- #  Function Name:  get_resources_directory_path
- #
- #  Function Description:
- #      The function returns the resources directory path.
- #
- #
- #  Return Type: string
- #
- #
- #  Function Parameters:
- #
- #  Type           Name             Description
- #  ------------   --------------   --------------------------------------------------
- #  n/a            n/a              n/a
- #
- #
- #  Date                Description                                 Programmer
- #  ---------------     ------------------------------------        ------------------
- #  02/18/2026          Initial Development                         Nicholas J. George
- #
- #******************************************************************************************/
-
-def get_resources_directory_path():
-
-    return logs_config_dict['resources_folder']
-
-
-# In[17]:
+# In[11]:
 
 
 #*******************************************************************************************
@@ -577,39 +394,7 @@ def set_resources_directory_path(upd_dir_path):
     logs_config_dict['resources_folder'] = upd_dir_path
 
 
-# In[18]:
-
-
-#*******************************************************************************************
- #
- #  Function Name:  get_sql_directory_path
- #
- #  Function Description:
- #      The function returns the sql directory path.
- #
- #
- #  Return Type: string
- #
- #
- #  Function Parameters:
- #
- #  Type           Name             Description
- #  ------------   --------------   --------------------------------------------------
- #  n/a            n/a              n/a
- #
- #
- #  Date                Description                                 Programmer
- #  ---------------     ------------------------------------        ------------------
- #  02/18/2026          Initial Development                         Nicholas J. George
- #
- #******************************************************************************************/
-
-def get_sql_directory_path():
-
-    return logs_config_dict['sql_folder']
-
-
-# In[19]:
+# In[12]:
 
 
 #*******************************************************************************************
@@ -643,39 +428,7 @@ def set_sql_directory_path(upd_dir_path):
     logs_config_dict['sql_folder'] = upd_dir_path
 
 
-# In[20]:
-
-
-#*******************************************************************************************
- #
- #  Function Name:  get_visualzation_directory_path
- #
- #  Function Description:
- #      The function returns the visualzation directory path.
- #
- #
- #  Return Type: string
- #
- #
- #  Function Parameters:
- #
- #  Type           Name             Description
- #  ------------   --------------   --------------------------------------------------
- #  n/a            n/a              n/a
- #
- #
- #  Date                Description                                 Programmer
- #  ---------------     ------------------------------------        ------------------
- #  02/18/2026          Initial Development                         Nicholas J. George
- #
- #******************************************************************************************/
-
-def get_visualzation_directory_path():
-
-    return logs_config_dict['visual_folder']
-
-
-# In[21]:
+# In[13]:
 
 
 #*******************************************************************************************
@@ -710,39 +463,7 @@ def set_visualzation_directory_path(upd_dir_path):
     logs_config_dict['visual_folder'] = upd_dir_path
 
 
-# In[22]:
-
-
-#*******************************************************************************************
- #
- #  Function Name:  get_models_directory_path
- #
- #  Function Description:
- #      The function returns the models directory path.
- #
- #
- #  Return Type: string
- #
- #
- #  Function Parameters:
- #
- #  Type           Name             Description
- #  ------------   --------------   --------------------------------------------------
- #  n/a            n/a              n/a
- #
- #
- #  Date                Description                                 Programmer
- #  ---------------     ------------------------------------        ------------------
- #  02/18/2026          Initial Development                         Nicholas J. George
- #
- #******************************************************************************************/
-
-def get_models_directory_path():
-
-    return logs_config_dict['models_folder']
-
-
-# In[23]:
+# In[14]:
 
 
 #*******************************************************************************************
@@ -776,39 +497,7 @@ def set_models_directory_path(upd_dir_path):
     logs_config_dict['models_folder'] = upd_dir_path
 
 
-# In[24]:
-
-
-#*******************************************************************************************
- #
- #  Function Name:  get_backups_directory_path
- #
- #  Function Description:
- #      The function returns the backups directory path.
- #
- #
- #  Return Type: string
- #
- #
- #  Function Parameters:
- #
- #  Type           Name             Description
- #  ------------   --------------   --------------------------------------------------
- #  n/a            n/a              n/a
- #
- #
- #  Date                Description                                 Programmer
- #  ---------------     ------------------------------------        ------------------
- #  02/18/2026          Initial Development                         Nicholas J. George
- #
- #******************************************************************************************/
-
-def get_backups_directory_path():
-
-    return logs_config_dict['backups_folder']
-
-
-# In[25]:
+# In[15]:
 
 
 #*******************************************************************************************
@@ -842,39 +531,7 @@ def set_backups_directory_path(upd_dir_path):
     logs_config_dict['backups_folder'] = upd_dir_path
 
 
-# In[26]:
-
-
-#*******************************************************************************************
- #
- #  Function Name:  get_base_log_file_name
- #
- #  Function Description:
- #      The function returns the base log file name.
- #
- #
- #  Return Type: string
- #
- #
- #  Function Parameters:
- #
- #  Type           Name             Description
- #  ------------   --------------   --------------------------------------------------
- #  n/a            n/a              n/a
- #
- #
- #  Date                Description                                 Programmer
- #  ---------------     ------------------------------------        ------------------
- #  02/18/2026          Initial Development                         Nicholas J. George
- #
- #******************************************************************************************/
-
-def get_base_log_file_name():
-
-    return logs_config_dict['base_log_name']
-
-
-# In[27]:
+# In[16]:
 
 
 #*******************************************************************************************
@@ -905,10 +562,10 @@ def set_base_log_file_name(upd_file_name):
 
     global logs_config_dict
 
-    logs_config_dict['base_log_name'] = upd_file_nam
+    logs_config_dict['base_log_name'] = upd_file_name
 
 
-# In[28]:
+# In[17]:
 
 
 #*******************************************************************************************
@@ -936,24 +593,20 @@ def set_base_log_file_name(upd_file_name):
  #
  #******************************************************************************************/
 
-def curr_img_file_path \
-        (caption = 'test',
-         img_fmt = ''):
-
-    temp = ''.join(filter(str.isalnum, caption))
+def curr_img_file_path(caption = 'test', img_fmt = ''):
 
     img_file_path \
-        = logs_config_dict['images_folder'] + '/' + logs_config_dict['prgrm_dsgn'] + temp
+        = logs_config_dict['images_folder'] \
+            + '/' + logs_config_dict['prgrm_dsgn'] \
+            + ''.join(filter(str.isalnum, caption))
 
-    if img_fmt != '':
-
-        img_file_path += '.' + img_fmt
+    if img_fmt != '': img_file_path += '.' + img_fmt
 
 
     return img_file_path
 
 
-# In[29]:
+# In[18]:
 
 
 #*******************************************************************************************
@@ -982,14 +635,12 @@ def curr_img_file_path \
  #
  #******************************************************************************************/
 
-def curr_date_as_txt(fmt = '%Y%m%d'):
+def curr_date_as_txt(fmt = '%Y%m%d'): 
 
-    curr_date = dt.date.today()
-
-    return curr_date.strftime(fmt)
+    return dt.date.today().strftime(fmt)
 
 
-# In[30]:
+# In[19]:
 
 
 #*******************************************************************************************
@@ -1018,12 +669,12 @@ def curr_date_as_txt(fmt = '%Y%m%d'):
  #
  #******************************************************************************************/
 
-def curr_timestp_as_txt(fmt = '%Y/%m/%d %H:%M:%S'):
+def curr_timestp_as_txt(fmt = '%Y/%m/%d %H:%M:%S'): 
 
     return dt.datetime.now().strftime(fmt)
 
 
-# In[31]:
+# In[20]:
 
 
 #*******************************************************************************************
@@ -1052,12 +703,12 @@ def curr_timestp_as_txt(fmt = '%Y/%m/%d %H:%M:%S'):
  #
  #******************************************************************************************/
 
-def curr_timept_with_msg(msg = ''):
+def curr_timept_with_msg(msg = ''): 
 
     return f'\nTimepoint: {curr_timestp_as_txt()}\n' + msg + '\n\n'
 
 
-# In[32]:
+# In[21]:
 
 
 #*******************************************************************************************
@@ -1085,21 +736,16 @@ def curr_timept_with_msg(msg = ''):
  #
  #******************************************************************************************/
 
-def sv_png_rtn_styler \
-        (input_styler,
-         caption):
+def sv_png_rtn_styler(input_styler, caption):
 
     if logs_config_dict['img_mode'] == True:
 
-        img_file_path = curr_img_file_path(caption, 'png')
-
-        dfi.export(input_styler, img_file_path)
-
+        dfi.export(input_styler, curr_img_file_path(caption, 'png'))
 
     return input_styler
 
 
-# In[33]:
+# In[22]:
 
 
 #*******************************************************************************************
@@ -1133,20 +779,18 @@ def begin_program(prgrm_desig = ''):
 
     create_directory(logs_config_dict['images_folder'])
 
-    set_program_designation(prgrm_desig)
 
+    set_program_designation(prgrm_desig)
 
     open_log_file()
 
 
-    msg = 'Program execution begins...\n'
-
     if logs_config_dict['log_mode'] == True:
 
-        print_and_log_text(msg) 
+        print_and_log_text('Program execution begins...\n') 
 
 
-# In[34]:
+# In[23]:
 
 
 #*******************************************************************************************
@@ -1176,18 +820,14 @@ def begin_program(prgrm_desig = ''):
 
 def end_program():
 
-    curr_ts = curr_timestp_as_txt()
-
-    msg = f'Program execution ends at {curr_ts}.\n\n\n\n'
-
     if logs_config_dict['log_mode'] == True:
 
-        print_and_log_text(msg)
+        print_and_log_text(f'Program execution ends at {curr_timestp_as_txt()}.\n\n\n\n')
 
         logs_config_dict['log_txt_file'].close() 
 
 
-# In[35]:
+# In[24]:
 
 
 #*******************************************************************************************
@@ -1218,14 +858,12 @@ def end_program():
 
 def log_write_obj(input_obj):
 
-    msg = f'\n\n' + str(input_obj) + f'\n\n'
-
     if logs_config_dict['log_mode'] == True:
 
-        logs_config_dict['log_txt_file'].write(msg)
+        logs_config_dict['log_txt_file'].write(f'\n\n' + str(input_obj) + f'\n\n')
 
 
-# In[36]:
+# In[25]:
 
 
 #*******************************************************************************************
@@ -1263,7 +901,7 @@ def create_directory(dir_path):
         print(f'The script created directory, {dir_path}.\n')
 
 
-# In[37]:
+# In[26]:
 
 
 #*******************************************************************************************
@@ -1295,22 +933,18 @@ def open_log_file():
 
     global logs_config_dict
 
-
-    curr_date = curr_date_as_txt()
-
-    prgrm_desig = logs_config_dict['prgrm_dsgn']
-
-
     logs_config_dict['log_folder'] \
-        = logs_config_dict['logs_folder'] + '/' + curr_date \
-          + prgrm_desig + logs_config_dict['base_log_name']
+        = logs_config_dict['logs_folder'] \
+            + '/' + curr_date_as_txt() \
+            + logs_config_dict['prgrm_dsgn'] \
+            + logs_config_dict['base_log_name']
 
     if logs_config_dict['log_mode'] == True:
 
         logs_config_dict['log_txt_file'] = open(logs_config_dict['log_folder'], 'a')
 
 
-# In[38]:
+# In[27]:
 
 
 #*******************************************************************************************
@@ -1341,14 +975,12 @@ def print_and_log_text(msg = ''):
 
     print(msg)
 
-    tp_msg = curr_timept_with_msg(msg)
-
     if logs_config_dict['log_mode'] == True:
 
-        logs_config_dict['log_txt_file'].write(tp_msg)    
+        logs_config_dict['log_txt_file'].write(curr_timept_with_msg(msg))    
 
 
-# In[39]:
+# In[28]:
 
 
 #*******************************************************************************************
@@ -1386,17 +1018,14 @@ def save_matplotlib_image \
 
     if logs_config_dict['img_mode'] == True:
 
-        img_file_path \
-            = curr_img_file_path(caption, img_fmt)
-
         plt.savefig \
-            (img_file_path, 
+            (curr_img_file_path(caption, img_fmt), 
              dpi = dpi_int, 
              bbox_inches = logs_config_dict['bbox_inches'], 
              pad_inches = pad_inch_flt)
 
 
-# In[40]:
+# In[29]:
 
 
 #*******************************************************************************************
@@ -1424,18 +1053,14 @@ def save_matplotlib_image \
  #
  #******************************************************************************************/
 
-def save_plotly_image \
-        (plotly_fig,
-         title):
+def save_plotly_image(plotly_fig, title):
 
-    if logs_config_dict['img_mode'] == True:
+    if logs_config_dict['img_mode'] == True: 
 
-        img_file_path = curr_img_file_path(title, 'png')
-
-        plotly_fig.write_image(img_file_path)
+        plotly_fig.write_image(curr_img_file_path(title, 'png'))
 
 
-# In[41]:
+# In[30]:
 
 
 #*******************************************************************************************
@@ -1463,18 +1088,14 @@ def save_plotly_image \
  #
  #******************************************************************************************/
 
-def save_folium_map_image \
-        (folium_map,
-         title):
+def save_folium_map_image(folium_map, title):
 
-    if logs_config_dict['img_mode'] == True:
+    if logs_config_dict['img_mode'] == True: 
 
-        img_file_path = curr_img_file_path(title, 'html')
-
-        folium_map.save(img_file_path)
+        folium_map.save(curr_img_file_path(title, 'html'))
 
 
-# In[42]:
+# In[31]:
 
 
 #*******************************************************************************************
@@ -1512,17 +1133,15 @@ def save_hvplot_map_image \
 
     if logs_config_dict['img_mode'] == True:
 
-        tmp_ovl = copy.copy(hvplot_ovl)
+        tmp_ovl = copy.deepcopy(hvplot_ovl)
 
         tmp_ovl.opts(width = width_int, height = height_int)
 
 
-        img_file_path = curr_img_file_path(title, 'html')
-
-        hvplot.save(tmp_ovl, img_file_path)
+        hvplot.save(tmp_ovl, curr_img_file_path(title, 'html'))
 
 
-# In[43]:
+# In[32]:
 
 
 #*******************************************************************************************

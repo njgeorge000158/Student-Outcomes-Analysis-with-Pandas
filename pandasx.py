@@ -12,36 +12,34 @@
  #      This Python script, pandasx.py, contains Python functions for processing
  #      Pandas data structures. Here is the list:
  #
- #      get_google_colab
- #      set_google_colab
+ #  get_google_colab
+ #  get_table_conversion
+ #  get_format_dict
+ #  get_style_dict
  #
- #      get_table_conversion
- #      set_table_conversion
+ #  set_google_colab
+ #  set_table_conversion
+ #  set_format_dict
+ #  set_style_dict
  #
- #      get_format_dict
- #      set_format_dict
+ #  fmt_df_from_dict
+ #  sv_img_rtn_styler
  #
- #      get_style_dict
- #      set_style_dict
+ #  rtn_std_fmt_styler
+ #  rtn_fmt_tbl
+ #  rtn_fmt_rows
+ #  rtn_df_desc
+ #  rtn_fmt_desc
  #
- #      fmt_df_from_dict
- #      sv_img_rtn_styler
+ #  disp_df_col_cnts
+ #  disp_df_col_unq_val
+ #  disp_series_unq_val_cnts
+ #  disp_series_list_stats
  #
- #      rtn_std_fmt_styler
- #      rtn_fmt_tbl
- #      rtn_fmt_rows
- #      rtn_df_desc
- #      rtn_fmt_desc
- #
- #      disp_df_col_cnts
- #      disp_df_col_unq_val
- #      disp_series_unq_val_cnts
- #      disp_series_list_stats
- #
- #      rtn_stats_list
- #      rtn_smry_stats_as_df
- #      rtn_stats_styler_from_series
- #      rtn_stats_styler_from_series_list
+ #  rtn_stats_list
+ #  rtn_smry_stats_as_df
+ #  rtn_stats_styler_from_series
+ #  rtn_stats_styler_from_series_list
  #
  #
  #  Date                Description                                 Programmer
@@ -52,6 +50,8 @@
  #******************************************************************************************/
 
 import logx
+
+import copy
 
 import dataframe_image as dfi
 import numpy as np
@@ -136,7 +136,7 @@ stats_dict \
  #  Function Name:  get_google_colab
  #
  #  Function Description:
- #      This function returns the global boolean for google colaboratory.
+ #      This function returns the configuration dictionary value.
  #
  #
  #  Return Type: bool
@@ -155,9 +155,11 @@ stats_dict \
  #
  #******************************************************************************************/
 
-def get_google_colab(): 
-
-    return config_dict['google_colab']
+def get_google_colab(): return config_dict['google_colab']
+def get_table_conversion(): return config_dict['table_conversion']
+def get_format_dict(): return copy.deepcopy(fmt_dict)
+def get_style_dict(): return copy.deepcopy(style_dict)
+def get_stats_dict(): return copy.deepcopy(stats_dict)
 
 
 # In[5]:
@@ -199,38 +201,6 @@ def set_google_colab(input_bool):
 
 #*******************************************************************************************
  #
- #  Function Name:  get_table_conversion
- #
- #  Function Description:
- #      This function returns the global table conversion specifier.
- #
- #
- #  Return Type: string
- #
- #
- #  Function Parameters:
- #
- #  Type           Name             Description
- #  ------------   --------------   --------------------------------------------------
- #  n/a            n/a              n/a
- #
- #
- #  Date                Description                                 Programmer
- #  ---------------     ------------------------------------        ------------------
- #  02/18/2026          Initial Development                         Nicholas J. George
- #
- #******************************************************************************************/
-
-def get_table_conversion(): 
-
-    return config_dict['table_conversion']
-
-
-# In[7]:
-
-
-#*******************************************************************************************
- #
  #  Function Name:  set_table_conversion
  #
  #  Function Description:
@@ -260,39 +230,7 @@ def set_table_conversion(tbl_conv):
   config_dict['table_conversion'] = tbl_conv
 
 
-# In[8]:
-
-
-#*******************************************************************************************
- #
- #  Function Name:  get_format_dict
- #
- #  Function Description:
- #      This function returns the global format dictionary for objects.
- #
- #
- #  Return Type: dictionary
- #
- #
- #  Function Parameters:
- #
- #  Type           Name             Description
- #  ------------   --------------   --------------------------------------------------
- #  n/a            n/a              n/a
- #
- #
- #  Date                Description                                 Programmer
- #  ---------------     ------------------------------------        ------------------
- #  02/18/2026          Initial Development                         Nicholas J. George
- #
- #******************************************************************************************/
-
-def get_format_dict(): 
-
-    return fmt_dict
-
-
-# In[9]:
+# In[7]:
 
 
 #*******************************************************************************************
@@ -310,7 +248,7 @@ def get_format_dict():
  #
  #  Type           Name             Description
  #  ------------   --------------   --------------------------------------------------
- #  dictionary     upd_fmt_dict     The parameter is the updated format dictionary.
+ #  dictionary     upd_dict         The parameter is the updated format dictionary.
  #
  #
  #  Date                Description                                 Programmer
@@ -319,46 +257,14 @@ def get_format_dict():
  #
  #******************************************************************************************/
 
-def set_format_dict(upd_fmt_dict):
+def set_format_dict(upd_dict):
 
   global fmt_dict
 
-  fmt_dict = upd_fmt_dict
+  fmt_dict = copy.deepcopy(upd_dict)
 
 
-# In[10]:
-
-
-#*******************************************************************************************
- #
- #  Function Name:  get_style_dict
- #
- #  Function Description:
- #      This function returns the global style dictionary for dataframes and stylers.
- #
- #
- #  Return Type: dictionary
- #
- #
- #  Function Parameters:
- #
- #  Type           Name             Description
- #  ------------   --------------   --------------------------------------------------
- #  n/a            n/a              n/a
- #
- #
- #  Date                Description                                 Programmer
- #  ---------------     ------------------------------------        ------------------
- #  02/18/2026          Initial Development                         Nicholas J. George
- #
- #******************************************************************************************/
-
-def get_style_dict(): 
-
-    return style_dict
-
-
-# In[11]:
+# In[8]:
 
 
 #*******************************************************************************************
@@ -376,7 +282,7 @@ def get_style_dict():
  #
  #  Type           Name             Description
  #  ------------   --------------   --------------------------------------------------
- #  dict           upd_style_dict   The parameter is the updated style dictionary.
+ #  dict           upd_dict         The parameter is the updated style dictionary.
  #
  #
  #  Date                Description                                 Programmer
@@ -385,47 +291,14 @@ def get_style_dict():
  #
  #******************************************************************************************/
 
-def set_style_dict(upd_style_dict):
+def set_style_dict(upd_dict):
 
   global style_dict
 
-  style_dict = upd_style_dict
+  style_dict = copy.deepcopy(upd_dict)
 
 
-# In[12]:
-
-
-#*******************************************************************************************
- #
- #  Function Name:  get_stats_dict
- #
- #  Function Description:
- #      This function returns the global statistics format dictionary for dataframes 
- #      and stylers.
- #
- #
- #  Return Type: dictionary
- #
- #
- #  Function Parameters:
- #
- #  Type           Name             Description
- #  ------------   --------------   --------------------------------------------------
- #  n/a            n/a              n/a
- #
- #
- #  Date                Description                                 Programmer
- #  ---------------     ------------------------------------        ------------------
- #  02/18/2026          Initial Development                         Nicholas J. George
- #
- #******************************************************************************************/
-
-def get_stats_dict(): 
-
-    return stats_dict
-
-
-# In[13]:
+# In[9]:
 
 
 #*******************************************************************************************
@@ -444,7 +317,7 @@ def get_stats_dict():
  #
  #  Type           Name             Description
  #  ------------   --------------   --------------------------------------------------
- #  dictionary     upd_stats_dict   The parameter is the updated statistics dictionary.
+ #  dictionary     upd_dict         The parameter is the updated statistics dictionary.
  #
  #
  #  Date                Description                                 Programmer
@@ -453,14 +326,14 @@ def get_stats_dict():
  #
  #******************************************************************************************/
 
-def set_stats_dict(upd_stats_dict):
+def set_stats_dict(upd_dict):
 
   global stats_dict
 
-  stats_dict = upd_stats_dict
+  stats_dict = copy.deepcopy(upd_stats_dict)
 
 
-# In[14]:
+# In[10]:
 
 
 #*******************************************************************************************
@@ -489,9 +362,7 @@ def set_stats_dict(upd_stats_dict):
  #
  #******************************************************************************************/
 
-def fmt_df_from_dict \
-        (input_df,
-         input_dict):
+def fmt_df_from_dict(input_df, input_dict):
 
     input_styler = input_df.style
 
@@ -510,7 +381,7 @@ def fmt_df_from_dict \
     return input_styler
 
 
-# In[15]:
+# In[11]:
 
 
 #*******************************************************************************************
@@ -538,24 +409,20 @@ def fmt_df_from_dict \
  #
  #******************************************************************************************/
 
-def sv_img_rtn_styler \
-        (input_styler,
-         title):
+def sv_img_rtn_styler(input_styler, title):
 
     if logx.logs_config_dict['img_mode'] == True:
 
-        img_file_path = logx.curr_img_file_path(title, 'png')
-
         dfi.export \
             (input_styler,
-             img_file_path,
+             logx.curr_img_file_path(title, 'png'),
              table_conversion = config_dict['table_conversion'],
              max_rows = -1, max_cols = -1)
 
     return input_styler
 
 
-# In[16]:
+# In[12]:
 
 
 #*******************************************************************************************
@@ -601,12 +468,13 @@ def rtn_std_fmt_styler \
                  thousands = style_dict['format']['thousands'],
                  decimal = style_dict['format']['decimal'])
 
+
     if hide_idx_bool == True: return fmt_styler.hide()
 
     else: return fmt_styler
 
 
-# In[17]:
+# In[13]:
 
 
 #*******************************************************************************************
@@ -643,15 +511,12 @@ def rtn_fmt_tbl \
          hide_idx_bool = True):
 
     curr_styler \
-        = rtn_std_fmt_styler \
-            (input_df.head(line_cnt_int),
-             title,
-             hide_idx_bool)
+        = rtn_std_fmt_styler(input_df.head(line_cnt_int), title, hide_idx_bool)
 
     return sv_img_rtn_styler(curr_styler, title)
 
 
-# In[18]:
+# In[14]:
 
 
 #*******************************************************************************************
@@ -680,9 +545,7 @@ def rtn_fmt_tbl \
  #
  #******************************************************************************************/
 
-def rtn_fmt_rows \
-        (input_styler,
-         input_dict):
+def rtn_fmt_rows(input_styler, input_dict):
 
     for k, v in input_dict.items():
 
@@ -696,7 +559,7 @@ def rtn_fmt_rows \
     return input_styler
 
 
-# In[19]:
+# In[15]:
 
 
 #*******************************************************************************************
@@ -724,9 +587,7 @@ def rtn_fmt_rows \
  #
  #******************************************************************************************/
 
-def rtn_df_desc \
-        (input_df,
-         title):
+def rtn_df_desc(input_df, title):
 
     desc_df = input_df.describe()
 
@@ -739,7 +600,7 @@ def rtn_df_desc \
             .set_properties(**style_dict['properties'])
 
 
-# In[20]:
+# In[16]:
 
 
 #*******************************************************************************************
@@ -767,16 +628,12 @@ def rtn_df_desc \
  #
  #******************************************************************************************/
 
-def rtn_fmt_desc \
-        (input_df,
-         title):
+def rtn_fmt_desc(input_df, title):
 
-    curr_styler = rtn_df_desc(input_df, title)
-
-    return sv_img_rtn_styler(curr_styler, title)
+    return sv_img_rtn_styler(rtn_df_desc(input_df, title), title)
 
 
-# In[21]:
+# In[17]:
 
 
 #*******************************************************************************************
@@ -807,13 +664,12 @@ def disp_df_col_cnts(input_df):
 
     for i, col in enumerate(input_df.columns):
 
-        cnt_int = input_df[col].nunique()
+        msg = '\033[1m' + f'{col}: ' + '{:,}\n'.format(input_df[col].nunique()) + '\033[0m'
 
-        logx.print_and_log_text \
-            ('\033[1m' + f'{col}: ' + '{:,}\n'.format(cnt_int) + '\033[0m')
+        logx.print_and_log_text(msg)
 
 
-# In[22]:
+# In[18]:
 
 
 #*******************************************************************************************
@@ -842,21 +698,17 @@ def disp_df_col_cnts(input_df):
  #
  #******************************************************************************************/
 
-def disp_df_col_unq_val \
-        (input_df,
-         rvs_bool = False):
+def disp_df_col_unq_val(input_df, rvs_bool = False):
 
     for i, col in enumerate(input_df.columns):
 
-        value_list = input_df[col].unique().tolist()
-
         logx.print_and_log_text \
             ('\033[1m' + f'{col}:\n'
-             + f'{sorted(value_list, reverse = rvs_bool)}\n\n'
+             + f'{sorted(input_df[col].unique().tolist(), reverse = rvs_bool)}\n\n'
              + '\033[0m')
 
 
-# In[23]:
+# In[19]:
 
 
 #*******************************************************************************************
@@ -892,11 +744,7 @@ def disp_series_unq_val_cnts \
          series_name = 'output_series',
          asc_bool = False):
 
-    srtd_series \
-        = input_series \
-            .value_cnts() \
-            .sort_values \
-                (ascending = asc_bool)
+    srtd_series = input_series.value_cnts().sort_values(ascending = asc_bool)
 
     srtd_series.name = series_name
 
@@ -909,7 +757,7 @@ def disp_series_unq_val_cnts \
     return srtd_series
 
 
-# In[24]:
+# In[20]:
 
 
 #*******************************************************************************************
@@ -966,7 +814,7 @@ def disp_series_list_stats \
         display(curr_styler)
 
 
-# In[25]:
+# In[21]:
 
 
 #*******************************************************************************************
@@ -1012,7 +860,7 @@ def rtn_stats_list(input_series):
     return stats_list
 
 
-# In[26]:
+# In[22]:
 
 
 #*******************************************************************************************
@@ -1074,10 +922,11 @@ def rtn_smry_stats_as_df(input_series):
             'upper_boundary': upper_bound_flt,
             'outlier_count': outlier_count_int}]
 
+
     return pd.DataFrame(stats_dict_list)
 
 
-# In[27]:
+# In[23]:
 
 
 #*******************************************************************************************
@@ -1105,9 +954,7 @@ def rtn_smry_stats_as_df(input_series):
  #
  #******************************************************************************************/
 
-def rtn_stats_styler_from_series \
-        (input_series,
-         title):
+def rtn_stats_styler_from_series(input_series, title):
 
     stats_list = rtn_stats_list(input_series)
 
@@ -1130,7 +977,7 @@ def rtn_stats_styler_from_series \
     return sv_img_rtn_styler(stats_styler, title)
 
 
-# In[28]:
+# In[24]:
 
 
 #*******************************************************************************************
@@ -1160,9 +1007,7 @@ def rtn_stats_styler_from_series \
  #
  #******************************************************************************************/
 
-def rtn_stats_styler_from_series_list \
-        (input_list,
-         title):
+def rtn_stats_styler_from_series_list(input_list, title):
 
     for idx, series in enumerate(input_list):
 
@@ -1173,6 +1018,7 @@ def rtn_stats_styler_from_series_list \
                 (stats_flt_array,
                  columns = [series.name],
                  index = stats_dict['idx'])
+
 
         if idx != 0: stats_df = pd.concat([stats_df, temp_df], axis = 1)
 
