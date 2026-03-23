@@ -22,6 +22,7 @@
  #  set_format_dict
  #  set_style_dict
  #
+ #  highlight_top_two
  #  fmt_df_from_dict
  #  sv_img_rtn_styler
  #
@@ -78,6 +79,7 @@ fmt_dict \
        'int': '{:,}',
        'flt': '{:,.2f}',
        'flt_int': '{:,.0f}',
+       'regr_flt': '{:,.4f}',
        'pct': '{:,.2%}',
        'pct_flt': '{:,.2f}%',
        'pct_int': '{:,}%',
@@ -338,6 +340,59 @@ def set_stats_dict(upd_dict):
 
 #*******************************************************************************************
  #
+ #  Function Name:  highlight_top_two
+ #
+ #  Function Description:
+ #      This function finds and colors the top two values in a series.
+ #
+ #
+ #  Return Type: n/a
+ #
+ #
+ #  Function Parameters:
+ #
+ #  Type           Name             Description
+ #  ------------   --------------   --------------------------------------------------
+ #  series         series           The parameter is the input series.
+ #  string         props_max        The parameter is the css color for the top value.
+ #  string         props_second     The parameter is the css color for the second largest 
+ #                                  value.
+ #
+ #
+ #  Date                Description                                 Programmer
+ #  ---------------     ------------------------------------        ------------------
+ #  02/18/2026          Initial Development                         Nicholas J. George
+ #
+ #******************************************************************************************/
+
+def highlight_top_two(series, props_max = '', props_second = ''):
+
+    top_two_array = series.nlargest(2).unique()
+
+    if len(top_two_array) < 2:
+
+        is_max = series == series.max()
+
+        return [props_max if v else '' for v in is_max]
+
+
+    max_val = top_two_array[0]
+
+    second_max_val = top_two_array[1]
+
+
+    return \
+        [props_max \
+         if v == max_val \
+         else (props_second if v == second_max_val else '') \
+         for v in series]
+
+
+# In[11]:
+
+
+#*******************************************************************************************
+ #
  #  Function Name:  fmt_df_from_dict
  #
  #  Function Description:
@@ -381,7 +436,7 @@ def fmt_df_from_dict(input_df, input_dict):
     return input_styler
 
 
-# In[11]:
+# In[12]:
 
 
 #*******************************************************************************************
@@ -422,7 +477,7 @@ def sv_img_rtn_styler(input_styler, title):
     return input_styler
 
 
-# In[12]:
+# In[13]:
 
 
 #*******************************************************************************************
@@ -474,7 +529,7 @@ def rtn_std_fmt_styler \
     else: return fmt_styler
 
 
-# In[13]:
+# In[14]:
 
 
 #*******************************************************************************************
@@ -516,7 +571,7 @@ def rtn_fmt_tbl \
     return sv_img_rtn_styler(curr_styler, title)
 
 
-# In[14]:
+# In[15]:
 
 
 #*******************************************************************************************
@@ -559,7 +614,7 @@ def rtn_fmt_rows(input_styler, input_dict):
     return input_styler
 
 
-# In[15]:
+# In[16]:
 
 
 #*******************************************************************************************
@@ -600,7 +655,7 @@ def rtn_df_desc(input_df, title):
             .set_properties(**style_dict['properties'])
 
 
-# In[16]:
+# In[17]:
 
 
 #*******************************************************************************************
@@ -633,7 +688,7 @@ def rtn_fmt_desc(input_df, title):
     return sv_img_rtn_styler(rtn_df_desc(input_df, title), title)
 
 
-# In[17]:
+# In[18]:
 
 
 #*******************************************************************************************
@@ -669,7 +724,7 @@ def disp_df_col_cnts(input_df):
         logx.print_and_log_text(msg)
 
 
-# In[18]:
+# In[19]:
 
 
 #*******************************************************************************************
@@ -708,7 +763,7 @@ def disp_df_col_unq_val(input_df, rvs_bool = False):
              + '\033[0m')
 
 
-# In[19]:
+# In[20]:
 
 
 #*******************************************************************************************
@@ -757,7 +812,7 @@ def disp_series_unq_val_cnts \
     return srtd_series
 
 
-# In[20]:
+# In[21]:
 
 
 #*******************************************************************************************
@@ -814,7 +869,7 @@ def disp_series_list_stats \
         display(curr_styler)
 
 
-# In[21]:
+# In[22]:
 
 
 #*******************************************************************************************
@@ -860,7 +915,7 @@ def rtn_stats_list(input_series):
     return stats_list
 
 
-# In[22]:
+# In[23]:
 
 
 #*******************************************************************************************
@@ -926,7 +981,7 @@ def rtn_smry_stats_as_df(input_series):
     return pd.DataFrame(stats_dict_list)
 
 
-# In[23]:
+# In[24]:
 
 
 #*******************************************************************************************
@@ -977,7 +1032,7 @@ def rtn_stats_styler_from_series(input_series, title):
     return sv_img_rtn_styler(stats_styler, title)
 
 
-# In[24]:
+# In[25]:
 
 
 #*******************************************************************************************
